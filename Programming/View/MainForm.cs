@@ -1,4 +1,4 @@
-namespace Programming
+п»їnamespace Programming
 {
     public partial class MainForm : Form
     {
@@ -7,21 +7,21 @@ namespace Programming
             InitializeComponent();
 
             object[] enums = new object[] { typeof(Color), typeof(EducationalForm), typeof(Genre),     
-                typeof(Manufactures), typeof(Season), typeof(Weekday) };                            //Создание массива перечислений
-            EnumsListBox.Items.AddRange(enums);                                                     //Добавление перечислений в EnumsListBox
-            EnumsListBox.SelectedIndex = 0;                                                         //Задание начального выброного перечисления из списка перечислений
+                typeof(Manufactures), typeof(Season), typeof(Weekday) };                            //РЎРѕР·РґР°РЅРёРµ РјР°СЃСЃРёРІР° РїРµСЂРµС‡РёСЃР»РµРЅРёР№
+            EnumsListBox.Items.AddRange(enums);                                                     //Р”РѕР±Р°РІР»РµРЅРёРµ РїРµСЂРµС‡РёСЃР»РµРЅРёР№ РІ EnumsListBox
+            EnumsListBox.SelectedIndex = 0;                                                         //Р—Р°РґР°РЅРёРµ РЅР°С‡Р°Р»СЊРЅРѕРіРѕ РІС‹Р±СЂРѕРЅРѕРіРѕ РїРµСЂРµС‡РёСЃР»РµРЅРёСЏ РёР· СЃРїРёСЃРєР° РїРµСЂРµС‡РёСЃР»РµРЅРёР№
 
-            ParsingResult.Visible = false;                                                          //Скрытие лэйбла для вывода результата из WeekdayParsing GroupBox 
+            ParsingResult.Visible = false;                                                          //РЎРєСЂС‹С‚РёРµ Р»СЌР№Р±Р»Р° РґР»СЏ РІС‹РІРѕРґР° СЂРµР·СѓР»СЊС‚Р°С‚Р° РёР· WeekdayParsing GroupBox 
 
-            var seasons = Enum.GetValues(typeof(Season));                                           //Добавление перечисления Season в ComboBox в SeasonHandle
+            var seasons = Enum.GetValues(typeof(Season));                                           //Р”РѕР±Р°РІР»РµРЅРёРµ РїРµСЂРµС‡РёСЃР»РµРЅРёСЏ Season РІ ComboBox РІ SeasonHandle
             foreach (var season in seasons)
             {
                 SeasonComboBox.Items.Add(season);
             }
-            SeasonComboBox.SelectedIndex = 0;                                                       //Задание начального выброного элемента из списка в ComboBox
+            SeasonComboBox.SelectedIndex = 0;                                                       //Р—Р°РґР°РЅРёРµ РЅР°С‡Р°Р»СЊРЅРѕРіРѕ РІС‹Р±СЂРѕРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РёР· СЃРїРёСЃРєР° РІ ComboBox
         }
 
-        private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)                  //Изменение отображаемого перечисления в ValuesListBox
+        private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)                  //РР·РјРµРЅРµРЅРёРµ РѕС‚РѕР±СЂР°Р¶Р°РµРјРѕРіРѕ РїРµСЂРµС‡РёСЃР»РµРЅРёСЏ РІ ValuesListBox
         {
             var selectedEnum = (Type)EnumsListBox.SelectedItem;
             var enumValues = Enum.GetValues(selectedEnum);
@@ -30,10 +30,10 @@ namespace Programming
             {
                 ValuesListBox.Items.Add(enumValue);
             }
-            ValueTextBox.Clear();                                                                   //Очистка отображения индекса выбранного элемента из перечисления
+            ValueTextBox.Clear();                                                                   //РћС‡РёСЃС‚РєР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РёРЅРґРµРєСЃР° РІС‹Р±СЂР°РЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РёР· РїРµСЂРµС‡РёСЃР»РµРЅРёСЏ
         }
 
-        private void ValuesListBox_SelectedIndexChanged(object sender, EventArgs e)                 //Отображение индекса выбранного элемента из списка ValuesListBox
+        private void ValuesListBox_SelectedIndexChanged(object sender, EventArgs e)                 //РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РёРЅРґРµРєСЃР° РІС‹Р±СЂР°РЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РёР· СЃРїРёСЃРєР° ValuesListBox
         {
             if (ValuesListBox.SelectedItem == null)
             {
@@ -45,46 +45,46 @@ namespace Programming
 
         private void ParseButton_Click(object sender, EventArgs e)
         {
-            if (ParsingValueTextBox.Text == null)                                                           //Проверка введенной строки
+            if (ParsingValueTextBox.Text == null)                                                           //РџСЂРѕРІРµСЂРєР° РІРІРµРґРµРЅРЅРѕР№ СЃС‚СЂРѕРєРё
             {
                 return;
             }
             ParsingResult.Visible = true;
             object ParsedValue;
-            if (Enum.TryParse(typeof(Weekday), ParsingValueTextBox.Text, out ParsedValue))                  //Попытка преобразования введенной строки в тип Enum
+            if (Enum.TryParse(typeof(Weekday), ParsingValueTextBox.Text, out ParsedValue))                  //РџРѕРїС‹С‚РєР° РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ РІРІРµРґРµРЅРЅРѕР№ СЃС‚СЂРѕРєРё РІ С‚РёРї Enum
             {
-                ParsingResult.Text = $"Это день недели ({ParsedValue}  =  {(int)ParsedValue+1})";
+                ParsingResult.Text = $"Р­С‚Рѕ РґРµРЅСЊ РЅРµРґРµР»Рё ({ParsedValue}  =  {(int)ParsedValue+1})";
             }
             else
             {
-                ParsingResult.Text = "Нет такого дня недели";
+                ParsingResult.Text = "РќРµС‚ С‚Р°РєРѕРіРѕ РґРЅСЏ РЅРµРґРµР»Рё";
             }
         }
 
         private void SeasonButton_Click(object sender, EventArgs e)
         {
             this.BackColor = System.Drawing.Color.White;
-            tableLayoutPanel1.BackColor = System.Drawing.Color.White;                                       //Очистка изменнений при запуске инструкций изменения выбранного сезона
+            tableLayoutPanel1.BackColor = System.Drawing.Color.White;                                       //РћС‡РёСЃС‚РєР° РёР·РјРµРЅРЅРµРЅРёР№ РїСЂРё Р·Р°РїСѓСЃРєРµ РёРЅСЃС‚СЂСѓРєС†РёР№ РёР·РјРµРЅРµРЅРёСЏ РІС‹Р±СЂР°РЅРЅРѕРіРѕ СЃРµР·РѕРЅР°
             switch (SeasonComboBox.SelectedIndex)
             {
-                case 0:                                                                                    //Зима
+                case 0:                                                                                    //Р—РёРјР°
                     
-                    MessageBox.Show("Бррр! Холодно!");
+                    MessageBox.Show("Р‘СЂСЂСЂ! РҐРѕР»РѕРґРЅРѕ!");
                     break;
-                case 1:                                                                                    //Весна
+                case 1:                                                                                    //Р’РµСЃРЅР°
                     this.BackColor = ColorTranslator.FromHtml("#559c45");
                     tableLayoutPanel1.BackColor = ColorTranslator.FromHtml("#559c45");
                     break;
-                case 2:                                                                                    //Лето
+                case 2:                                                                                    //Р›РµС‚Рѕ
 
-                    MessageBox.Show("Ура! Солнце!");
+                    MessageBox.Show("РЈСЂР°! РЎРѕР»РЅС†Рµ!");
                     break;
-                case 3:                                                                                    //Осень
+                case 3:                                                                                    //РћСЃРµРЅСЊ
                     this.BackColor = ColorTranslator.FromHtml("#e29c45");
                     tableLayoutPanel1.BackColor = ColorTranslator.FromHtml("#e29c45");
                     break;
-                default:                                                                                   //Инструкции на случай, если введен ни один из сезонов
-                    MessageBox.Show("Выберете время года из выпадающего списка");
+                default:                                                                                   //РРЅСЃС‚СЂСѓРєС†РёРё РЅР° СЃР»СѓС‡Р°Р№, РµСЃР»Рё РІРІРµРґРµРЅ РЅРё РѕРґРёРЅ РёР· СЃРµР·РѕРЅРѕРІ
+                    MessageBox.Show("Р’С‹Р±РµСЂРµС‚Рµ РІСЂРµРјСЏ РіРѕРґР° РёР· РІС‹РїР°РґР°СЋС‰РµРіРѕ СЃРїРёСЃРєР°");
                     break;
             }
         }
