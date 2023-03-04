@@ -8,8 +8,42 @@ namespace Programming.Model.Classes
 {
     internal class Flight
     {
-        private string departure;
-        private string destination;
-        private int time;
+        private string _departure;
+        private string _destination;
+        private int _time;
+        public string Departure
+        {
+            get { return _departure; }
+            set { _departure = value; }
+        }
+        public string Destination
+        {
+            get { return _destination; }
+            set { _destination = value; }
+        }
+        public int Time
+        {
+            get { return _time; }
+            set
+            {
+                if (value > 0)
+                {
+                    _time = value;
+                }
+                else
+                {
+                    throw new ArgumentException(message: "Продолжительность полета должна быть больше 0");
+                }
+            }
+        }
+        public Flight()
+        {
+        }
+        public Flight(string departure, string destination, int time)
+        {
+            Departure = departure;
+            Destination = destination;
+            Time = time;
+        }
     }
 }
