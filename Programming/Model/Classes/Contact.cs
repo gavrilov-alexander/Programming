@@ -9,8 +9,42 @@ namespace Programming.Model.Classes
 {
     internal class Contact
     {
-        private string name;
-        private string surname;
-        private long number; 
+        private string _name;
+        private string _surname;
+        private long _number; 
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+        public string Surname
+        {
+            get { return _surname; }
+            set { _surname = value; }
+        }
+        public long Number
+        {
+            get { return _number; }
+            set 
+            { 
+                if (value > 0)
+                    {
+                        _number= value;
+                    }
+                else
+                    {
+                        throw new ArgumentException(message:"Номер должен быть больше 0");
+                    }
+            }
+        }
+        public Contact()
+        {
+        }
+        public Contact(string name, string surname, long number)
+        {
+            Name = name;
+            Surname = surname;
+            Number = number;
+        }
     }
 }
