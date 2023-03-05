@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Programming.Model.Classes
-{
+
+
     internal class Rectangle
     {
         private double _length;
@@ -56,4 +56,4 @@ namespace Programming.Model.Classes
             Color = color;
         }
     }
-}
+
