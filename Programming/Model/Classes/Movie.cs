@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Programming.Model.Classes
-{
+
     internal class Movie
     {
         private string _name;
@@ -80,4 +79,4 @@ namespace Programming.Model.Classes
             Rating = rating;
         }
     }
-}
+

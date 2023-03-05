@@ -369,6 +369,7 @@
             this.MovieFindButton.TabIndex = 22;
             this.MovieFindButton.Text = "Find";
             this.MovieFindButton.UseVisualStyleBackColor = true;
+            this.MovieFindButton.Click += new System.EventHandler(this.MovieFindButton_Click);
             // 
             // MovieRatingLabel
             // 
@@ -391,6 +392,7 @@
             this.MovieRatingTextBox.Name = "MovieRatingTextBox";
             this.MovieRatingTextBox.Size = new System.Drawing.Size(327, 31);
             this.MovieRatingTextBox.TabIndex = 19;
+            this.MovieRatingTextBox.TextChanged += new System.EventHandler(this.MovieRatingTextBox_TextChanged);
             // 
             // MovieGenreLabel
             // 
@@ -413,6 +415,7 @@
             this.MovieGenreTextBox.Name = "MovieGenreTextBox";
             this.MovieGenreTextBox.Size = new System.Drawing.Size(327, 31);
             this.MovieGenreTextBox.TabIndex = 17;
+            this.MovieGenreTextBox.TextChanged += new System.EventHandler(this.MovieGenreTextBox_TextChanged);
             // 
             // MovieYearLabel
             // 
@@ -435,6 +438,7 @@
             this.MovieYearTextBox.Name = "MovieYearTextBox";
             this.MovieYearTextBox.Size = new System.Drawing.Size(327, 31);
             this.MovieYearTextBox.TabIndex = 15;
+            this.MovieYearTextBox.TextChanged += new System.EventHandler(this.MovieYearTextBox_TextChanged);
             // 
             // MovieListBox
             // 
@@ -447,6 +451,7 @@
             this.MovieListBox.Name = "MovieListBox";
             this.MovieListBox.Size = new System.Drawing.Size(338, 782);
             this.MovieListBox.TabIndex = 14;
+            this.MovieListBox.SelectedIndexChanged += new System.EventHandler(this.MovieListBox_SelectedIndexChanged);
             // 
             // MovieDurationLabel
             // 
@@ -469,6 +474,7 @@
             this.MovieDurationTextBox.Name = "MovieDurationTextBox";
             this.MovieDurationTextBox.Size = new System.Drawing.Size(327, 31);
             this.MovieDurationTextBox.TabIndex = 12;
+            this.MovieDurationTextBox.TextChanged += new System.EventHandler(this.MovieDurationTextBox_TextChanged);
             // 
             // MovieNameLabel
             // 
@@ -491,6 +497,7 @@
             this.MovieNameTextBox.Name = "MovieNameTextBox";
             this.MovieNameTextBox.Size = new System.Drawing.Size(327, 31);
             this.MovieNameTextBox.TabIndex = 10;
+            this.MovieNameTextBox.TextChanged += new System.EventHandler(this.MovieNameTextBox_TextChanged);
             // 
             // Rectangles
             // 
@@ -520,6 +527,7 @@
             this.RectangleFindButton.TabIndex = 21;
             this.RectangleFindButton.Text = "Find";
             this.RectangleFindButton.UseVisualStyleBackColor = true;
+            this.RectangleFindButton.Click += new System.EventHandler(this.RectangleFindButton_Click);
             // 
             // RectangleColorLabel
             // 
@@ -542,6 +550,7 @@
             this.RectangleColorTextBox.Name = "RectangleColorTextBox";
             this.RectangleColorTextBox.Size = new System.Drawing.Size(327, 31);
             this.RectangleColorTextBox.TabIndex = 8;
+            this.RectangleColorTextBox.TextChanged += new System.EventHandler(this.RectangleColorTextBox_TextChanged);
             // 
             // RectangleListBox
             // 
@@ -554,6 +563,7 @@
             this.RectangleListBox.Name = "RectangleListBox";
             this.RectangleListBox.Size = new System.Drawing.Size(338, 782);
             this.RectangleListBox.TabIndex = 7;
+            this.RectangleListBox.SelectedIndexChanged += new System.EventHandler(this.RectangleListBox_SelectedIndexChanged);
             // 
             // RectangleWidthLabel
             // 
@@ -576,6 +586,7 @@
             this.RectangleWidthTextBox.Name = "RectangleWidthTextBox";
             this.RectangleWidthTextBox.Size = new System.Drawing.Size(327, 31);
             this.RectangleWidthTextBox.TabIndex = 5;
+            this.RectangleWidthTextBox.TextChanged += new System.EventHandler(this.RectangleWidthTextBox_TextChanged);
             // 
             // RectangleLengthLabel
             // 
@@ -598,6 +609,7 @@
             this.RectangleLengthTextBox.Name = "RectangleLengthTextBox";
             this.RectangleLengthTextBox.Size = new System.Drawing.Size(327, 31);
             this.RectangleLengthTextBox.TabIndex = 3;
+            this.RectangleLengthTextBox.TextChanged += new System.EventHandler(this.RectangleLengthTextBox_TextChanged);
             // 
             // MainForm
             // 
