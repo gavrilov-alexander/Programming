@@ -1,5 +1,7 @@
 ﻿namespace Programming
 {
+    using Rectangle = Model.Classes.Rectangle;
+    using Movie = Model.Classes.Movie;
     public partial class MainForm : Form
     {
         public const int DefaultSize = 5;

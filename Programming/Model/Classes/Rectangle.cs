@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-
+namespace Programming.Model.Classes
+{
     internal class Rectangle
     {
         private double _length;
@@ -52,4 +53,4 @@ using System.Threading.Tasks;
             Color = color;
         }
     }
-
+}
