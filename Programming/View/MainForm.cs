@@ -37,6 +37,7 @@
                                                colors.GetValue(index:random.Next(0,colors.Length)).ToString());
             }
             int j = 0;
+            // TO DO: Заменить метод Substring в добавлении элементов в ListBox
             foreach (var rectangle in _rectangles)
             {
                 j++;
