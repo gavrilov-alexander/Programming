@@ -12,6 +12,7 @@
         private Movie _currentMovie;
         public MainForm()
         {
+            // TODO: Вынести инициализацию компонентов
             InitializeComponent();
 
             object[] enums = new object[] { typeof(Color), typeof(EducationalForm), typeof(Genre),     
@@ -32,12 +33,13 @@
             var colors = Enum.GetValues(typeof(Color));
             for (int i = 0; i < DefaultSize; i++)
             {
-                _rectangles[i] = new Rectangle(random.NextDouble()*100, 
-                                               random.NextDouble()*100, 
-                                               colors.GetValue(index:random.Next(0,colors.Length)).ToString());
+                double length = random.NextDouble() * 100;
+                double width = random.NextDouble() * 100;
+                string color = colors.GetValue(index: random.Next(0, colors.Length)).ToString();
+                _rectangles[i] = new Rectangle(length, width, color);
             }
             int j = 0;
-            // TO DO: Заменить метод Substring в добавлении элементов в ListBox
+            // TODO: Заменить метод Substring в добавлении элементов в ListBox
             foreach (var rectangle in _rectangles)
             {
                 j++;
@@ -48,11 +50,12 @@
             var genres = Enum.GetValues(typeof(Genre));
             for (int i = 0; i < DefaultSize; i++)
             {
-                _movies[i] = new Movie((i+1).ToString(), 
-                                       random.Next(1,301), 
-                                       random.Next(1900,2024), 
-                                       genres.GetValue(index: random.Next(0, genres.Length)).ToString(),
-                                       random.NextDouble()*10);
+                string name = (i + 1).ToString();
+                int duration = random.Next(1, 301);
+                int year = random.Next(1900, 2024);
+                string genre = genres.GetValue(index: random.Next(0, genres.Length)).ToString();
+                double rating = random.NextDouble() * 10;
+                _movies[i] = new Movie(name, duration, year, genre, rating);
             }
             j = 0;
             foreach (var movie in _movies)
@@ -239,44 +242,44 @@
                 MovieRatingTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
-        private void FindRictangleWithMaxWidth()
+        private void FindRectangleWithMaxWidth()
         {
-            double maxwidth = _rectangles[0].Width;
+            double maxWidth = _rectangles[0].Width;
             int i = 0;
-            int maxi=0;
+            int maxWidthIndex=0;
             // Поиск прямоугольника с максимальной шириной
             foreach (var tempRectangle in _rectangles)
             {
-                if (tempRectangle.Width > maxwidth)
+                if (tempRectangle.Width > maxWidth)
                 {
-                    maxi = i;
-                    maxwidth = tempRectangle.Width;
+                    maxWidthIndex = i;
+                    maxWidth = tempRectangle.Width;
                 }
                 i++;
             }
-            RectangleListBox.SelectedIndex = maxi;
+            RectangleListBox.SelectedIndex = maxWidthIndex;
         }
         private void FindMovieWithMaxRating()
         {
-            double maxrating = _movies[0].Rating;
+            double maxRating = _movies[0].Rating;
             int i = 0;
-            int maxi=0;
+            int maxRatingIndex=0;
             // Поиск фильма с максимальным рейтингом
             foreach (var tempMovie in _movies)
             {
-                if (tempMovie.Rating > maxrating)
+                if (tempMovie.Rating > maxRating)
                 {
-                    maxi = i;
-                    maxrating = tempMovie.Rating;
+                    maxRatingIndex = i;
+                    maxRating = tempMovie.Rating;
                 }
                 i++;
             }
-            MovieListBox.SelectedIndex = maxi;
+            MovieListBox.SelectedIndex = maxRatingIndex;
         }
 
         private void RectangleFindButton_Click(object sender, EventArgs e)
         {
-            FindRictangleWithMaxWidth();
+            FindRectangleWithMaxWidth();
         }
 
         private void MovieFindButton_Click(object sender, EventArgs e)
