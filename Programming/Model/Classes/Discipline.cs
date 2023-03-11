@@ -18,7 +18,7 @@ namespace Programming.Model.Classes
             get { return _mark; }
             set
             {
-                if (value > 1 && value < 6)
+                if (value >= 2 && value <=5 )
                 {
                     _mark = value;
                 }
