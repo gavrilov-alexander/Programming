@@ -12,11 +12,7 @@ using System.Threading.Tasks;
         private int _year;
         private string _genre;
         private double _rating;
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
+        public string Name { get; set; }
         public int Duration
         {
             get { return _duration; }
@@ -47,11 +43,7 @@ using System.Threading.Tasks;
                 }
             }
         }
-        public string Genre
-        {
-            get { return _genre; }
-            set { _genre = value; }
-        }
+        public string Genre { get; set; }
         public double Rating
         {
             get { return _rating; }

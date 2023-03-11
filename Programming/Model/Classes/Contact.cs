@@ -11,17 +11,9 @@ namespace Programming.Model.Classes
     {
         private string _name;
         private string _surname;
-        private long _number; 
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
-        public string Surname
-        {
-            get { return _surname; }
-            set { _surname = value; }
-        }
+        private long _number;
+        public string Name { get; set; }
+        public string Surname { get; set; }
         public long Number
         {
             get { return _number; }

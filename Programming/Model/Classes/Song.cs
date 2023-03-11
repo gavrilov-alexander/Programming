@@ -11,16 +11,8 @@ namespace Programming.Model.Classes
         private string _name;
         private string _author;
         private int _duration;
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
-        public string Author
-        {
-            get { return _author; }
-            set { _author = value; }
-        }
+        public string Name { get; set; }
+        public string Author { get; set; } 
         public int Duration
         {
             get { return _duration; }

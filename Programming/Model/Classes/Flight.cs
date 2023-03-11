@@ -11,16 +11,8 @@ namespace Programming.Model.Classes
         private string _departure;
         private string _destination;
         private int _time;
-        public string Departure
-        {
-            get { return _departure; }
-            set { _departure = value; }
-        }
-        public string Destination
-        {
-            get { return _destination; }
-            set { _destination = value; }
-        }
+        public string Departure {get; set;}
+        public string Destination {get; set;}
         public int Time
         {
             get { return _time; }
