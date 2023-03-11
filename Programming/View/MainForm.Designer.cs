@@ -92,7 +92,7 @@
             this.TabControl.Controls.Add(this.ClassesTabPage);
             this.TabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabControl.Location = new System.Drawing.Point(0, 0);
-            this.TabControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TabControl.Margin = new System.Windows.Forms.Padding(2);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
             this.TabControl.Size = new System.Drawing.Size(771, 417);
@@ -102,9 +102,9 @@
             // 
             this.Enums.Controls.Add(this.tableLayoutPanel1);
             this.Enums.Location = new System.Drawing.Point(4, 24);
-            this.Enums.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Enums.Margin = new System.Windows.Forms.Padding(2);
             this.Enums.Name = "Enums";
-            this.Enums.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Enums.Padding = new System.Windows.Forms.Padding(2);
             this.Enums.Size = new System.Drawing.Size(763, 389);
             this.Enums.TabIndex = 0;
             this.Enums.Text = "Enums";
@@ -118,7 +118,7 @@
             this.tableLayoutPanel1.Controls.Add(this.Enumerations, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.73196F));
@@ -135,7 +135,7 @@
             this.tableLayoutPanel2.Controls.Add(this.SeasonHandle, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 224);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -150,9 +150,9 @@
             this.WeekdayParsing.Controls.Add(this.ParsingValueTextBox);
             this.WeekdayParsing.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WeekdayParsing.Location = new System.Drawing.Point(2, 2);
-            this.WeekdayParsing.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.WeekdayParsing.Margin = new System.Windows.Forms.Padding(2);
             this.WeekdayParsing.Name = "WeekdayParsing";
-            this.WeekdayParsing.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.WeekdayParsing.Padding = new System.Windows.Forms.Padding(2);
             this.WeekdayParsing.Size = new System.Drawing.Size(373, 155);
             this.WeekdayParsing.TabIndex = 0;
             this.WeekdayParsing.TabStop = false;
@@ -184,7 +184,7 @@
             // 
             this.ParseButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ParseButton.Location = new System.Drawing.Point(279, 71);
-            this.ParseButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ParseButton.Margin = new System.Windows.Forms.Padding(2);
             this.ParseButton.Name = "ParseButton";
             this.ParseButton.Size = new System.Drawing.Size(78, 24);
             this.ParseButton.TabIndex = 6;
@@ -196,7 +196,7 @@
             // 
             this.ParsingValueTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ParsingValueTextBox.Location = new System.Drawing.Point(4, 72);
-            this.ParsingValueTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ParsingValueTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.ParsingValueTextBox.Name = "ParsingValueTextBox";
             this.ParsingValueTextBox.Size = new System.Drawing.Size(271, 23);
             this.ParsingValueTextBox.TabIndex = 2;
@@ -208,9 +208,9 @@
             this.SeasonHandle.Controls.Add(this.SeasonButton);
             this.SeasonHandle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SeasonHandle.Location = new System.Drawing.Point(379, 2);
-            this.SeasonHandle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SeasonHandle.Margin = new System.Windows.Forms.Padding(2);
             this.SeasonHandle.Name = "SeasonHandle";
-            this.SeasonHandle.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SeasonHandle.Padding = new System.Windows.Forms.Padding(2);
             this.SeasonHandle.Size = new System.Drawing.Size(374, 155);
             this.SeasonHandle.TabIndex = 1;
             this.SeasonHandle.TabStop = false;
@@ -221,7 +221,7 @@
             this.SeasonComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.SeasonComboBox.FormattingEnabled = true;
             this.SeasonComboBox.Location = new System.Drawing.Point(4, 72);
-            this.SeasonComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SeasonComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.SeasonComboBox.Name = "SeasonComboBox";
             this.SeasonComboBox.Size = new System.Drawing.Size(271, 23);
             this.SeasonComboBox.TabIndex = 6;
@@ -241,7 +241,7 @@
             // 
             this.SeasonButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.SeasonButton.Location = new System.Drawing.Point(279, 71);
-            this.SeasonButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SeasonButton.Margin = new System.Windows.Forms.Padding(2);
             this.SeasonButton.Name = "SeasonButton";
             this.SeasonButton.Size = new System.Drawing.Size(78, 24);
             this.SeasonButton.TabIndex = 7;
@@ -259,9 +259,9 @@
             this.Enumerations.Controls.Add(this.EnumsListBox);
             this.Enumerations.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Enumerations.Location = new System.Drawing.Point(2, 2);
-            this.Enumerations.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Enumerations.Margin = new System.Windows.Forms.Padding(2);
             this.Enumerations.Name = "Enumerations";
-            this.Enumerations.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Enumerations.Padding = new System.Windows.Forms.Padding(2);
             this.Enumerations.Size = new System.Drawing.Size(755, 218);
             this.Enumerations.TabIndex = 2;
             this.Enumerations.TabStop = false;
@@ -270,7 +270,7 @@
             // ValueTextBox
             // 
             this.ValueTextBox.Location = new System.Drawing.Point(407, 42);
-            this.ValueTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ValueTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.ValueTextBox.Multiline = true;
             this.ValueTextBox.Name = "ValueTextBox";
             this.ValueTextBox.Size = new System.Drawing.Size(106, 29);
@@ -314,7 +314,7 @@
             this.ValuesListBox.IntegralHeight = false;
             this.ValuesListBox.ItemHeight = 15;
             this.ValuesListBox.Location = new System.Drawing.Point(191, 42);
-            this.ValuesListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ValuesListBox.Margin = new System.Windows.Forms.Padding(2);
             this.ValuesListBox.Name = "ValuesListBox";
             this.ValuesListBox.Size = new System.Drawing.Size(178, 174);
             this.ValuesListBox.TabIndex = 1;
@@ -328,7 +328,7 @@
             this.EnumsListBox.IntegralHeight = false;
             this.EnumsListBox.ItemHeight = 15;
             this.EnumsListBox.Location = new System.Drawing.Point(4, 42);
-            this.EnumsListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.EnumsListBox.Margin = new System.Windows.Forms.Padding(2);
             this.EnumsListBox.Name = "EnumsListBox";
             this.EnumsListBox.Size = new System.Drawing.Size(165, 174);
             this.EnumsListBox.TabIndex = 0;
@@ -338,9 +338,9 @@
             // 
             this.ClassesTabPage.Controls.Add(this.tableLayoutPanel3);
             this.ClassesTabPage.Location = new System.Drawing.Point(4, 24);
-            this.ClassesTabPage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ClassesTabPage.Margin = new System.Windows.Forms.Padding(2);
             this.ClassesTabPage.Name = "ClassesTabPage";
-            this.ClassesTabPage.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ClassesTabPage.Padding = new System.Windows.Forms.Padding(2);
             this.ClassesTabPage.Size = new System.Drawing.Size(763, 389);
             this.ClassesTabPage.TabIndex = 1;
             this.ClassesTabPage.Text = "Classes";
@@ -355,7 +355,7 @@
             this.tableLayoutPanel3.Controls.Add(this.Rectangles, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -378,9 +378,9 @@
             this.Movies.Controls.Add(this.MovieNameTextBox);
             this.Movies.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Movies.Location = new System.Drawing.Point(381, 2);
-            this.Movies.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Movies.Margin = new System.Windows.Forms.Padding(2);
             this.Movies.Name = "Movies";
-            this.Movies.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Movies.Padding = new System.Windows.Forms.Padding(2);
             this.Movies.Size = new System.Drawing.Size(376, 381);
             this.Movies.TabIndex = 1;
             this.Movies.TabStop = false;
@@ -390,7 +390,7 @@
             // 
             this.MovieFindButton.Location = new System.Drawing.Point(245, 231);
             this.MovieFindButton.Name = "MovieFindButton";
-            this.MovieFindButton.Size = new System.Drawing.Size(75, 25);
+            this.MovieFindButton.Size = new System.Drawing.Size(75, 23);
             this.MovieFindButton.TabIndex = 22;
             this.MovieFindButton.Text = "Find";
             this.MovieFindButton.UseVisualStyleBackColor = true;
@@ -414,7 +414,7 @@
             this.MovieRatingTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.MovieRatingTextBox.Location = new System.Drawing.Point(245, 203);
-            this.MovieRatingTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MovieRatingTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.MovieRatingTextBox.Name = "MovieRatingTextBox";
             this.MovieRatingTextBox.Size = new System.Drawing.Size(125, 23);
             this.MovieRatingTextBox.TabIndex = 19;
@@ -438,7 +438,7 @@
             this.MovieGenreTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.MovieGenreTextBox.Location = new System.Drawing.Point(245, 161);
-            this.MovieGenreTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MovieGenreTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.MovieGenreTextBox.Name = "MovieGenreTextBox";
             this.MovieGenreTextBox.Size = new System.Drawing.Size(125, 23);
             this.MovieGenreTextBox.TabIndex = 17;
@@ -462,7 +462,7 @@
             this.MovieYearTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.MovieYearTextBox.Location = new System.Drawing.Point(245, 119);
-            this.MovieYearTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MovieYearTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.MovieYearTextBox.Name = "MovieYearTextBox";
             this.MovieYearTextBox.Size = new System.Drawing.Size(125, 23);
             this.MovieYearTextBox.TabIndex = 15;
@@ -498,7 +498,7 @@
             this.MovieDurationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.MovieDurationTextBox.Location = new System.Drawing.Point(245, 77);
-            this.MovieDurationTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MovieDurationTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.MovieDurationTextBox.Name = "MovieDurationTextBox";
             this.MovieDurationTextBox.Size = new System.Drawing.Size(125, 23);
             this.MovieDurationTextBox.TabIndex = 12;
@@ -522,7 +522,7 @@
             this.MovieNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.MovieNameTextBox.Location = new System.Drawing.Point(245, 35);
-            this.MovieNameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MovieNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.MovieNameTextBox.Name = "MovieNameTextBox";
             this.MovieNameTextBox.Size = new System.Drawing.Size(125, 23);
             this.MovieNameTextBox.TabIndex = 10;
@@ -540,9 +540,9 @@
             this.Rectangles.Controls.Add(this.RectangleLengthTextBox);
             this.Rectangles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Rectangles.Location = new System.Drawing.Point(2, 2);
-            this.Rectangles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Rectangles.Margin = new System.Windows.Forms.Padding(2);
             this.Rectangles.Name = "Rectangles";
-            this.Rectangles.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Rectangles.Padding = new System.Windows.Forms.Padding(2);
             this.Rectangles.Size = new System.Drawing.Size(375, 381);
             this.Rectangles.TabIndex = 0;
             this.Rectangles.TabStop = false;
@@ -552,7 +552,7 @@
             // 
             this.RectangleFindButton.Location = new System.Drawing.Point(245, 147);
             this.RectangleFindButton.Name = "RectangleFindButton";
-            this.RectangleFindButton.Size = new System.Drawing.Size(75, 25);
+            this.RectangleFindButton.Size = new System.Drawing.Size(75, 23);
             this.RectangleFindButton.TabIndex = 21;
             this.RectangleFindButton.Text = "Find";
             this.RectangleFindButton.UseVisualStyleBackColor = true;
@@ -576,7 +576,7 @@
             this.RectangleColorTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.RectangleColorTextBox.Location = new System.Drawing.Point(245, 119);
-            this.RectangleColorTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RectangleColorTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.RectangleColorTextBox.Name = "RectangleColorTextBox";
             this.RectangleColorTextBox.Size = new System.Drawing.Size(125, 23);
             this.RectangleColorTextBox.TabIndex = 8;
@@ -612,7 +612,7 @@
             this.RectangleWidthTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.RectangleWidthTextBox.Location = new System.Drawing.Point(245, 77);
-            this.RectangleWidthTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RectangleWidthTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.RectangleWidthTextBox.Name = "RectangleWidthTextBox";
             this.RectangleWidthTextBox.Size = new System.Drawing.Size(125, 23);
             this.RectangleWidthTextBox.TabIndex = 5;
@@ -636,7 +636,7 @@
             this.RectangleLengthTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.RectangleLengthTextBox.Location = new System.Drawing.Point(245, 35);
-            this.RectangleLengthTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RectangleLengthTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.RectangleLengthTextBox.Name = "RectangleLengthTextBox";
             this.RectangleLengthTextBox.Size = new System.Drawing.Size(125, 23);
             this.RectangleLengthTextBox.TabIndex = 3;
@@ -649,7 +649,7 @@
             this.ClientSize = new System.Drawing.Size(771, 417);
             this.Controls.Add(this.TabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "Programming Demo";
             this.TabControl.ResumeLayout(false);
