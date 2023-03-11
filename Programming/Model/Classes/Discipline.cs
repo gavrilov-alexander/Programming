@@ -12,7 +12,7 @@ namespace Programming.Model.Classes
         private string _teacher;
         private int _mark;
         public string Name { get; set; }
-        public string Teacher {get; set; }
+        public string Teacher { get; set; }
         public int Mark
         {
             get { return _mark; }
