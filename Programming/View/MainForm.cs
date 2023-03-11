@@ -109,8 +109,7 @@
             switch (SeasonComboBox.SelectedIndex)
             {
                 // Зима
-                case 0:                                                                                    
-                    
+                case 0:
                     MessageBox.Show("Бррр! Холодно!");
                     break;
                 // Весна
@@ -119,8 +118,7 @@
                     tableLayoutPanel1.BackColor = ColorTranslator.FromHtml("#559c45");
                     break;
                 // Лето
-                case 2:                                                                                    
-
+                case 2:
                     MessageBox.Show("Ура! Солнце!");
                     break;
                 // Осень
@@ -163,7 +161,6 @@
             }
             catch
             {
-                // Изменение цвета TextBox в случае ошибки преобразования
                 RectangleLengthTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
@@ -178,7 +175,6 @@
             }
             catch
             {
-                // Изменение цвета TextBox в случае ошибки преобразования
                 RectangleWidthTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
@@ -203,7 +199,6 @@
             }
             catch
             {
-                // Изменение цвета TextBox в случае ошибки преобразования
                 MovieDurationTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
@@ -218,7 +213,6 @@
             }
             catch
             {
-                // Изменение цвета TextBox в случае ошибки преобразования
                 MovieYearTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
@@ -238,7 +232,6 @@
             }
             catch
             {
-                // Изменение цвета TextBox в случае ошибки преобразования
                 MovieRatingTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
