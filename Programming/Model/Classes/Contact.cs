@@ -19,14 +19,14 @@ namespace Programming.Model.Classes
             get { return _number; }
             set 
             { 
-                if (value > 0)
-                    {
-                        _number= value;
-                    }
-                else
-                    {
-                        throw new ArgumentException(message:"Номер должен быть больше 0");
-                    }
+            if (value > 0)
+                {
+                    _number= value;
+                }
+            else
+                {
+                    throw new ArgumentException(message:"Номер должен быть больше 0");
+                }
             }
         }
         public Contact()

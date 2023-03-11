@@ -4,7 +4,8 @@
     using Movie = Model.Classes.Movie;
     public partial class MainForm : Form
     {
-        public const int DefaultSize = 5;
+        private const int DefaultSize = 5;
+        private const int SubstringIndexClass = 26;
         private Rectangle[] _rectangles = new Rectangle[DefaultSize];
         private Rectangle _currentRectangle;
         private Movie[] _movies=new Movie[DefaultSize];
@@ -36,10 +37,10 @@
                                                colors.GetValue(index:random.Next(0,colors.Length)).ToString());
             }
             int j = 0;
-            foreach (var temp_rectangle in _rectangles)
+            foreach (var rectangle in _rectangles)
             {
                 j++;
-                RectangleListBox.Items.Add(temp_rectangle + " " + j.ToString());
+                RectangleListBox.Items.Add(rectangle.ToString().Substring(SubstringIndexClass) + " " + j.ToString());
             }
             RectangleListBox.SelectedIndex = 0;
 
@@ -53,10 +54,10 @@
                                        random.NextDouble()*10);
             }
             j = 0;
-            foreach (var temp_movie in _movies)
+            foreach (var movie in _movies)
             {
                 j++;
-                MovieListBox.Items.Add(temp_movie + " " + j.ToString());
+                MovieListBox.Items.Add(movie.ToString().Substring(SubstringIndexClass) + " " + j.ToString());
             }
             MovieListBox.SelectedIndex = 0;
         }
