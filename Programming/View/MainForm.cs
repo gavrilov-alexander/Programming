@@ -2,7 +2,7 @@
 {
     public partial class MainForm : Form
     {
-        const int DefaultSize = 5;
+        private const int DefaultSize = 5;
         private Rectangle[] _rectangles = new Rectangle[DefaultSize];
         private Rectangle _currentRectangle;
         private Movie[] _movies=new Movie[DefaultSize];
