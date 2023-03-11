@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Programming.Model.Classes
 {
-    internal class Discipline
+    public class Discipline
     {
         private string _name;
         private string _teacher;

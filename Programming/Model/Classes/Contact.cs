@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Programming.Model.Classes
 {
-    internal class Contact
+    public class Contact
     {
         private string _name;
         private string _surname;
