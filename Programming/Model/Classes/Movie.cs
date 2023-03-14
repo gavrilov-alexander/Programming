@@ -60,6 +60,13 @@ namespace Programming.Model.Classes
                 }
             }
         }
+        public string Info
+        {
+            get
+            {
+                return $@"Movie: {Name}; Rating: {Math.Round(Rating)}";
+            }
+        }
         public Movie()
         {
         }

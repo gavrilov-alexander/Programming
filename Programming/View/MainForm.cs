@@ -5,31 +5,62 @@
     public partial class MainForm : Form
     {
         private const int DefaultSize = 5;
-        private const int SubstringIndexClass = 26;
         private Rectangle[] _rectangles = new Rectangle[DefaultSize];
         private Rectangle _currentRectangle;
         private Movie[] _movies=new Movie[DefaultSize];
         private Movie _currentMovie;
+        Random random = new Random();
         public MainForm()
         {
             // TODO: Вынести инициализацию компонентов
             InitializeComponent();
 
-            object[] enums = new object[] { typeof(Color), typeof(EducationalForm), typeof(Genre),     
+            InitializeEnumsListBox();
+            InitializeSeasonComboBox();
+            ParsingResult.Visible = false;
+
+            RectanglesArrayRandom();
+            MoviesArrayRandom();
+            InitialzeRectangleListBox();
+            InitializeMovieListBox();
+            RectangleListBox.SelectedIndex = 0;
+            MovieListBox.SelectedIndex = 0;
+
+
+            // TODO: Заменить метод Substring в добавлении элементов в ListBox
+        }
+        private void InitializeEnumsListBox()
+        {
+            object[] enums = new object[] { typeof(Color), typeof(EducationalForm), typeof(Genre),
                 typeof(Manufactures), typeof(Season), typeof(Weekday) };
             EnumsListBox.Items.AddRange(enums);
             EnumsListBox.SelectedIndex = 0;
-
-            ParsingResult.Visible = false;
-
-            var seasons = Enum.GetValues(typeof(Season));                                           
+        }
+        private void InitializeSeasonComboBox()
+        {
+            var seasons = Enum.GetValues(typeof(Season));
             foreach (var season in seasons)
             {
                 SeasonComboBox.Items.Add(season);
             }
             SeasonComboBox.SelectedIndex = 0;
-
-            Random random = new Random();
+        }
+        private void InitialzeRectangleListBox()
+        {
+            RectangleListBox.Items.Clear();
+            RectangleListBox.DisplayMember = nameof(Rectangle.Info);
+            RectangleListBox.Items.AddRange(_rectangles);
+            RectangleListBox.SelectedItem = _currentRectangle;
+        }
+        private void InitializeMovieListBox()
+        {
+            MovieListBox.Items.Clear();
+            MovieListBox.DisplayMember = nameof(Movie.Info);
+            MovieListBox.Items.AddRange(_movies);
+            MovieListBox.SelectedItem = _currentMovie;
+        }
+        private void RectanglesArrayRandom()
+        {
             var colors = Enum.GetValues(typeof(Color));
             for (int i = 0; i < DefaultSize; i++)
             {
@@ -38,15 +69,9 @@
                 string color = colors.GetValue(index: random.Next(0, colors.Length)).ToString();
                 _rectangles[i] = new Rectangle(length, width, color);
             }
-            int j = 0;
-            // TODO: Заменить метод Substring в добавлении элементов в ListBox
-            foreach (var rectangle in _rectangles)
-            {
-                j++;
-                RectangleListBox.Items.Add(rectangle.ToString().Substring(SubstringIndexClass) + " " + j.ToString());
-            }
-            RectangleListBox.SelectedIndex = 0;
-
+        }
+        private void MoviesArrayRandom()
+        {
             var genres = Enum.GetValues(typeof(Genre));
             for (int i = 0; i < DefaultSize; i++)
             {
@@ -57,13 +82,6 @@
                 double rating = random.NextDouble() * 10;
                 _movies[i] = new Movie(name, duration, year, genre, rating);
             }
-            j = 0;
-            foreach (var movie in _movies)
-            {
-                j++;
-                MovieListBox.Items.Add(movie.ToString().Substring(SubstringIndexClass) + " " + j.ToString());
-            }
-            MovieListBox.SelectedIndex = 0;
         }
 
         // Изменение отображаемого перечисления в ValuesListBox
@@ -165,6 +183,7 @@
                 // Возвращение цвета TextBox к исходному
                 RectangleLengthTextBox.BackColor = System.Drawing.Color.White;
                 _currentRectangle.Length=Double.Parse(RectangleLengthTextBox.Text);
+                InitialzeRectangleListBox();
             }
             catch
             {
@@ -179,6 +198,7 @@
                 // Возвращение цвета TextBox к исходному
                 RectangleWidthTextBox.BackColor = System.Drawing.Color.White;
                 _currentRectangle.Width = Double.Parse(RectangleWidthTextBox.Text);
+                InitialzeRectangleListBox();
             }
             catch
             {
@@ -194,6 +214,7 @@
         private void MovieNameTextBox_TextChanged(object sender, EventArgs e)
         {
             _currentMovie.Name = MovieNameTextBox.Text;
+            InitializeMovieListBox();
         }
 
         private void MovieDurationTextBox_TextChanged(object sender, EventArgs e)
@@ -236,6 +257,7 @@
                 // Возвращение цвета TextBox к исходному
                 MovieRatingTextBox.BackColor = System.Drawing.Color.White;
                 _currentMovie.Rating = Double.Parse(MovieRatingTextBox.Text);
+                InitializeMovieListBox();
             }
             catch
             {

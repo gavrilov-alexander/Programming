@@ -43,6 +43,13 @@ namespace Programming.Model.Classes
             }
         }
         public string Color { get; set; }
+        public string Info 
+        {
+            get
+            {
+                return $@"Rectangle: Length:{Math.Round(Length)}; Width:{Math.Round(Width)}";
+            } 
+        }
         public Rectangle()
         {
         }
