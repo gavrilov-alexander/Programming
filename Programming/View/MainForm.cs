@@ -9,7 +9,7 @@
         private Rectangle _currentRectangle;
         private Movie[] _movies=new Movie[DefaultSize];
         private Movie _currentMovie;
-        Random random = new Random();
+        private Random random = new Random();
         public MainForm()
         {
             // TODO: Вынести инициализацию компонентов
