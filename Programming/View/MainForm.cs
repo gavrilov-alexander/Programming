@@ -12,6 +12,7 @@
         private Movie[] _movies=new Movie[DefaultSize];
         private Movie _currentMovie;
         private Random random = new Random();
+
         public MainForm()
         {
             InitializeComponent();
@@ -27,6 +28,7 @@
             RectangleListBox.SelectedIndex = 0;
             MovieListBox.SelectedIndex = 0;
         }
+
         private void InitializeEnumsListBox()
         {
             object[] enums = new object[] { typeof(Color), typeof(EducationalForm), typeof(Genre),
@@ -35,6 +37,7 @@
             EnumsListBox.Items.AddRange(enums);
             EnumsListBox.SelectedIndex = 0;
         }
+
         private void InitializeSeasonComboBox()
         {
             var seasons = Enum.GetValues(typeof(Season));
@@ -44,6 +47,7 @@
             }
             SeasonComboBox.SelectedIndex = 0;
         }
+
         private void InitializeRectangleListBox()
         {
             RectangleListBox.Items.Clear();
@@ -51,6 +55,7 @@
             RectangleListBox.Items.AddRange(_rectangles);
             RectangleListBox.SelectedItem = _currentRectangle;
         }
+
         private void InitializeMovieListBox()
         {
             MovieListBox.Items.Clear();
@@ -58,6 +63,7 @@
             MovieListBox.Items.AddRange(_movies);
             MovieListBox.SelectedItem = _currentMovie;
         }
+
         private void RectanglesArrayRandom()
         {
             var colors = Enum.GetValues(typeof(Color));
@@ -69,6 +75,7 @@
                 _rectangles[i] = new Rectangle(length, width, color);
             }
         }
+
         private void MoviesArrayRandom()
         {
             var genres = Enum.GetValues(typeof(Genre));
@@ -263,6 +270,7 @@
                 MovieRatingTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
+
         private void FindRectangleWithMaxWidth()
         {
             double maxWidth = _rectangles[0].Width;
@@ -280,6 +288,7 @@
             }
             RectangleListBox.SelectedIndex = maxWidthIndex;
         }
+
         private void FindMovieWithMaxRating()
         {
             double maxRating = _movies[0].Rating;

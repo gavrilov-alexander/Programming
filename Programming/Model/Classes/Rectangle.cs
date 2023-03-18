@@ -12,6 +12,7 @@ namespace Programming.Model.Classes
         private double _length;
         private double _width;
         private string _color;
+
         public double Length
         {
             get { return _length; }
@@ -27,6 +28,7 @@ namespace Programming.Model.Classes
                 }
             }
         }
+
         public double Width
         {
             get { return _width; }
@@ -42,7 +44,9 @@ namespace Programming.Model.Classes
                 }
             }
         }
+
         public string Color { get; set; }
+
         public string Info 
         {
             get
@@ -50,9 +54,11 @@ namespace Programming.Model.Classes
                 return $@"Rectangle: Length:{Math.Round(Length)}; Width:{Math.Round(Width)}";
             } 
         }
+
         public Rectangle()
         {
         }
+
         public Rectangle(double length, double width, string color)
         {
             Length = length;

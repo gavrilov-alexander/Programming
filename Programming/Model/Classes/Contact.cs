@@ -12,8 +12,11 @@ namespace Programming.Model.Classes
         private string _name;
         private string _surname;
         private long _number;
+
         public string Name { get; set; }
+
         public string Surname { get; set; }
+
         public long Number
         {
             get { return _number; }
@@ -29,9 +32,11 @@ namespace Programming.Model.Classes
                 }
             }
         }
+
         public Contact()
         {
         }
+
         public Contact(string name, string surname, long number)
         {
             Name = name;

@@ -13,7 +13,9 @@ namespace Programming.Model.Classes
         private int _year;
         private string _genre;
         private double _rating;
+
         public string Name { get; set; }
+
         public int Duration
         {
             get { return _duration; }
@@ -29,6 +31,7 @@ namespace Programming.Model.Classes
                 }
             }
         }
+
         public int Year
         {
             get { return _year; }
@@ -44,7 +47,9 @@ namespace Programming.Model.Classes
                 }
             }
         }
+
         public string Genre { get; set; }
+
         public double Rating
         {
             get { return _rating; }
@@ -60,6 +65,7 @@ namespace Programming.Model.Classes
                 }
             }
         }
+
         public string Info
         {
             get
@@ -67,9 +73,11 @@ namespace Programming.Model.Classes
                 return $@"Movie: {Name}; Rating: {Math.Round(Rating)}";
             }
         }
+
         public Movie()
         {
         }
+
         public Movie(string name, int duration, int year, string genre, double rating)
         {
             Name = name;

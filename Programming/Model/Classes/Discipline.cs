@@ -11,14 +11,17 @@ namespace Programming.Model.Classes
         private string _name;
         private string _teacher;
         private int _mark;
+
         public string Name { get; set; }
+
         public string Teacher { get; set; }
+
         public int Mark
         {
             get { return _mark; }
             set
             {
-                if (value >= 2 && value <=5 )
+                if (value >= 2 && value <= 5)
                 {
                     _mark = value;
                 }
@@ -28,9 +31,11 @@ namespace Programming.Model.Classes
                 }
             }
         }
+
         public Discipline()
         {
         }
+
         public Discipline(string name, string teacher, int mark)
         {
             Name = name;

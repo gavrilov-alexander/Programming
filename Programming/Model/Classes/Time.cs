@@ -11,6 +11,7 @@ namespace Programming.Model.Classes
         private int _hours;
         private int _minutes;
         private int _seconds;
+
         public int Hours
         {
             get { return _hours; }
@@ -26,6 +27,7 @@ namespace Programming.Model.Classes
                 }
             }
         }
+
         public int Minutes
         {
             get { return _minutes; }
@@ -41,6 +43,7 @@ namespace Programming.Model.Classes
                 }
             }
         }
+
         public int Seconds
         {
             get { return _seconds; }
@@ -56,9 +59,11 @@ namespace Programming.Model.Classes
                 }
             }
         }
+
         public Time()
         {
         }
+
         public Time(int hours, int minutes, int seconds)
         {
             Hours = hours;

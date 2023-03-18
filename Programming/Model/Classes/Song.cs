@@ -11,8 +11,11 @@ namespace Programming.Model.Classes
         private string _name;
         private string _author;
         private int _duration;
+
         public string Name { get; set; }
+
         public string Author { get; set; } 
+
         public int Duration
         {
             get { return _duration; }
@@ -28,9 +31,11 @@ namespace Programming.Model.Classes
                 }
             }
         }
+
         public Song()
         {
         }
+
         public Song(string name, string author, int duration)
         {
             Name = name;
