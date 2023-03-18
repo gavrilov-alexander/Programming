@@ -273,7 +273,7 @@
             this.ValueTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.ValueTextBox.Multiline = true;
             this.ValueTextBox.Name = "ValueTextBox";
-            this.ValueTextBox.Size = new System.Drawing.Size(106, 29);
+            this.ValueTextBox.Size = new System.Drawing.Size(106, 23);
             this.ValueTextBox.TabIndex = 5;
             // 
             // IntValueLabel
