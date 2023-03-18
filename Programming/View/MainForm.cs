@@ -31,7 +31,7 @@
         {
             object[] enums = new object[] { typeof(Color), typeof(EducationalForm), typeof(Genre),
                 typeof(Manufactures), typeof(Season), typeof(Weekday) };
-            EnumsListBox.DisplayMember = "Name";
+            EnumsListBox.DisplayMember = nameof(Type.Name);
             EnumsListBox.Items.AddRange(enums);
             EnumsListBox.SelectedIndex = 0;
         }
