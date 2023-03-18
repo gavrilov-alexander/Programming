@@ -1,7 +1,10 @@
-﻿public enum EducationalForm
+﻿namespace Programming.Model.Enums
 {
-    FullTime,
-    PartTime,
-    Evening,
-    Distance
+    public enum EducationalForm
+    {
+        FullTime,
+        PartTime,
+        Evening,
+        Distance
+    }
 }

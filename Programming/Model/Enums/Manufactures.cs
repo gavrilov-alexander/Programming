@@ -1,10 +1,13 @@
-﻿public enum Manufactures
+﻿namespace Programming.Model.Enums
 {
-    Samsung,
-    LG,
-    Sony,
-    Huawei,
-    Apple,
-    Google,
-    Lenovo
+    public enum Manufactures
+    {
+        Samsung,
+        LG,
+        Sony,
+        Huawei,
+        Apple,
+        Google,
+        Lenovo
+    }
 }

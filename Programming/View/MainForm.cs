@@ -2,6 +2,8 @@
 {
     using Rectangle = Model.Classes.Rectangle;
     using Movie = Model.Classes.Movie;
+    using Programming.Model.Enums;
+
     public partial class MainForm : Form
     {
         private const int DefaultSize = 5;
@@ -29,6 +31,7 @@
         {
             object[] enums = new object[] { typeof(Color), typeof(EducationalForm), typeof(Genre),
                 typeof(Manufactures), typeof(Season), typeof(Weekday) };
+            EnumsListBox.DisplayMember = "Name";
             EnumsListBox.Items.AddRange(enums);
             EnumsListBox.SelectedIndex = 0;
         }
