@@ -1,4 +1,4 @@
-﻿namespace Programming
+﻿namespace Programming.View
 {
     using Rectangle = Model.Classes.Rectangle;
     using Movie = Model.Classes.Movie;
@@ -12,7 +12,6 @@
         private Random random = new Random();
         public MainForm()
         {
-            // TODO: Вынести инициализацию компонентов
             InitializeComponent();
 
             InitializeEnumsListBox();
@@ -21,13 +20,10 @@
 
             RectanglesArrayRandom();
             MoviesArrayRandom();
-            InitialzeRectangleListBox();
+            InitializeRectangleListBox();
             InitializeMovieListBox();
             RectangleListBox.SelectedIndex = 0;
             MovieListBox.SelectedIndex = 0;
-
-
-            // TODO: Заменить метод Substring в добавлении элементов в ListBox
         }
         private void InitializeEnumsListBox()
         {
@@ -45,7 +41,7 @@
             }
             SeasonComboBox.SelectedIndex = 0;
         }
-        private void InitialzeRectangleListBox()
+        private void InitializeRectangleListBox()
         {
             RectangleListBox.Items.Clear();
             RectangleListBox.DisplayMember = nameof(Rectangle.Info);
@@ -183,7 +179,7 @@
                 // Возвращение цвета TextBox к исходному
                 RectangleLengthTextBox.BackColor = System.Drawing.Color.White;
                 _currentRectangle.Length=Double.Parse(RectangleLengthTextBox.Text);
-                InitialzeRectangleListBox();
+                InitializeRectangleListBox();
             }
             catch
             {
@@ -198,7 +194,7 @@
                 // Возвращение цвета TextBox к исходному
                 RectangleWidthTextBox.BackColor = System.Drawing.Color.White;
                 _currentRectangle.Width = Double.Parse(RectangleWidthTextBox.Text);
-                InitialzeRectangleListBox();
+                InitializeRectangleListBox();
             }
             catch
             {
