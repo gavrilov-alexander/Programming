@@ -3,6 +3,7 @@
     using Rectangle = Model.Classes.Rectangle;
     using Movie = Model.Classes.Movie;
     using Programming.Model.Enums;
+    using Point2D = Model.Classes.Point2D;
 
     public partial class MainForm : Form
     {
@@ -72,7 +73,8 @@
                 double length = random.NextDouble() * 100;
                 double width = random.NextDouble() * 100;
                 string color = colors.GetValue(index: random.Next(0, colors.Length)).ToString();
-                _rectangles[i] = new Rectangle(length, width, color);
+                Point2D center = new Point2D(random.NextDouble() * 100, random.NextDouble() * 100);
+                _rectangles[i] = new Rectangle(length, width, color, center);
             }
         }
 
@@ -170,6 +172,9 @@
             RectangleLengthTextBox.Text = _currentRectangle.Length.ToString();
             RectangleWidthTextBox.Text = _currentRectangle.Width.ToString();
             RectangleColorTextBox.Text = _currentRectangle.Color.ToString();
+            RectangleCenterXTextBox.Text = _currentRectangle.Center.X.ToString();
+            RectangleCenterYTextBox.Text = _currentRectangle.Center.Y.ToString();
+            RectangleIdTextBox.Text = _currentRectangle.Id.ToString();
         }
 
         private void MovieListBox_SelectedIndexChanged(object sender, EventArgs e)

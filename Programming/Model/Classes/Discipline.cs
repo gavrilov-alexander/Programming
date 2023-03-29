@@ -21,14 +21,10 @@ namespace Programming.Model.Classes
             get { return _mark; }
             set
             {
-                if (value >= 2 && value <= 5)
-                {
-                    _mark = value;
-                }
-                else
-                {
-                    throw new ArgumentException(message: "Оценка должна быть от 2 до 5");
-                }
+                int min = 2;
+                int max = 5;
+                Validator.AssertValueInRange(value, min, max);
+                _mark= value;
             }
         }
 

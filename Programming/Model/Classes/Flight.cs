@@ -21,14 +21,8 @@ namespace Programming.Model.Classes
             get { return _time; }
             set
             {
-                if (value > 0)
-                {
-                    _time = value;
-                }
-                else
-                {
-                    throw new ArgumentException(message: "Продолжительность полета должна быть больше 0");
-                }
+                Validator.AssertOnPositiveValue(value);
+                _time = value;
             }
         }
 

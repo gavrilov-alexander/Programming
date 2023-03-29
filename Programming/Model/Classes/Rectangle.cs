@@ -9,23 +9,19 @@ namespace Programming.Model.Classes
 {
     public class Rectangle
     {
+        private int _id;
         private double _length;
         private double _width;
         private string _color;
+        private static int _allRectanglesCount;
 
         public double Length
         {
             get { return _length; }
             set
             {
-                if (value > 0)
-                {
-                    _length = value;
-                }
-                else
-                {
-                    throw new ArgumentException(message: "Длина должна быть больше 0");
-                }
+                Validator.AssertOnPositiveValue(value);
+                _length = value;
             }
         }
 
@@ -34,18 +30,24 @@ namespace Programming.Model.Classes
             get { return _width; }
             set
             {
-                if (value > 0)
-                {
-                    _width = value;
-                }
-                else
-                {
-                    throw new ArgumentException(message: "Ширина должна быть больше 0");
-                }
+                Validator.AssertOnPositiveValue(value);
+                _width = value;
             }
         }
 
         public string Color { get; set; }
+
+        public Point2D Center { get; set; }
+
+        public int AllRectanglesCount
+        {
+            get { return _allRectanglesCount; }
+        }
+
+        public int Id
+        {
+            get { return _id; }
+        }
 
         public string Info 
         {
@@ -59,11 +61,14 @@ namespace Programming.Model.Classes
         {
         }
 
-        public Rectangle(double length, double width, string color)
+        public Rectangle(double length, double width, string color, Point2D center)
         {
+            _id = AllRectanglesCount;
+            _allRectanglesCount++;
             Length = length;
             Width = width;
             Color = color;
+            Center = center;
         }
     }
 }
