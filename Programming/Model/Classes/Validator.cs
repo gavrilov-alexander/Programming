@@ -11,14 +11,14 @@ namespace Programming.Model.Classes
     {
         public static void AssertOnPositiveValue(int value, [CallerMemberName] string propertyName = "")
         {
-            if (value < 0)
+            if (value <= 0)
             {
                 throw new ArgumentException($"Значение в свойстве {propertyName} должно быть неотрицательным");
             }
         }
         public static void AssertOnPositiveValue(double value, [CallerMemberName] string propertyName = "")
         {
-            if (value < 0)
+            if (value <= 0)
             {
                 throw new ArgumentException($"Значение в свойстве {propertyName} должно быть неотрицательным");
             }
