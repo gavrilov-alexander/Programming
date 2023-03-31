@@ -40,7 +40,6 @@ namespace Programming.Model.Classes
             get { return _outerRadius; }
             set
             {
-                Validator.AssertOnPositiveValue(value);
                 if (_innerRadius == default)
                 {
                     Validator.AssertOnPositiveValue(value);
