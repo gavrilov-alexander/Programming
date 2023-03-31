@@ -30,7 +30,7 @@ namespace Programming.Model.Classes
                 throw new ArgumentException($"Значение в свойстве {propertyName} должно быть от {min} до {max}");
             }
         }
-        public static void AssertValueInRange(double value, int min, int max, [CallerMemberName] string propertyName = "")
+        public static void AssertValueInRange(double value, double min, double max, [CallerMemberName] string propertyName = "")
         {
             if (!(value >= min && value <= max))
             {

@@ -23,18 +23,15 @@ namespace Programming.Model.Classes
             get { return _innerRadius; }
             set
             {
-                Validator.AssertOnPositiveValue(value);
-                if (_outerRadius != null)
+                if (_outerRadius == default)
                 {
-                    if (value < _outerRadius)
-                    {
-                        _innerRadius = value;
-                    }
+                    Validator.AssertOnPositiveValue(value);
                 }
                 else
                 {
-                    _innerRadius = value;
+                    Validator.AssertValueInRange(value, 0, OuterRadius);
                 }
+                _innerRadius = value;
             }
         }
 
@@ -44,17 +41,15 @@ namespace Programming.Model.Classes
             set
             {
                 Validator.AssertOnPositiveValue(value);
-                if (_innerRadius != null)
+                if (_innerRadius == default)
                 {
-                    if (_innerRadius < value)
-                    {
-                        _outerRadius = value;
-                    }
+                    Validator.AssertOnPositiveValue(value);
                 }
                 else
                 {
-                    _outerRadius= value;
+                    Validator.AssertValueInRange(value, InnerRadius, Double.MaxValue);
                 }
+                _outerRadius = value;
             }
         }
 

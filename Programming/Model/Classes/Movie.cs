@@ -46,8 +46,8 @@ namespace Programming.Model.Classes
             get { return _rating; }
             set
             {
-                int min = 0;
-                int max = 10;
+                double min = 0;
+                double max = 10;
                 Validator.AssertValueInRange(value, min, max);
                 _rating= value;
             }
