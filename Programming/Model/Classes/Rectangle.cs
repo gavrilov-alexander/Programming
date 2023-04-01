@@ -41,15 +41,15 @@ namespace Programming.Model.Classes
         public int AllRectanglesCount
         {
             get => _allRectanglesCount;
-            private set
-            {
+            private set =>
                 _allRectanglesCount = value;
-            }
         }
 
         public int Id
         {
             get => _id;
+            private set =>
+                _id = value;
         }
 
         public string Info 
@@ -64,8 +64,8 @@ namespace Programming.Model.Classes
 
         public Rectangle(double length, double width, string color, Point2D center)
         {
-            _id = AllRectanglesCount;
-            _allRectanglesCount++;
+            Id = AllRectanglesCount;
+            AllRectanglesCount++;
             Length = length;
             Width = width;
             Color = color;
