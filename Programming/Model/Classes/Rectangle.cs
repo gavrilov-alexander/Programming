@@ -12,12 +12,11 @@ namespace Programming.Model.Classes
         private int _id;
         private double _length;
         private double _width;
-        private string _color;
         private static int _allRectanglesCount;
 
         public double Length
         {
-            get { return _length; }
+            get => _length;
             set
             {
                 Validator.AssertOnPositiveValue(value);
@@ -27,7 +26,7 @@ namespace Programming.Model.Classes
 
         public double Width
         {
-            get { return _width; }
+            get => _width;
             set
             {
                 Validator.AssertOnPositiveValue(value);
@@ -46,15 +45,13 @@ namespace Programming.Model.Classes
 
         public int Id
         {
-            get { return _id; }
+            get => _id;
         }
 
         public string Info 
         {
-            get
-            {
-                return $@"Rectangle: Length:{Math.Round(Length)}; Width:{Math.Round(Width)}";
-            } 
+            get => 
+                $@"Rectangle: Length:{Math.Round(Length)}; Width:{Math.Round(Width)}";
         }
 
         public Rectangle()

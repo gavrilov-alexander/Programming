@@ -8,8 +8,6 @@ namespace Programming.Model.Classes
 {
     public class Song
     {
-        private string _name;
-        private string _author;
         private int _duration;
 
         public string Name { get; set; }
@@ -18,7 +16,7 @@ namespace Programming.Model.Classes
 
         public int Duration
         {
-            get { return _duration; }
+            get => _duration;
             set
             {
                 Validator.AssertOnPositiveValue(value);

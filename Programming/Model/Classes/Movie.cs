@@ -8,17 +8,15 @@ namespace Programming.Model.Classes
 {
     public class Movie
     {
-        private string _name;
         private int _duration;
         private int _year;
-        private string _genre;
         private double _rating;
 
         public string Name { get; set; }
 
         public int Duration
         {
-            get { return _duration; }
+            get => _duration;
             set
             {
                 Validator.AssertOnPositiveValue(value);
@@ -28,7 +26,7 @@ namespace Programming.Model.Classes
 
         public int Year
         {
-            get { return _year; }
+            get => _year;
             set
             {
                 int min = 1900;
@@ -43,7 +41,7 @@ namespace Programming.Model.Classes
 
         public double Rating
         {
-            get { return _rating; }
+            get => _rating;
             set
             {
                 double min = 0;
@@ -55,10 +53,8 @@ namespace Programming.Model.Classes
 
         public string Info
         {
-            get
-            {
-                return $@"Movie: {Name}; Rating: {Math.Round(Rating)}";
-            }
+            get =>
+                $@"Movie: {Name}; Rating: {Math.Round(Rating)}";
         }
 
         public Movie()

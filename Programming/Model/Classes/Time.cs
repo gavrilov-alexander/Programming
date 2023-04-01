@@ -14,7 +14,7 @@ namespace Programming.Model.Classes
 
         public int Hours
         {
-            get { return _hours; }
+            get => _hours;
             set
             {
                 Validator.AssertOnPositiveValue(value);
@@ -24,7 +24,7 @@ namespace Programming.Model.Classes
 
         public int Minutes
         {
-            get { return _minutes; }
+            get => _minutes;
             set
             {
                 int min = 0;
@@ -35,7 +35,7 @@ namespace Programming.Model.Classes
 
         public int Seconds
         {
-            get { return _seconds; }
+            get => _seconds;
             set
             {
                 int min = 0;

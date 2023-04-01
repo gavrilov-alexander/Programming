@@ -8,19 +8,14 @@ namespace Programming.Model.Classes
 {
     public class Ring
     {
-        private Point2D _center;
         private double _innerRadius;
         private double _outerRadius;
 
-        public Point2D Center
-        {
-            get { return _center; }
-            set { _center = value; }
-        }
+        public Point2D Center { get; set; }
 
         public double InnerRadius
         {
-            get { return _innerRadius; }
+            get => _innerRadius;
             set
             {
                 if (_outerRadius == default)
@@ -37,7 +32,7 @@ namespace Programming.Model.Classes
 
         public double OuterRadius
         {
-            get { return _outerRadius; }
+            get => _outerRadius;
             set
             {
                 if (_innerRadius == default)
@@ -52,14 +47,8 @@ namespace Programming.Model.Classes
             }
         }
 
-        public double Area
-        {
-            get
-            {
-                double area = Math.PI*(Math.Pow(OuterRadius,2))-Math.PI*(Math.Pow(InnerRadius,2));
-                return area;
-            }
-        }
+        public double Area => 
+                Math.PI*(Math.Pow(OuterRadius,2))-Math.PI*(Math.Pow(InnerRadius,2));
 
         public Ring(Point2D center, double innerRadius, double outerRadius)
         {

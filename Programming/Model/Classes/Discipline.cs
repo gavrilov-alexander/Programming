@@ -8,8 +8,6 @@ namespace Programming.Model.Classes
 {
     public class Discipline
     {
-        private string _name;
-        private string _teacher;
         private int _mark;
 
         public string Name { get; set; }
@@ -18,7 +16,7 @@ namespace Programming.Model.Classes
 
         public int Mark
         {
-            get { return _mark; }
+            get => _mark;
             set
             {
                 int min = 2;

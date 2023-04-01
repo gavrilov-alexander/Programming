@@ -8,8 +8,6 @@ namespace Programming.Model.Classes
 {
     public class Flight
     {
-        private string _departure;
-        private string _destination;
         private int _time;
 
         public string Departure { get; set;}
@@ -18,7 +16,7 @@ namespace Programming.Model.Classes
 
         public int Time
         {
-            get { return _time; }
+            get => _time;
             set
             {
                 Validator.AssertOnPositiveValue(value);

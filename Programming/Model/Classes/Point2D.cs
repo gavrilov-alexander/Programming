@@ -13,7 +13,7 @@ namespace Programming.Model.Classes
 
         public double X
         {
-            get { return _x; }
+            get => _x;
             private set
             {
                 Validator.AssertOnPositiveValue(value);
@@ -23,7 +23,7 @@ namespace Programming.Model.Classes
 
         public double Y
         {
-            get { return _y; }
+            get => _y;
             private set
             {
                 Validator.AssertOnPositiveValue(value);

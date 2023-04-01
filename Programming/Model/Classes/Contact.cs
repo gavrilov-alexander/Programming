@@ -16,8 +16,8 @@ namespace Programming.Model.Classes
         private long _number;
 
         public string Name
-        { 
-            get { return _name; }
+        {
+            get => _name;
             set
             {
                 AssertStringContainsOnlyLetters(value);
@@ -26,8 +26,8 @@ namespace Programming.Model.Classes
         }
 
         public string Surname 
-        { 
-            get { return _surname; }
+        {
+            get => _surname;
             set
             {
                 AssertStringContainsOnlyLetters(value);
@@ -37,7 +37,7 @@ namespace Programming.Model.Classes
 
         public long Number
         {
-            get { return _number; }
+            get => _number;
             set 
             {
                 Validator.AssertOnPositiveValue(value);
@@ -62,7 +62,7 @@ namespace Programming.Model.Classes
             Regex regex = new Regex(pattern);
             if (!(regex.IsMatch(value)))
             {
-                throw new ArgumentException($"Введено некоректное значение в поле {propertyName}");
+                throw new ArgumentException($"Введено некорректное значение в поле {propertyName}");
             }
         }
     }
