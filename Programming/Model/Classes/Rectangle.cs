@@ -41,15 +41,13 @@ namespace Programming.Model.Classes
         public int AllRectanglesCount
         {
             get => _allRectanglesCount;
-            private set =>
-                _allRectanglesCount = value;
+            private set => _allRectanglesCount = value;
         }
 
         public int Id
         {
             get => _id;
-            private set =>
-                _id = value;
+            private set => _id = value;
         }
 
         public string Info 
