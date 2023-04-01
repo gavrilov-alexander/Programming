@@ -40,7 +40,11 @@ namespace Programming.Model.Classes
 
         public int AllRectanglesCount
         {
-            get { return _allRectanglesCount; }
+            get => _allRectanglesCount;
+            private set
+            {
+                _allRectanglesCount = value;
+            }
         }
 
         public int Id
