@@ -26,7 +26,7 @@
             MoviesArrayRandom();
             InitializeRectangleListBox();
             InitializeMovieListBox();
-            RectangleListBox.SelectedIndex = 0;
+            ClassesRectangleListBox.SelectedIndex = 0;
             MovieListBox.SelectedIndex = 0;
         }
 
@@ -51,10 +51,10 @@
 
         private void InitializeRectangleListBox()
         {
-            RectangleListBox.Items.Clear();
-            RectangleListBox.DisplayMember = nameof(Rectangle.Info);
-            RectangleListBox.Items.AddRange(_rectangles);
-            RectangleListBox.SelectedItem = _currentRectangle;
+            ClassesRectangleListBox.Items.Clear();
+            ClassesRectangleListBox.DisplayMember = nameof(Rectangle.Info);
+            ClassesRectangleListBox.Items.AddRange(_rectangles);
+            ClassesRectangleListBox.SelectedItem = _currentRectangle;
         }
 
         private void InitializeMovieListBox()
@@ -168,13 +168,13 @@
 
         private void RectangleListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _currentRectangle = _rectangles[RectangleListBox.SelectedIndex];
-            RectangleLengthTextBox.Text = _currentRectangle.Length.ToString();
-            RectangleWidthTextBox.Text = _currentRectangle.Width.ToString();
-            RectangleColorTextBox.Text = _currentRectangle.Color.ToString();
-            RectangleCenterXTextBox.Text = _currentRectangle.Center.X.ToString();
-            RectangleCenterYTextBox.Text = _currentRectangle.Center.Y.ToString();
-            RectangleIdTextBox.Text = _currentRectangle.Id.ToString();
+            _currentRectangle = _rectangles[ClassesRectangleListBox.SelectedIndex];
+            ClassesRectangleLengthTextBox.Text = _currentRectangle.Length.ToString();
+            ClassesRectangleWidthTextBox.Text = _currentRectangle.Width.ToString();
+            ClassesRectangleColorTextBox.Text = _currentRectangle.Color.ToString();
+            ClassesRectangleCenterXTextBox.Text = _currentRectangle.Center.X.ToString();
+            ClassesRectangleCenterYTextBox.Text = _currentRectangle.Center.Y.ToString();
+            ClassesRectangleIdTextBox.Text = _currentRectangle.Id.ToString();
         }
 
         private void MovieListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -192,13 +192,13 @@
             try
             {
                 // Возвращение цвета TextBox к исходному
-                RectangleLengthTextBox.BackColor = System.Drawing.Color.White;
-                _currentRectangle.Length=Double.Parse(RectangleLengthTextBox.Text);
+                ClassesRectangleLengthTextBox.BackColor = System.Drawing.Color.White;
+                _currentRectangle.Length=Double.Parse(ClassesRectangleLengthTextBox.Text);
                 InitializeRectangleListBox();
             }
             catch
             {
-                RectangleLengthTextBox.BackColor = System.Drawing.Color.LightPink;
+                ClassesRectangleLengthTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
 
@@ -207,19 +207,19 @@
             try
             {
                 // Возвращение цвета TextBox к исходному
-                RectangleWidthTextBox.BackColor = System.Drawing.Color.White;
-                _currentRectangle.Width = Double.Parse(RectangleWidthTextBox.Text);
+                ClassesRectangleWidthTextBox.BackColor = System.Drawing.Color.White;
+                _currentRectangle.Width = Double.Parse(ClassesRectangleWidthTextBox.Text);
                 InitializeRectangleListBox();
             }
             catch
             {
-                RectangleWidthTextBox.BackColor = System.Drawing.Color.LightPink;
+                ClassesRectangleWidthTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
 
         private void RectangleColorTextBox_TextChanged(object sender, EventArgs e)
         {
-            _currentRectangle.Color = RectangleColorTextBox.Text;
+            _currentRectangle.Color = ClassesRectangleColorTextBox.Text;
         }
 
         private void MovieNameTextBox_TextChanged(object sender, EventArgs e)
@@ -291,7 +291,7 @@
                 }
                 i++;
             }
-            RectangleListBox.SelectedIndex = maxWidthIndex;
+            ClassesRectangleListBox.SelectedIndex = maxWidthIndex;
         }
 
         private void FindMovieWithMaxRating()
