@@ -4,23 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace Programming.Model.Classes
+namespace Programming.Model.Classes.Geometry
 {
     public class Rectangle
     {
         private int _id;
-        private double _length;
+        private double _height;
         private double _width;
         private static int _allRectanglesCount;
 
-        public double Length
+        public double Height
         {
-            get => _length;
+            get => _height;
             set
             {
                 Validator.AssertOnPositiveValue(value);
-                _length = value;
+                _height = value;
             }
         }
 
@@ -50,21 +49,22 @@ namespace Programming.Model.Classes
             private set => _id = value;
         }
 
-        public string Info 
+        public string Info
         {
-            get => 
-                $@"Rectangle: Length:{Math.Round(Length)}; Width:{Math.Round(Width)}";
+            get =>
+                $"{Id}: (X = {Math.Round(Center.X)}; Y = {Math.Round(Center.Y)}; " +
+                $"W = {Math.Round(Width)}; H = {Math.Round(Height)})";
         }
 
         public Rectangle()
         {
         }
 
-        public Rectangle(double length, double width, string color, Point2D center)
+        public Rectangle(double height, double width, string color, Point2D center)
         {
             Id = AllRectanglesCount;
             AllRectanglesCount++;
-            Length = length;
+            Height = height;
             Width = width;
             Color = color;
             Center = center;

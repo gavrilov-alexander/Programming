@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Programming.Model.Classes
+namespace Programming.Model.Classes.Geometry
 {
     public class Ring
     {
@@ -41,14 +41,14 @@ namespace Programming.Model.Classes
                 }
                 else
                 {
-                    Validator.AssertValueInRange(value, InnerRadius, Double.MaxValue);
+                    Validator.AssertValueInRange(value, InnerRadius, double.MaxValue);
                 }
                 _outerRadius = value;
             }
         }
 
-        public double Area => 
-                Math.PI*(Math.Pow(OuterRadius,2))-Math.PI*(Math.Pow(InnerRadius,2));
+        public double Area =>
+                Math.PI * Math.Pow(OuterRadius, 2) - Math.PI * Math.Pow(InnerRadius, 2);
 
         public Ring(Point2D center, double innerRadius, double outerRadius)
         {

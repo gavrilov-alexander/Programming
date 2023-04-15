@@ -1,18 +1,28 @@
-﻿namespace Programming.View
+﻿using Programming.Model.Classes.Geometry;
+
+namespace Programming.View
 {
-    using Rectangle = Model.Classes.Rectangle;
+    using Rectangle = Model.Classes.Geometry.Rectangle;
     using Movie = Model.Classes.Movie;
     using Programming.Model.Enums;
-    using Point2D = Model.Classes.Point2D;
+    using Point2D = Point2D;
+    using System.Runtime.CompilerServices;
+    using System.ComponentModel;
+    using Programming.Model.Classes.Geometry;
 
     public partial class MainForm : Form
     {
         private const int DefaultSize = 5;
-        private Rectangle[] _rectangles = new Rectangle[DefaultSize];
-        private Rectangle _currentRectangle;
+        private Rectangle[] _classesRectangles = new Rectangle[DefaultSize];
+        private Rectangle _classesCurrentRectangle;
         private Movie[] _movies=new Movie[DefaultSize];
         private Movie _currentMovie;
         private Random random = new Random();
+        private Rectangle _currentRectangle = new Rectangle(1.0, 1.0, "black", new Point2D(1.0, 1.0));
+        private BindingList<Rectangle> _rectangles = new BindingList<Rectangle>();
+        private BindingList<Panel> _rectanglePanels = new BindingList<Panel>();
+        private System.Drawing.Color _colorRed = System.Drawing.Color.FromArgb(127, 255, 127, 127);
+        private System.Drawing.Color _colorGreen = System.Drawing.Color.FromArgb(127, 127, 255, 127);
 
         public MainForm()
         {
@@ -22,12 +32,18 @@
             InitializeSeasonComboBox();
             ParsingResult.Visible = false;
 
-            RectanglesArrayRandom();
-            MoviesArrayRandom();
-            InitializeRectangleListBox();
+            for (int i = 0; i < DefaultSize; i++)
+            {
+                _classesRectangles[i] = RectangleFactory.Randomize();
+            }
+            RandomMoviesArray();
+            InitializeClassesRectangleListBox();
             InitializeMovieListBox();
             ClassesRectangleListBox.SelectedIndex = 0;
             MovieListBox.SelectedIndex = 0;
+            InitializeRectangleListBox();
+            RectangleListBox.SelectedIndex = -1;
+            RectangleListBox.SelectedItem = null;
         }
 
         private void InitializeEnumsListBox()
@@ -49,36 +65,24 @@
             SeasonComboBox.SelectedIndex = 0;
         }
 
-        private void InitializeRectangleListBox()
+        private void InitializeClassesRectangleListBox()
         {
-            ClassesRectangleListBox.Items.Clear();
             ClassesRectangleListBox.DisplayMember = nameof(Rectangle.Info);
-            ClassesRectangleListBox.Items.AddRange(_rectangles);
-            ClassesRectangleListBox.SelectedItem = _currentRectangle;
+            ClassesRectangleListBox.DataSource = _classesRectangles;
         }
 
         private void InitializeMovieListBox()
         {
-            MovieListBox.Items.Clear();
             MovieListBox.DisplayMember = nameof(Movie.Info);
-            MovieListBox.Items.AddRange(_movies);
-            MovieListBox.SelectedItem = _currentMovie;
+            MovieListBox.DataSource = _movies;
         }
-
-        private void RectanglesArrayRandom()
+        private void InitializeRectangleListBox()
         {
-            var colors = Enum.GetValues(typeof(Color));
-            for (int i = 0; i < DefaultSize; i++)
-            {
-                double length = random.NextDouble() * 100;
-                double width = random.NextDouble() * 100;
-                string color = colors.GetValue(index: random.Next(0, colors.Length)).ToString();
-                Point2D center = new Point2D(random.NextDouble() * 100, random.NextDouble() * 100);
-                _rectangles[i] = new Rectangle(length, width, color, center);
-            }
+            RectangleListBox.DisplayMember = nameof(Rectangle.Info);
+            RectangleListBox.DataSource = _rectangles;
         }
 
-        private void MoviesArrayRandom()
+        private void RandomMoviesArray()
         {
             var genres = Enum.GetValues(typeof(Genre));
             for (int i = 0; i < DefaultSize; i++)
@@ -127,7 +131,7 @@
             object ParsedValue;
             if (Enum.TryParse(typeof(Weekday), ParsingValueTextBox.Text, out ParsedValue))                  
             {
-                ParsingResult.Text = $"Это день недели ({ParsedValue}  =  {(int)ParsedValue+1})";
+                ParsingResult.Text = $"Это день недели ({ParsedValue}  =  {(int)ParsedValue + 1})";
             }
             else
             {
@@ -166,19 +170,27 @@
             }
         }
 
-        private void RectangleListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void ClassesRectangleListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _currentRectangle = _rectangles[ClassesRectangleListBox.SelectedIndex];
-            ClassesRectangleLengthTextBox.Text = _currentRectangle.Length.ToString();
-            ClassesRectangleWidthTextBox.Text = _currentRectangle.Width.ToString();
-            ClassesRectangleColorTextBox.Text = _currentRectangle.Color.ToString();
-            ClassesRectangleCenterXTextBox.Text = _currentRectangle.Center.X.ToString();
-            ClassesRectangleCenterYTextBox.Text = _currentRectangle.Center.Y.ToString();
-            ClassesRectangleIdTextBox.Text = _currentRectangle.Id.ToString();
+            if (_classesCurrentRectangle == _classesRectangles[ClassesRectangleListBox.SelectedIndex])
+            {
+                return;
+            }
+            _classesCurrentRectangle = _classesRectangles[ClassesRectangleListBox.SelectedIndex];
+            ClassesRectangleHeightTextBox.Text = _classesCurrentRectangle.Height.ToString();
+            ClassesRectangleWidthTextBox.Text = _classesCurrentRectangle.Width.ToString();
+            ClassesRectangleColorTextBox.Text = _classesCurrentRectangle.Color.ToString();
+            ClassesRectangleCenterXTextBox.Text = _classesCurrentRectangle.Center.X.ToString();
+            ClassesRectangleCenterYTextBox.Text = _classesCurrentRectangle.Center.Y.ToString();
+            ClassesRectangleIdTextBox.Text = _classesCurrentRectangle.Id.ToString();
         }
 
         private void MovieListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (_currentMovie == _movies[MovieListBox.SelectedIndex])
+            {
+                return;
+            }
             _currentMovie = _movies[MovieListBox.SelectedIndex];
             MovieNameTextBox.Text = _currentMovie.Name;
             MovieDurationTextBox.Text = _currentMovie.Duration.ToString();
@@ -187,29 +199,29 @@
             MovieRatingTextBox.Text = _currentMovie.Rating.ToString();
         }
 
-        private void RectangleLengthTextBox_TextChanged(object sender, EventArgs e)
+        private void ClassesRectangleHeightTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 // Возвращение цвета TextBox к исходному
-                ClassesRectangleLengthTextBox.BackColor = System.Drawing.Color.White;
-                _currentRectangle.Length=Double.Parse(ClassesRectangleLengthTextBox.Text);
-                InitializeRectangleListBox();
+                ClassesRectangleHeightTextBox.BackColor = System.Drawing.Color.White;
+                _classesCurrentRectangle.Height=Double.Parse(ClassesRectangleHeightTextBox.Text);
+                UpdateRectangleInfo(ClassesRectangleListBox);
             }
             catch
             {
-                ClassesRectangleLengthTextBox.BackColor = System.Drawing.Color.LightPink;
+                ClassesRectangleHeightTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
 
-        private void RectangleWidthTextBox_TextChanged(object sender, EventArgs e)
+        private void ClassesRectangleWidthTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 // Возвращение цвета TextBox к исходному
                 ClassesRectangleWidthTextBox.BackColor = System.Drawing.Color.White;
-                _currentRectangle.Width = Double.Parse(ClassesRectangleWidthTextBox.Text);
-                InitializeRectangleListBox();
+                _classesCurrentRectangle.Width = Double.Parse(ClassesRectangleWidthTextBox.Text);
+                UpdateRectangleInfo(ClassesRectangleListBox);
             }
             catch
             {
@@ -219,13 +231,13 @@
 
         private void RectangleColorTextBox_TextChanged(object sender, EventArgs e)
         {
-            _currentRectangle.Color = ClassesRectangleColorTextBox.Text;
+            _classesCurrentRectangle.Color = ClassesRectangleColorTextBox.Text;
         }
 
         private void MovieNameTextBox_TextChanged(object sender, EventArgs e)
         {
             _currentMovie.Name = MovieNameTextBox.Text;
-            InitializeMovieListBox();
+            UpdateMovieInfo(MovieListBox);
         }
 
         private void MovieDurationTextBox_TextChanged(object sender, EventArgs e)
@@ -268,7 +280,7 @@
                 // Возвращение цвета TextBox к исходному
                 MovieRatingTextBox.BackColor = System.Drawing.Color.White;
                 _currentMovie.Rating = Double.Parse(MovieRatingTextBox.Text);
-                InitializeMovieListBox();
+                UpdateMovieInfo(MovieListBox);
             }
             catch
             {
@@ -278,11 +290,11 @@
 
         private void FindRectangleWithMaxWidth()
         {
-            double maxWidth = _rectangles[0].Width;
+            double maxWidth = _classesRectangles[0].Width;
             int i = 0;
             int maxWidthIndex=0;
             // Поиск прямоугольника с максимальной шириной
-            foreach (var tempRectangle in _rectangles)
+            foreach (var tempRectangle in _classesRectangles)
             {
                 if (tempRectangle.Width > maxWidth)
                 {
@@ -320,6 +332,245 @@
         private void MovieFindButton_Click(object sender, EventArgs e)
         {
             FindMovieWithMaxRating();
+        }
+
+        private void RectangleListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (RectangleListBox.SelectedIndex == -1)
+            {
+                ClearRectangleInfo();
+                return;
+            }
+            if (_currentRectangle == _rectangles[RectangleListBox.SelectedIndex])
+            {
+                return;
+            }
+            _currentRectangle = _rectangles[RectangleListBox.SelectedIndex];
+            RectangleHeightTextBox.Text = _currentRectangle.Height.ToString();
+            RectangleWidthTextBox.Text = _currentRectangle.Width.ToString();
+            RectangleXTextBox.Text = _currentRectangle.Center.X.ToString();
+            RectangleYTextBox.Text = _currentRectangle.Center.Y.ToString();
+            RectangleIdTextBox.Text = _currentRectangle.Id.ToString();
+        }
+
+        private void RectangleWidthTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_currentRectangle.Width == Double.Parse(RectangleWidthTextBox.Text))
+                {
+                    return;
+                }
+                RectangleWidthTextBox.BackColor = System.Drawing.Color.White;
+                _currentRectangle.Width = Double.Parse(RectangleWidthTextBox.Text);
+                UpdateRectangleInfo(RectangleListBox);
+                UpdateRectanglePanel(_currentRectangle);
+                FindAllCollisions();
+            }
+            catch
+            {
+                if (RectangleListBox.SelectedItem != null)
+                {
+                    RectangleWidthTextBox.BackColor = System.Drawing.Color.LightPink;
+                }
+            }
+        }
+
+        private void RectangleHeightTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_currentRectangle.Height == Double.Parse(RectangleHeightTextBox.Text))
+                {
+                    return;
+                }
+                RectangleHeightTextBox.BackColor = System.Drawing.Color.White;
+                _currentRectangle.Height = Double.Parse(RectangleHeightTextBox.Text);
+                UpdateRectangleInfo(RectangleListBox);
+                UpdateRectanglePanel(_currentRectangle);
+                FindAllCollisions();
+            }
+            catch
+            {
+                if (RectangleListBox.SelectedItem != null)
+                {
+                    RectangleHeightTextBox.BackColor = System.Drawing.Color.LightPink;
+                }
+            }
+        }
+
+        private void RectangleIdTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void RectangleAddPictureBox_Click(object sender, EventArgs e)
+        {
+            var newRectangle = RectangleFactory.Randomize(RectangleCanvasPanel);
+            newRectangle.Color = _colorGreen.ToString();
+            _rectangles.Add(newRectangle);
+            var rectanglePanel = new Panel();
+            rectanglePanel.Location = new Point((int)(newRectangle.Center.X-(newRectangle.Width/2)), 
+                                                (int)(newRectangle.Center.Y-(newRectangle.Height/2)));
+            rectanglePanel.Size = new Size { Width = (int)newRectangle.Width, Height = (int)newRectangle.Height };
+            rectanglePanel.BackColor = _colorGreen;
+            _rectanglePanels.Add(rectanglePanel);
+            FindCollisions(newRectangle);
+            RectangleCanvasPanel.Controls.Add(rectanglePanel);
+            if (_currentRectangle != null && RectangleIdTextBox.Text != "")
+            {
+                RectangleListBox.SelectedItem = _currentRectangle;
+            }
+            else
+            {
+                RectangleListBox.SelectedIndex = -1;
+            }
+        }
+
+        private void RectangleDeletePictureBox_Click(object sender, EventArgs e)
+        {
+            if (RectangleListBox.SelectedItem != null && RectangleListBox.SelectedIndex != -1)
+            {
+                RectangleCanvasPanel.Controls.RemoveAt(RectangleListBox.SelectedIndex);
+                if (_rectanglePanels[RectangleListBox.SelectedIndex].BackColor == _colorGreen)
+                {
+                    _rectanglePanels.RemoveAt(RectangleListBox.SelectedIndex);
+                    _rectangles.RemoveAt(RectangleListBox.SelectedIndex);
+                    RectangleListBox.SelectedIndex = -1;
+                    _currentRectangle = null;
+                }
+                else
+                {
+                    _rectanglePanels.RemoveAt(RectangleListBox.SelectedIndex);
+                    _rectangles.RemoveAt(RectangleListBox.SelectedIndex);
+                    RectangleListBox.SelectedIndex = -1;
+                    FindAllCollisions();
+                    _currentRectangle = null;
+                }
+            }
+        }
+
+        private void RectangleXTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_currentRectangle.Center.X == Double.Parse(RectangleXTextBox.Text))
+                {
+                    return;
+                }
+                RectangleXTextBox.BackColor = System.Drawing.Color.White;
+                _currentRectangle.Center.X = Double.Parse(RectangleXTextBox.Text);
+                UpdateRectangleInfo(RectangleListBox);
+                UpdateRectanglePanel(_currentRectangle);
+                FindAllCollisions();
+            }
+            catch
+            {
+                if (RectangleListBox.SelectedItem != null)
+                {
+                    RectangleXTextBox.BackColor = System.Drawing.Color.LightPink;
+                }
+            }
+        }
+
+        private void RectangleYTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_currentRectangle.Center.Y == Double.Parse(RectangleYTextBox.Text))
+                {
+                    return;
+                }
+                RectangleYTextBox.BackColor = System.Drawing.Color.White;
+                _currentRectangle.Center.Y = Double.Parse(RectangleYTextBox.Text);
+                UpdateRectangleInfo(RectangleListBox);
+                UpdateRectanglePanel(_currentRectangle);
+                FindAllCollisions();
+            }
+            catch
+            {
+                if (RectangleListBox.SelectedItem != null)
+                {
+                    RectangleYTextBox.BackColor = System.Drawing.Color.LightPink;
+                }
+            }
+        }
+
+        private void UpdateRectangleInfo(ListBox listBox)
+        {
+            listBox.DisplayMember = null;
+            listBox.DisplayMember = nameof(Rectangle.Info);
+        }
+
+        private void UpdateMovieInfo(ListBox listBox)
+        {
+            listBox.DisplayMember = null;
+            listBox.DisplayMember= nameof(Movie.Info);
+        }
+
+        private void ClearRectangleInfo()
+        {
+            RectangleHeightTextBox.Clear();
+            RectangleWidthTextBox.Clear();
+            RectangleXTextBox.Clear();
+            RectangleYTextBox.Clear();
+            RectangleIdTextBox.Clear();
+        }
+        
+        private void FindCollisions(Rectangle rectangle)
+        {
+            _rectanglePanels[_rectangles.IndexOf(rectangle)].BackColor = _colorGreen;
+            
+            for (int i = 0; i < _rectangles.Count; i++)
+            {
+                if (rectangle != _rectangles[i] 
+                    && CollisionManager.IsCollision(rectangle, _rectangles[i]))
+                {
+                    _rectanglePanels[_rectangles.IndexOf(rectangle)].BackColor = _colorRed;
+                    if (_rectanglePanels[i].BackColor != _colorRed)
+                    {
+                        _rectanglePanels[i].BackColor = _colorRed;
+                    }
+                }
+            }
+        }
+
+        private void FindAllCollisions()
+        {
+            for (int i = 0; i < _rectangles.Count; i++)
+            {
+                _rectanglePanels[i].BackColor = _colorGreen;
+            }
+            for (int i = 0; i < _rectangles.Count; i++)
+            {
+                for (int j = 0; j < _rectangles.Count; j++)
+                {
+                    if (i != j && CollisionManager.IsCollision(_rectangles[i], _rectangles[j]))
+                    {
+                        _rectanglePanels[i].BackColor = _colorRed;
+                        _rectanglePanels[j].BackColor = _colorRed;
+                    }
+                }
+            }
+            UpdateAllRectanglePanels();
+        }
+
+        private void UpdateAllRectanglePanels()
+        {
+            RectangleCanvasPanel.Controls.Clear();
+            for (int i = 0; i < _rectanglePanels.Count; i++)
+            {
+                RectangleCanvasPanel.Controls.Add(_rectanglePanels[i]);
+            }
+        }
+
+        private void UpdateRectanglePanel(Rectangle rectangle)
+        {
+            int index = _rectangles.IndexOf(rectangle);
+            _rectanglePanels[index].Location = new Point((int)(rectangle.Center.X - (rectangle.Width / 2)),
+                                                             (int)(rectangle.Center.Y - (rectangle.Height / 2)));
+            _rectanglePanels[index].Width = (int)rectangle.Width;
+            _rectanglePanels[index].Height = (int)rectangle.Height;
         }
     }
 }
