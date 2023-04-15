@@ -552,16 +552,6 @@ namespace Programming.View
                     }
                 }
             }
-            UpdateAllRectanglePanels();
-        }
-
-        private void UpdateAllRectanglePanels()
-        {
-            RectangleCanvasPanel.Controls.Clear();
-            for (int i = 0; i < _rectanglePanels.Count; i++)
-            {
-                RectangleCanvasPanel.Controls.Add(_rectanglePanels[i]);
-            }
         }
 
         private void UpdateRectanglePanel(Rectangle rectangle)
