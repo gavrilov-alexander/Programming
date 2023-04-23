@@ -33,84 +33,22 @@
             this.Enums = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.WeekdayParsing = new System.Windows.Forms.GroupBox();
-            this.ParsingLable = new System.Windows.Forms.Label();
-            this.ParsingResult = new System.Windows.Forms.Label();
-            this.ParseButton = new System.Windows.Forms.Button();
-            this.ParsingValueTextBox = new System.Windows.Forms.TextBox();
-            this.SeasonHandle = new System.Windows.Forms.GroupBox();
-            this.SeasonComboBox = new System.Windows.Forms.ComboBox();
-            this.SeasonLabel = new System.Windows.Forms.Label();
-            this.SeasonButton = new System.Windows.Forms.Button();
-            this.Enumerations = new System.Windows.Forms.GroupBox();
-            this.ValueTextBox = new System.Windows.Forms.TextBox();
-            this.IntValueLabel = new System.Windows.Forms.Label();
-            this.ValueLabel = new System.Windows.Forms.Label();
-            this.EnumsLabel = new System.Windows.Forms.Label();
-            this.ValuesListBox = new System.Windows.Forms.ListBox();
-            this.EnumsListBox = new System.Windows.Forms.ListBox();
+            this.WeekdayParsingControl = new Programming.View.Panels.WeekdayParsingControl();
+            this.SeasonsControl = new Programming.View.Panels.SeasonsControl();
+            this.AllEnumerationsControl = new Programming.View.Panels.AllEnumerationsControl();
             this.ClassesTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.Movies = new System.Windows.Forms.GroupBox();
-            this.MovieFindButton = new System.Windows.Forms.Button();
-            this.MovieRatingLabel = new System.Windows.Forms.Label();
-            this.MovieRatingTextBox = new System.Windows.Forms.TextBox();
-            this.MovieGenreLabel = new System.Windows.Forms.Label();
-            this.MovieGenreTextBox = new System.Windows.Forms.TextBox();
-            this.MovieYearLabel = new System.Windows.Forms.Label();
-            this.MovieYearTextBox = new System.Windows.Forms.TextBox();
-            this.MovieListBox = new System.Windows.Forms.ListBox();
-            this.MovieDurationLabel = new System.Windows.Forms.Label();
-            this.MovieDurationTextBox = new System.Windows.Forms.TextBox();
-            this.MovieNameLabel = new System.Windows.Forms.Label();
-            this.MovieNameTextBox = new System.Windows.Forms.TextBox();
-            this.Rectangles = new System.Windows.Forms.GroupBox();
-            this.ClassesRectangleIdLabel = new System.Windows.Forms.Label();
-            this.ClassesRectangleIdTextBox = new System.Windows.Forms.TextBox();
-            this.RectangleCenterGroupBox = new System.Windows.Forms.GroupBox();
-            this.ClassesRectangleCenterYLabel = new System.Windows.Forms.Label();
-            this.ClassesRectangleCenterXLabel = new System.Windows.Forms.Label();
-            this.ClassesRectangleCenterYTextBox = new System.Windows.Forms.TextBox();
-            this.ClassesRectangleCenterXTextBox = new System.Windows.Forms.TextBox();
-            this.RectangleFindButton = new System.Windows.Forms.Button();
-            this.ClassesRectangleColorLabel = new System.Windows.Forms.Label();
-            this.ClassesRectangleColorTextBox = new System.Windows.Forms.TextBox();
-            this.ClassesRectangleListBox = new System.Windows.Forms.ListBox();
-            this.ClassesRectangleWidthLabel = new System.Windows.Forms.Label();
-            this.ClassesRectangleWidthTextBox = new System.Windows.Forms.TextBox();
-            this.ClassesRectangleHeightLabel = new System.Windows.Forms.Label();
-            this.ClassesRectangleHeightTextBox = new System.Windows.Forms.TextBox();
+            this.RectanglesControl = new Programming.View.Panels.RectanglesControl();
+            this.MoviesColntrol = new Programming.View.Panels.MoviesColntrol();
             this.RectangleTabPage = new System.Windows.Forms.TabPage();
-            this.RectangleCanvasPanel = new System.Windows.Forms.Panel();
-            this.RectangleHeightTextBox = new System.Windows.Forms.TextBox();
-            this.RectangleHeightLabel = new System.Windows.Forms.Label();
-            this.RectangleWidthTextBox = new System.Windows.Forms.TextBox();
-            this.RectangleWidthLabel = new System.Windows.Forms.Label();
-            this.RectangleYTextBox = new System.Windows.Forms.TextBox();
-            this.RectangleYLabel = new System.Windows.Forms.Label();
-            this.RectangleXTextBox = new System.Windows.Forms.TextBox();
-            this.RectangleXLabel = new System.Windows.Forms.Label();
-            this.RectangleIdTextBox = new System.Windows.Forms.TextBox();
-            this.RectangleIdLabel = new System.Windows.Forms.Label();
-            this.SelectedRectangleLabel = new System.Windows.Forms.Label();
-            this.RectangleListBox = new System.Windows.Forms.ListBox();
-            this.RectangleDeletePictureBox = new System.Windows.Forms.PictureBox();
-            this.RectangleAddPictureBox = new System.Windows.Forms.PictureBox();
+            this.RectanglesCollisionControl = new Programming.View.Panels.RectanglesCollisionControl();
             this.TabControl.SuspendLayout();
             this.Enums.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.WeekdayParsing.SuspendLayout();
-            this.SeasonHandle.SuspendLayout();
-            this.Enumerations.SuspendLayout();
             this.ClassesTabPage.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.Movies.SuspendLayout();
-            this.Rectangles.SuspendLayout();
-            this.RectangleCenterGroupBox.SuspendLayout();
             this.RectangleTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RectangleDeletePictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RectangleAddPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // TabControl
@@ -122,7 +60,7 @@
             this.TabControl.Location = new System.Drawing.Point(0, 0);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(1101, 738);
+            this.TabControl.Size = new System.Drawing.Size(1106, 720);
             this.TabControl.TabIndex = 0;
             // 
             // Enums
@@ -131,7 +69,7 @@
             this.Enums.Location = new System.Drawing.Point(4, 34);
             this.Enums.Name = "Enums";
             this.Enums.Padding = new System.Windows.Forms.Padding(3);
-            this.Enums.Size = new System.Drawing.Size(1093, 700);
+            this.Enums.Size = new System.Drawing.Size(1098, 682);
             this.Enums.TabIndex = 0;
             this.Enums.Text = "Enums";
             this.Enums.UseVisualStyleBackColor = true;
@@ -141,14 +79,14 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.Enumerations, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.AllEnumerationsControl, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.73196F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.26804F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1087, 694);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1092, 676);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // tableLayoutPanel2
@@ -156,188 +94,41 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.WeekdayParsing, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.SeasonHandle, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.WeekdayParsingControl, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.SeasonsControl, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 403);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 393);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1081, 288);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1086, 280);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // WeekdayParsing
+            // WeekdayParsingControl
             // 
-            this.WeekdayParsing.Controls.Add(this.ParsingLable);
-            this.WeekdayParsing.Controls.Add(this.ParsingResult);
-            this.WeekdayParsing.Controls.Add(this.ParseButton);
-            this.WeekdayParsing.Controls.Add(this.ParsingValueTextBox);
-            this.WeekdayParsing.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WeekdayParsing.Location = new System.Drawing.Point(3, 3);
-            this.WeekdayParsing.Name = "WeekdayParsing";
-            this.WeekdayParsing.Size = new System.Drawing.Size(534, 282);
-            this.WeekdayParsing.TabIndex = 0;
-            this.WeekdayParsing.TabStop = false;
-            this.WeekdayParsing.Text = "Weekday Parsing";
+            this.WeekdayParsingControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WeekdayParsingControl.Location = new System.Drawing.Point(4, 5);
+            this.WeekdayParsingControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.WeekdayParsingControl.Name = "WeekdayParsingControl";
+            this.WeekdayParsingControl.Size = new System.Drawing.Size(535, 270);
+            this.WeekdayParsingControl.TabIndex = 2;
             // 
-            // ParsingLable
+            // SeasonsControl
             // 
-            this.ParsingLable.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ParsingLable.AutoSize = true;
-            this.ParsingLable.Location = new System.Drawing.Point(6, 103);
-            this.ParsingLable.Name = "ParsingLable";
-            this.ParsingLable.Size = new System.Drawing.Size(191, 25);
-            this.ParsingLable.TabIndex = 6;
-            this.ParsingLable.Text = "Type value for parsing:";
+            this.SeasonsControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SeasonsControl.Location = new System.Drawing.Point(547, 5);
+            this.SeasonsControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.SeasonsControl.Name = "SeasonsControl";
+            this.SeasonsControl.Size = new System.Drawing.Size(535, 270);
+            this.SeasonsControl.TabIndex = 3;
             // 
-            // ParsingResult
+            // AllEnumerationsControl
             // 
-            this.ParsingResult.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ParsingResult.AutoSize = true;
-            this.ParsingResult.Location = new System.Drawing.Point(6, 175);
-            this.ParsingResult.Name = "ParsingResult";
-            this.ParsingResult.Size = new System.Drawing.Size(198, 25);
-            this.ParsingResult.TabIndex = 7;
-            this.ParsingResult.Text = "Weekday Parsing Result";
-            // 
-            // ParseButton
-            // 
-            this.ParseButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ParseButton.Location = new System.Drawing.Point(399, 131);
-            this.ParseButton.Name = "ParseButton";
-            this.ParseButton.Size = new System.Drawing.Size(111, 40);
-            this.ParseButton.TabIndex = 6;
-            this.ParseButton.Text = "Parse";
-            this.ParseButton.UseVisualStyleBackColor = true;
-            this.ParseButton.Click += new System.EventHandler(this.ParseButton_Click);
-            // 
-            // ParsingValueTextBox
-            // 
-            this.ParsingValueTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ParsingValueTextBox.Location = new System.Drawing.Point(6, 133);
-            this.ParsingValueTextBox.Name = "ParsingValueTextBox";
-            this.ParsingValueTextBox.Size = new System.Drawing.Size(385, 31);
-            this.ParsingValueTextBox.TabIndex = 2;
-            // 
-            // SeasonHandle
-            // 
-            this.SeasonHandle.Controls.Add(this.SeasonComboBox);
-            this.SeasonHandle.Controls.Add(this.SeasonLabel);
-            this.SeasonHandle.Controls.Add(this.SeasonButton);
-            this.SeasonHandle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SeasonHandle.Location = new System.Drawing.Point(543, 3);
-            this.SeasonHandle.Name = "SeasonHandle";
-            this.SeasonHandle.Size = new System.Drawing.Size(535, 282);
-            this.SeasonHandle.TabIndex = 1;
-            this.SeasonHandle.TabStop = false;
-            this.SeasonHandle.Text = "Season Handle";
-            // 
-            // SeasonComboBox
-            // 
-            this.SeasonComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.SeasonComboBox.FormattingEnabled = true;
-            this.SeasonComboBox.Location = new System.Drawing.Point(6, 133);
-            this.SeasonComboBox.Name = "SeasonComboBox";
-            this.SeasonComboBox.Size = new System.Drawing.Size(385, 33);
-            this.SeasonComboBox.TabIndex = 6;
-            // 
-            // SeasonLabel
-            // 
-            this.SeasonLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.SeasonLabel.AutoSize = true;
-            this.SeasonLabel.Location = new System.Drawing.Point(6, 103);
-            this.SeasonLabel.Name = "SeasonLabel";
-            this.SeasonLabel.Size = new System.Drawing.Size(136, 25);
-            this.SeasonLabel.TabIndex = 8;
-            this.SeasonLabel.Text = "Choose season:";
-            // 
-            // SeasonButton
-            // 
-            this.SeasonButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.SeasonButton.Location = new System.Drawing.Point(399, 131);
-            this.SeasonButton.Name = "SeasonButton";
-            this.SeasonButton.Size = new System.Drawing.Size(111, 40);
-            this.SeasonButton.TabIndex = 7;
-            this.SeasonButton.Text = "Go!";
-            this.SeasonButton.UseVisualStyleBackColor = true;
-            this.SeasonButton.Click += new System.EventHandler(this.SeasonButton_Click);
-            // 
-            // Enumerations
-            // 
-            this.Enumerations.Controls.Add(this.ValueTextBox);
-            this.Enumerations.Controls.Add(this.IntValueLabel);
-            this.Enumerations.Controls.Add(this.ValueLabel);
-            this.Enumerations.Controls.Add(this.EnumsLabel);
-            this.Enumerations.Controls.Add(this.ValuesListBox);
-            this.Enumerations.Controls.Add(this.EnumsListBox);
-            this.Enumerations.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Enumerations.Location = new System.Drawing.Point(3, 3);
-            this.Enumerations.Name = "Enumerations";
-            this.Enumerations.Size = new System.Drawing.Size(1081, 394);
-            this.Enumerations.TabIndex = 2;
-            this.Enumerations.TabStop = false;
-            this.Enumerations.Text = "Enumerations";
-            // 
-            // ValueTextBox
-            // 
-            this.ValueTextBox.Location = new System.Drawing.Point(581, 70);
-            this.ValueTextBox.Multiline = true;
-            this.ValueTextBox.Name = "ValueTextBox";
-            this.ValueTextBox.Size = new System.Drawing.Size(150, 36);
-            this.ValueTextBox.TabIndex = 5;
-            // 
-            // IntValueLabel
-            // 
-            this.IntValueLabel.AutoSize = true;
-            this.IntValueLabel.Location = new System.Drawing.Point(581, 42);
-            this.IntValueLabel.Name = "IntValueLabel";
-            this.IntValueLabel.Size = new System.Drawing.Size(83, 25);
-            this.IntValueLabel.TabIndex = 4;
-            this.IntValueLabel.Text = "Int value:";
-            // 
-            // ValueLabel
-            // 
-            this.ValueLabel.AutoSize = true;
-            this.ValueLabel.Location = new System.Drawing.Point(273, 42);
-            this.ValueLabel.Name = "ValueLabel";
-            this.ValueLabel.Size = new System.Drawing.Size(122, 25);
-            this.ValueLabel.TabIndex = 3;
-            this.ValueLabel.Text = "Choose value:";
-            // 
-            // EnumsLabel
-            // 
-            this.EnumsLabel.AutoSize = true;
-            this.EnumsLabel.Location = new System.Drawing.Point(6, 42);
-            this.EnumsLabel.Name = "EnumsLabel";
-            this.EnumsLabel.Size = new System.Drawing.Size(181, 25);
-            this.EnumsLabel.TabIndex = 2;
-            this.EnumsLabel.Text = "Choose enumeration:";
-            // 
-            // ValuesListBox
-            // 
-            this.ValuesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.ValuesListBox.FormattingEnabled = true;
-            this.ValuesListBox.IntegralHeight = false;
-            this.ValuesListBox.ItemHeight = 25;
-            this.ValuesListBox.Location = new System.Drawing.Point(273, 70);
-            this.ValuesListBox.Name = "ValuesListBox";
-            this.ValuesListBox.Size = new System.Drawing.Size(253, 318);
-            this.ValuesListBox.TabIndex = 1;
-            this.ValuesListBox.SelectedIndexChanged += new System.EventHandler(this.ValuesListBox_SelectedIndexChanged);
-            // 
-            // EnumsListBox
-            // 
-            this.EnumsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.EnumsListBox.FormattingEnabled = true;
-            this.EnumsListBox.IntegralHeight = false;
-            this.EnumsListBox.ItemHeight = 25;
-            this.EnumsListBox.Location = new System.Drawing.Point(6, 70);
-            this.EnumsListBox.Name = "EnumsListBox";
-            this.EnumsListBox.Size = new System.Drawing.Size(234, 318);
-            this.EnumsListBox.TabIndex = 0;
-            this.EnumsListBox.SelectedIndexChanged += new System.EventHandler(this.EnumsListBox_SelectedIndexChanged);
+            this.AllEnumerationsControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AllEnumerationsControl.Location = new System.Drawing.Point(3, 3);
+            this.AllEnumerationsControl.Name = "AllEnumerationsControl";
+            this.AllEnumerationsControl.Size = new System.Drawing.Size(1086, 384);
+            this.AllEnumerationsControl.TabIndex = 1;
             // 
             // ClassesTabPage
             // 
@@ -345,7 +136,7 @@
             this.ClassesTabPage.Location = new System.Drawing.Point(4, 34);
             this.ClassesTabPage.Name = "ClassesTabPage";
             this.ClassesTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ClassesTabPage.Size = new System.Drawing.Size(1093, 700);
+            this.ClassesTabPage.Size = new System.Drawing.Size(1098, 682);
             this.ClassesTabPage.TabIndex = 1;
             this.ClassesTabPage.Text = "Classes";
             this.ClassesTabPage.UseVisualStyleBackColor = true;
@@ -355,562 +146,61 @@
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.Movies, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.Rectangles, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.RectanglesControl, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.MoviesColntrol, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1087, 694);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1092, 676);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
-            // Movies
+            // RectanglesControl
             // 
-            this.Movies.Controls.Add(this.MovieFindButton);
-            this.Movies.Controls.Add(this.MovieRatingLabel);
-            this.Movies.Controls.Add(this.MovieRatingTextBox);
-            this.Movies.Controls.Add(this.MovieGenreLabel);
-            this.Movies.Controls.Add(this.MovieGenreTextBox);
-            this.Movies.Controls.Add(this.MovieYearLabel);
-            this.Movies.Controls.Add(this.MovieYearTextBox);
-            this.Movies.Controls.Add(this.MovieListBox);
-            this.Movies.Controls.Add(this.MovieDurationLabel);
-            this.Movies.Controls.Add(this.MovieDurationTextBox);
-            this.Movies.Controls.Add(this.MovieNameLabel);
-            this.Movies.Controls.Add(this.MovieNameTextBox);
-            this.Movies.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Movies.Location = new System.Drawing.Point(546, 3);
-            this.Movies.Name = "Movies";
-            this.Movies.Size = new System.Drawing.Size(538, 688);
-            this.Movies.TabIndex = 1;
-            this.Movies.TabStop = false;
-            this.Movies.Text = "Movies";
+            this.RectanglesControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RectanglesControl.Location = new System.Drawing.Point(4, 5);
+            this.RectanglesControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.RectanglesControl.Name = "RectanglesControl";
+            this.RectanglesControl.Size = new System.Drawing.Size(538, 666);
+            this.RectanglesControl.TabIndex = 2;
             // 
-            // MovieFindButton
+            // MoviesColntrol
             // 
-            this.MovieFindButton.Location = new System.Drawing.Point(350, 385);
-            this.MovieFindButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MovieFindButton.Name = "MovieFindButton";
-            this.MovieFindButton.Size = new System.Drawing.Size(107, 38);
-            this.MovieFindButton.TabIndex = 22;
-            this.MovieFindButton.Text = "Find";
-            this.MovieFindButton.UseVisualStyleBackColor = true;
-            this.MovieFindButton.Click += new System.EventHandler(this.MovieFindButton_Click);
-            // 
-            // MovieRatingLabel
-            // 
-            this.MovieRatingLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MovieRatingLabel.AutoSize = true;
-            this.MovieRatingLabel.Location = new System.Drawing.Point(350, 310);
-            this.MovieRatingLabel.Name = "MovieRatingLabel";
-            this.MovieRatingLabel.Size = new System.Drawing.Size(67, 25);
-            this.MovieRatingLabel.TabIndex = 20;
-            this.MovieRatingLabel.Text = "Rating:";
-            // 
-            // MovieRatingTextBox
-            // 
-            this.MovieRatingTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.MovieRatingTextBox.Location = new System.Drawing.Point(350, 338);
-            this.MovieRatingTextBox.Name = "MovieRatingTextBox";
-            this.MovieRatingTextBox.Size = new System.Drawing.Size(177, 31);
-            this.MovieRatingTextBox.TabIndex = 19;
-            this.MovieRatingTextBox.TextChanged += new System.EventHandler(this.MovieRatingTextBox_TextChanged);
-            // 
-            // MovieGenreLabel
-            // 
-            this.MovieGenreLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MovieGenreLabel.AutoSize = true;
-            this.MovieGenreLabel.Location = new System.Drawing.Point(350, 240);
-            this.MovieGenreLabel.Name = "MovieGenreLabel";
-            this.MovieGenreLabel.Size = new System.Drawing.Size(62, 25);
-            this.MovieGenreLabel.TabIndex = 18;
-            this.MovieGenreLabel.Text = "Genre:";
-            // 
-            // MovieGenreTextBox
-            // 
-            this.MovieGenreTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.MovieGenreTextBox.Location = new System.Drawing.Point(350, 268);
-            this.MovieGenreTextBox.Name = "MovieGenreTextBox";
-            this.MovieGenreTextBox.Size = new System.Drawing.Size(177, 31);
-            this.MovieGenreTextBox.TabIndex = 17;
-            this.MovieGenreTextBox.TextChanged += new System.EventHandler(this.MovieGenreTextBox_TextChanged);
-            // 
-            // MovieYearLabel
-            // 
-            this.MovieYearLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MovieYearLabel.AutoSize = true;
-            this.MovieYearLabel.Location = new System.Drawing.Point(350, 170);
-            this.MovieYearLabel.Name = "MovieYearLabel";
-            this.MovieYearLabel.Size = new System.Drawing.Size(48, 25);
-            this.MovieYearLabel.TabIndex = 16;
-            this.MovieYearLabel.Text = "Year:";
-            // 
-            // MovieYearTextBox
-            // 
-            this.MovieYearTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.MovieYearTextBox.Location = new System.Drawing.Point(350, 198);
-            this.MovieYearTextBox.Name = "MovieYearTextBox";
-            this.MovieYearTextBox.Size = new System.Drawing.Size(177, 31);
-            this.MovieYearTextBox.TabIndex = 15;
-            this.MovieYearTextBox.TextChanged += new System.EventHandler(this.MovieYearTextBox_TextChanged);
-            // 
-            // MovieListBox
-            // 
-            this.MovieListBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.MovieListBox.FormattingEnabled = true;
-            this.MovieListBox.IntegralHeight = false;
-            this.MovieListBox.ItemHeight = 25;
-            this.MovieListBox.Location = new System.Drawing.Point(3, 27);
-            this.MovieListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MovieListBox.Name = "MovieListBox";
-            this.MovieListBox.Size = new System.Drawing.Size(338, 658);
-            this.MovieListBox.TabIndex = 14;
-            this.MovieListBox.SelectedIndexChanged += new System.EventHandler(this.MovieListBox_SelectedIndexChanged);
-            // 
-            // MovieDurationLabel
-            // 
-            this.MovieDurationLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MovieDurationLabel.AutoSize = true;
-            this.MovieDurationLabel.Location = new System.Drawing.Point(350, 100);
-            this.MovieDurationLabel.Name = "MovieDurationLabel";
-            this.MovieDurationLabel.Size = new System.Drawing.Size(85, 25);
-            this.MovieDurationLabel.TabIndex = 13;
-            this.MovieDurationLabel.Text = "Duration:";
-            // 
-            // MovieDurationTextBox
-            // 
-            this.MovieDurationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.MovieDurationTextBox.Location = new System.Drawing.Point(350, 128);
-            this.MovieDurationTextBox.Name = "MovieDurationTextBox";
-            this.MovieDurationTextBox.Size = new System.Drawing.Size(177, 31);
-            this.MovieDurationTextBox.TabIndex = 12;
-            this.MovieDurationTextBox.TextChanged += new System.EventHandler(this.MovieDurationTextBox_TextChanged);
-            // 
-            // MovieNameLabel
-            // 
-            this.MovieNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MovieNameLabel.AutoSize = true;
-            this.MovieNameLabel.Location = new System.Drawing.Point(350, 30);
-            this.MovieNameLabel.Name = "MovieNameLabel";
-            this.MovieNameLabel.Size = new System.Drawing.Size(63, 25);
-            this.MovieNameLabel.TabIndex = 11;
-            this.MovieNameLabel.Text = "Name:";
-            // 
-            // MovieNameTextBox
-            // 
-            this.MovieNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.MovieNameTextBox.Location = new System.Drawing.Point(350, 58);
-            this.MovieNameTextBox.Name = "MovieNameTextBox";
-            this.MovieNameTextBox.Size = new System.Drawing.Size(177, 31);
-            this.MovieNameTextBox.TabIndex = 10;
-            this.MovieNameTextBox.TextChanged += new System.EventHandler(this.MovieNameTextBox_TextChanged);
-            // 
-            // Rectangles
-            // 
-            this.Rectangles.Controls.Add(this.ClassesRectangleIdLabel);
-            this.Rectangles.Controls.Add(this.ClassesRectangleIdTextBox);
-            this.Rectangles.Controls.Add(this.RectangleCenterGroupBox);
-            this.Rectangles.Controls.Add(this.RectangleFindButton);
-            this.Rectangles.Controls.Add(this.ClassesRectangleColorLabel);
-            this.Rectangles.Controls.Add(this.ClassesRectangleColorTextBox);
-            this.Rectangles.Controls.Add(this.ClassesRectangleListBox);
-            this.Rectangles.Controls.Add(this.ClassesRectangleWidthLabel);
-            this.Rectangles.Controls.Add(this.ClassesRectangleWidthTextBox);
-            this.Rectangles.Controls.Add(this.ClassesRectangleHeightLabel);
-            this.Rectangles.Controls.Add(this.ClassesRectangleHeightTextBox);
-            this.Rectangles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Rectangles.Location = new System.Drawing.Point(3, 3);
-            this.Rectangles.Name = "Rectangles";
-            this.Rectangles.Size = new System.Drawing.Size(537, 688);
-            this.Rectangles.TabIndex = 0;
-            this.Rectangles.TabStop = false;
-            this.Rectangles.Text = "Rectangles";
-            // 
-            // ClassesRectangleIdLabel
-            // 
-            this.ClassesRectangleIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ClassesRectangleIdLabel.AutoSize = true;
-            this.ClassesRectangleIdLabel.Location = new System.Drawing.Point(350, 240);
-            this.ClassesRectangleIdLabel.Name = "ClassesRectangleIdLabel";
-            this.ClassesRectangleIdLabel.Size = new System.Drawing.Size(32, 25);
-            this.ClassesRectangleIdLabel.TabIndex = 23;
-            this.ClassesRectangleIdLabel.Text = "Id:";
-            // 
-            // ClassesRectangleIdTextBox
-            // 
-            this.ClassesRectangleIdTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.ClassesRectangleIdTextBox.Location = new System.Drawing.Point(350, 268);
-            this.ClassesRectangleIdTextBox.Name = "ClassesRectangleIdTextBox";
-            this.ClassesRectangleIdTextBox.ReadOnly = true;
-            this.ClassesRectangleIdTextBox.Size = new System.Drawing.Size(177, 31);
-            this.ClassesRectangleIdTextBox.TabIndex = 22;
-            // 
-            // RectangleCenterGroupBox
-            // 
-            this.RectangleCenterGroupBox.Controls.Add(this.ClassesRectangleCenterYLabel);
-            this.RectangleCenterGroupBox.Controls.Add(this.ClassesRectangleCenterXLabel);
-            this.RectangleCenterGroupBox.Controls.Add(this.ClassesRectangleCenterYTextBox);
-            this.RectangleCenterGroupBox.Controls.Add(this.ClassesRectangleCenterXTextBox);
-            this.RectangleCenterGroupBox.Location = new System.Drawing.Point(350, 315);
-            this.RectangleCenterGroupBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.RectangleCenterGroupBox.Name = "RectangleCenterGroupBox";
-            this.RectangleCenterGroupBox.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.RectangleCenterGroupBox.Size = new System.Drawing.Size(179, 190);
-            this.RectangleCenterGroupBox.TabIndex = 1;
-            this.RectangleCenterGroupBox.TabStop = false;
-            this.RectangleCenterGroupBox.Text = "Center";
-            // 
-            // ClassesRectangleCenterYLabel
-            // 
-            this.ClassesRectangleCenterYLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ClassesRectangleCenterYLabel.AutoSize = true;
-            this.ClassesRectangleCenterYLabel.Location = new System.Drawing.Point(9, 107);
-            this.ClassesRectangleCenterYLabel.Name = "ClassesRectangleCenterYLabel";
-            this.ClassesRectangleCenterYLabel.Size = new System.Drawing.Size(26, 25);
-            this.ClassesRectangleCenterYLabel.TabIndex = 23;
-            this.ClassesRectangleCenterYLabel.Text = "Y:";
-            // 
-            // ClassesRectangleCenterXLabel
-            // 
-            this.ClassesRectangleCenterXLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ClassesRectangleCenterXLabel.AutoSize = true;
-            this.ClassesRectangleCenterXLabel.Location = new System.Drawing.Point(9, 33);
-            this.ClassesRectangleCenterXLabel.Name = "ClassesRectangleCenterXLabel";
-            this.ClassesRectangleCenterXLabel.Size = new System.Drawing.Size(27, 25);
-            this.ClassesRectangleCenterXLabel.TabIndex = 22;
-            this.ClassesRectangleCenterXLabel.Text = "X:";
-            // 
-            // ClassesRectangleCenterYTextBox
-            // 
-            this.ClassesRectangleCenterYTextBox.Location = new System.Drawing.Point(9, 137);
-            this.ClassesRectangleCenterYTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ClassesRectangleCenterYTextBox.Name = "ClassesRectangleCenterYTextBox";
-            this.ClassesRectangleCenterYTextBox.ReadOnly = true;
-            this.ClassesRectangleCenterYTextBox.Size = new System.Drawing.Size(160, 31);
-            this.ClassesRectangleCenterYTextBox.TabIndex = 1;
-            // 
-            // ClassesRectangleCenterXTextBox
-            // 
-            this.ClassesRectangleCenterXTextBox.Location = new System.Drawing.Point(9, 63);
-            this.ClassesRectangleCenterXTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ClassesRectangleCenterXTextBox.Name = "ClassesRectangleCenterXTextBox";
-            this.ClassesRectangleCenterXTextBox.ReadOnly = true;
-            this.ClassesRectangleCenterXTextBox.Size = new System.Drawing.Size(160, 31);
-            this.ClassesRectangleCenterXTextBox.TabIndex = 0;
-            // 
-            // RectangleFindButton
-            // 
-            this.RectangleFindButton.Location = new System.Drawing.Point(350, 515);
-            this.RectangleFindButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.RectangleFindButton.Name = "RectangleFindButton";
-            this.RectangleFindButton.Size = new System.Drawing.Size(107, 38);
-            this.RectangleFindButton.TabIndex = 21;
-            this.RectangleFindButton.Text = "Find";
-            this.RectangleFindButton.UseVisualStyleBackColor = true;
-            this.RectangleFindButton.Click += new System.EventHandler(this.RectangleFindButton_Click);
-            // 
-            // ClassesRectangleColorLabel
-            // 
-            this.ClassesRectangleColorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ClassesRectangleColorLabel.AutoSize = true;
-            this.ClassesRectangleColorLabel.Location = new System.Drawing.Point(350, 170);
-            this.ClassesRectangleColorLabel.Name = "ClassesRectangleColorLabel";
-            this.ClassesRectangleColorLabel.Size = new System.Drawing.Size(59, 25);
-            this.ClassesRectangleColorLabel.TabIndex = 9;
-            this.ClassesRectangleColorLabel.Text = "Color:";
-            // 
-            // ClassesRectangleColorTextBox
-            // 
-            this.ClassesRectangleColorTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.ClassesRectangleColorTextBox.Location = new System.Drawing.Point(350, 198);
-            this.ClassesRectangleColorTextBox.Name = "ClassesRectangleColorTextBox";
-            this.ClassesRectangleColorTextBox.Size = new System.Drawing.Size(177, 31);
-            this.ClassesRectangleColorTextBox.TabIndex = 8;
-            this.ClassesRectangleColorTextBox.TextChanged += new System.EventHandler(this.RectangleColorTextBox_TextChanged);
-            // 
-            // ClassesRectangleListBox
-            // 
-            this.ClassesRectangleListBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ClassesRectangleListBox.FormattingEnabled = true;
-            this.ClassesRectangleListBox.IntegralHeight = false;
-            this.ClassesRectangleListBox.ItemHeight = 25;
-            this.ClassesRectangleListBox.Location = new System.Drawing.Point(3, 27);
-            this.ClassesRectangleListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ClassesRectangleListBox.Name = "ClassesRectangleListBox";
-            this.ClassesRectangleListBox.Size = new System.Drawing.Size(338, 658);
-            this.ClassesRectangleListBox.TabIndex = 7;
-            this.ClassesRectangleListBox.SelectedIndexChanged += new System.EventHandler(this.ClassesRectangleListBox_SelectedIndexChanged);
-            // 
-            // ClassesRectangleWidthLabel
-            // 
-            this.ClassesRectangleWidthLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ClassesRectangleWidthLabel.AutoSize = true;
-            this.ClassesRectangleWidthLabel.Location = new System.Drawing.Point(350, 100);
-            this.ClassesRectangleWidthLabel.Name = "ClassesRectangleWidthLabel";
-            this.ClassesRectangleWidthLabel.Size = new System.Drawing.Size(64, 25);
-            this.ClassesRectangleWidthLabel.TabIndex = 6;
-            this.ClassesRectangleWidthLabel.Text = "Width:";
-            // 
-            // ClassesRectangleWidthTextBox
-            // 
-            this.ClassesRectangleWidthTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.ClassesRectangleWidthTextBox.Location = new System.Drawing.Point(350, 128);
-            this.ClassesRectangleWidthTextBox.Name = "ClassesRectangleWidthTextBox";
-            this.ClassesRectangleWidthTextBox.Size = new System.Drawing.Size(177, 31);
-            this.ClassesRectangleWidthTextBox.TabIndex = 5;
-            this.ClassesRectangleWidthTextBox.TextChanged += new System.EventHandler(this.ClassesRectangleWidthTextBox_TextChanged);
-            // 
-            // ClassesRectangleHeightLabel
-            // 
-            this.ClassesRectangleHeightLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ClassesRectangleHeightLabel.AutoSize = true;
-            this.ClassesRectangleHeightLabel.Location = new System.Drawing.Point(350, 30);
-            this.ClassesRectangleHeightLabel.Name = "ClassesRectangleHeightLabel";
-            this.ClassesRectangleHeightLabel.Size = new System.Drawing.Size(69, 25);
-            this.ClassesRectangleHeightLabel.TabIndex = 4;
-            this.ClassesRectangleHeightLabel.Text = "Height:";
-            // 
-            // ClassesRectangleHeightTextBox
-            // 
-            this.ClassesRectangleHeightTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.ClassesRectangleHeightTextBox.Location = new System.Drawing.Point(350, 58);
-            this.ClassesRectangleHeightTextBox.Name = "ClassesRectangleHeightTextBox";
-            this.ClassesRectangleHeightTextBox.Size = new System.Drawing.Size(177, 31);
-            this.ClassesRectangleHeightTextBox.TabIndex = 3;
-            this.ClassesRectangleHeightTextBox.TextChanged += new System.EventHandler(this.ClassesRectangleHeightTextBox_TextChanged);
+            this.MoviesColntrol.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MoviesColntrol.Location = new System.Drawing.Point(550, 5);
+            this.MoviesColntrol.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MoviesColntrol.Name = "MoviesColntrol";
+            this.MoviesColntrol.Size = new System.Drawing.Size(538, 666);
+            this.MoviesColntrol.TabIndex = 3;
             // 
             // RectangleTabPage
             // 
             this.RectangleTabPage.AutoScroll = true;
-            this.RectangleTabPage.Controls.Add(this.RectangleCanvasPanel);
-            this.RectangleTabPage.Controls.Add(this.RectangleHeightTextBox);
-            this.RectangleTabPage.Controls.Add(this.RectangleHeightLabel);
-            this.RectangleTabPage.Controls.Add(this.RectangleWidthTextBox);
-            this.RectangleTabPage.Controls.Add(this.RectangleWidthLabel);
-            this.RectangleTabPage.Controls.Add(this.RectangleYTextBox);
-            this.RectangleTabPage.Controls.Add(this.RectangleYLabel);
-            this.RectangleTabPage.Controls.Add(this.RectangleXTextBox);
-            this.RectangleTabPage.Controls.Add(this.RectangleXLabel);
-            this.RectangleTabPage.Controls.Add(this.RectangleIdTextBox);
-            this.RectangleTabPage.Controls.Add(this.RectangleIdLabel);
-            this.RectangleTabPage.Controls.Add(this.SelectedRectangleLabel);
-            this.RectangleTabPage.Controls.Add(this.RectangleListBox);
-            this.RectangleTabPage.Controls.Add(this.RectangleDeletePictureBox);
-            this.RectangleTabPage.Controls.Add(this.RectangleAddPictureBox);
+            this.RectangleTabPage.Controls.Add(this.RectanglesCollisionControl);
             this.RectangleTabPage.Location = new System.Drawing.Point(4, 34);
             this.RectangleTabPage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.RectangleTabPage.Name = "RectangleTabPage";
             this.RectangleTabPage.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.RectangleTabPage.Size = new System.Drawing.Size(1093, 700);
+            this.RectangleTabPage.Size = new System.Drawing.Size(1098, 682);
             this.RectangleTabPage.TabIndex = 2;
             this.RectangleTabPage.Text = "Rectangles";
             this.RectangleTabPage.UseVisualStyleBackColor = true;
             // 
-            // RectangleCanvasPanel
+            // RectanglesCollisionControl
             // 
-            this.RectangleCanvasPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.RectangleCanvasPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.RectangleCanvasPanel.Location = new System.Drawing.Point(500, 10);
-            this.RectangleCanvasPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.RectangleCanvasPanel.Name = "RectangleCanvasPanel";
-            this.RectangleCanvasPanel.Size = new System.Drawing.Size(579, 668);
-            this.RectangleCanvasPanel.TabIndex = 14;
-            // 
-            // RectangleHeightTextBox
-            // 
-            this.RectangleHeightTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RectangleHeightTextBox.Location = new System.Drawing.Point(87, 597);
-            this.RectangleHeightTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.RectangleHeightTextBox.Name = "RectangleHeightTextBox";
-            this.RectangleHeightTextBox.Size = new System.Drawing.Size(141, 31);
-            this.RectangleHeightTextBox.TabIndex = 13;
-            this.RectangleHeightTextBox.TextChanged += new System.EventHandler(this.RectangleHeightTextBox_TextChanged);
-            // 
-            // RectangleHeightLabel
-            // 
-            this.RectangleHeightLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RectangleHeightLabel.AutoSize = true;
-            this.RectangleHeightLabel.Location = new System.Drawing.Point(11, 602);
-            this.RectangleHeightLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.RectangleHeightLabel.Name = "RectangleHeightLabel";
-            this.RectangleHeightLabel.Size = new System.Drawing.Size(69, 25);
-            this.RectangleHeightLabel.TabIndex = 12;
-            this.RectangleHeightLabel.Text = "Height:";
-            // 
-            // RectangleWidthTextBox
-            // 
-            this.RectangleWidthTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RectangleWidthTextBox.Location = new System.Drawing.Point(87, 548);
-            this.RectangleWidthTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.RectangleWidthTextBox.Name = "RectangleWidthTextBox";
-            this.RectangleWidthTextBox.Size = new System.Drawing.Size(141, 31);
-            this.RectangleWidthTextBox.TabIndex = 11;
-            this.RectangleWidthTextBox.TextChanged += new System.EventHandler(this.RectangleWidthTextBox_TextChanged);
-            // 
-            // RectangleWidthLabel
-            // 
-            this.RectangleWidthLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RectangleWidthLabel.AutoSize = true;
-            this.RectangleWidthLabel.Location = new System.Drawing.Point(19, 553);
-            this.RectangleWidthLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.RectangleWidthLabel.Name = "RectangleWidthLabel";
-            this.RectangleWidthLabel.Size = new System.Drawing.Size(64, 25);
-            this.RectangleWidthLabel.TabIndex = 10;
-            this.RectangleWidthLabel.Text = "Width:";
-            // 
-            // RectangleYTextBox
-            // 
-            this.RectangleYTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RectangleYTextBox.Location = new System.Drawing.Point(87, 500);
-            this.RectangleYTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.RectangleYTextBox.Name = "RectangleYTextBox";
-            this.RectangleYTextBox.Size = new System.Drawing.Size(141, 31);
-            this.RectangleYTextBox.TabIndex = 9;
-            this.RectangleYTextBox.TextChanged += new System.EventHandler(this.RectangleYTextBox_TextChanged);
-            // 
-            // RectangleYLabel
-            // 
-            this.RectangleYLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RectangleYLabel.AutoSize = true;
-            this.RectangleYLabel.Location = new System.Drawing.Point(54, 505);
-            this.RectangleYLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.RectangleYLabel.Name = "RectangleYLabel";
-            this.RectangleYLabel.Size = new System.Drawing.Size(26, 25);
-            this.RectangleYLabel.TabIndex = 8;
-            this.RectangleYLabel.Text = "Y:";
-            // 
-            // RectangleXTextBox
-            // 
-            this.RectangleXTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RectangleXTextBox.Location = new System.Drawing.Point(87, 452);
-            this.RectangleXTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.RectangleXTextBox.Name = "RectangleXTextBox";
-            this.RectangleXTextBox.Size = new System.Drawing.Size(141, 31);
-            this.RectangleXTextBox.TabIndex = 7;
-            this.RectangleXTextBox.TextChanged += new System.EventHandler(this.RectangleXTextBox_TextChanged);
-            // 
-            // RectangleXLabel
-            // 
-            this.RectangleXLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RectangleXLabel.AutoSize = true;
-            this.RectangleXLabel.Location = new System.Drawing.Point(54, 457);
-            this.RectangleXLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.RectangleXLabel.Name = "RectangleXLabel";
-            this.RectangleXLabel.Size = new System.Drawing.Size(27, 25);
-            this.RectangleXLabel.TabIndex = 6;
-            this.RectangleXLabel.Text = "X:";
-            // 
-            // RectangleIdTextBox
-            // 
-            this.RectangleIdTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RectangleIdTextBox.Location = new System.Drawing.Point(87, 403);
-            this.RectangleIdTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.RectangleIdTextBox.Name = "RectangleIdTextBox";
-            this.RectangleIdTextBox.Size = new System.Drawing.Size(141, 31);
-            this.RectangleIdTextBox.TabIndex = 5;
-            this.RectangleIdTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RectangleIdTextBox_KeyPress);
-            // 
-            // RectangleIdLabel
-            // 
-            this.RectangleIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RectangleIdLabel.AutoSize = true;
-            this.RectangleIdLabel.Location = new System.Drawing.Point(50, 408);
-            this.RectangleIdLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.RectangleIdLabel.Name = "RectangleIdLabel";
-            this.RectangleIdLabel.Size = new System.Drawing.Size(32, 25);
-            this.RectangleIdLabel.TabIndex = 4;
-            this.RectangleIdLabel.Text = "Id:";
-            // 
-            // SelectedRectangleLabel
-            // 
-            this.SelectedRectangleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SelectedRectangleLabel.AutoSize = true;
-            this.SelectedRectangleLabel.Location = new System.Drawing.Point(11, 372);
-            this.SelectedRectangleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.SelectedRectangleLabel.Name = "SelectedRectangleLabel";
-            this.SelectedRectangleLabel.Size = new System.Drawing.Size(163, 25);
-            this.SelectedRectangleLabel.TabIndex = 3;
-            this.SelectedRectangleLabel.Text = "Selected Rectangle:";
-            // 
-            // RectangleListBox
-            // 
-            this.RectangleListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.RectangleListBox.FormattingEnabled = true;
-            this.RectangleListBox.IntegralHeight = false;
-            this.RectangleListBox.ItemHeight = 25;
-            this.RectangleListBox.Location = new System.Drawing.Point(11, 10);
-            this.RectangleListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.RectangleListBox.Name = "RectangleListBox";
-            this.RectangleListBox.Size = new System.Drawing.Size(423, 279);
-            this.RectangleListBox.TabIndex = 2;
-            this.RectangleListBox.SelectedIndexChanged += new System.EventHandler(this.RectangleListBox_SelectedIndexChanged);
-            // 
-            // RectangleDeletePictureBox
-            // 
-            this.RectangleDeletePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RectangleDeletePictureBox.Image = global::Programming.Properties.Resources.rectangle_remove_24x24;
-            this.RectangleDeletePictureBox.Location = new System.Drawing.Point(54, 302);
-            this.RectangleDeletePictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.RectangleDeletePictureBox.Name = "RectangleDeletePictureBox";
-            this.RectangleDeletePictureBox.Size = new System.Drawing.Size(24, 24);
-            this.RectangleDeletePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.RectangleDeletePictureBox.TabIndex = 1;
-            this.RectangleDeletePictureBox.TabStop = false;
-            this.RectangleDeletePictureBox.Click += new System.EventHandler(this.RectangleDeletePictureBox_Click);
-            // 
-            // RectangleAddPictureBox
-            // 
-            this.RectangleAddPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RectangleAddPictureBox.Image = global::Programming.Properties.Resources.rectangle_add_24x24;
-            this.RectangleAddPictureBox.Location = new System.Drawing.Point(11, 302);
-            this.RectangleAddPictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.RectangleAddPictureBox.Name = "RectangleAddPictureBox";
-            this.RectangleAddPictureBox.Size = new System.Drawing.Size(24, 24);
-            this.RectangleAddPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.RectangleAddPictureBox.TabIndex = 0;
-            this.RectangleAddPictureBox.TabStop = false;
-            this.RectangleAddPictureBox.Click += new System.EventHandler(this.RectangleAddPictureBox_Click);
+            this.RectanglesCollisionControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RectanglesCollisionControl.Location = new System.Drawing.Point(4, 5);
+            this.RectanglesCollisionControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.RectanglesCollisionControl.Name = "RectanglesCollisionControl";
+            this.RectanglesCollisionControl.Size = new System.Drawing.Size(1090, 672);
+            this.RectanglesCollisionControl.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1101, 738);
+            this.ClientSize = new System.Drawing.Size(1106, 720);
             this.Controls.Add(this.TabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
@@ -919,24 +209,9 @@
             this.Enums.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.WeekdayParsing.ResumeLayout(false);
-            this.WeekdayParsing.PerformLayout();
-            this.SeasonHandle.ResumeLayout(false);
-            this.SeasonHandle.PerformLayout();
-            this.Enumerations.ResumeLayout(false);
-            this.Enumerations.PerformLayout();
             this.ClassesTabPage.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
-            this.Movies.ResumeLayout(false);
-            this.Movies.PerformLayout();
-            this.Rectangles.ResumeLayout(false);
-            this.Rectangles.PerformLayout();
-            this.RectangleCenterGroupBox.ResumeLayout(false);
-            this.RectangleCenterGroupBox.PerformLayout();
             this.RectangleTabPage.ResumeLayout(false);
-            this.RectangleTabPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RectangleDeletePictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RectangleAddPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -945,70 +220,16 @@
 
         private TabControl TabControl;
         private TabPage Enums;
-        private ListBox ValuesListBox;
-        private ListBox EnumsListBox;
-        private GroupBox Enumerations;
-        private TextBox ValueTextBox;
-        private Label IntValueLabel;
-        private Label ValueLabel;
-        private Label EnumsLabel;
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel2;
-        private GroupBox WeekdayParsing;
-        private GroupBox SeasonHandle;
-        private Label ParsingLable;
-        private Label ParsingResult;
-        private Button ParseButton;
-        private TextBox ParsingValueTextBox;
-        private Label SeasonLabel;
-        private Button SeasonButton;
-        private ComboBox SeasonComboBox;
         private TabPage ClassesTabPage;
         private TableLayoutPanel tableLayoutPanel3;
-        private GroupBox Movies;
-        private GroupBox Rectangles;
-        private Label ClassesRectangleHeightLabel;
-        private TextBox ClassesRectangleHeightTextBox;
-        private Button MovieFindButton;
-        private Label MovieRatingLabel;
-        private TextBox MovieRatingTextBox;
-        private Label MovieGenreLabel;
-        private TextBox MovieGenreTextBox;
-        private Label MovieYearLabel;
-        private TextBox MovieYearTextBox;
-        private ListBox MovieListBox;
-        private Label MovieDurationLabel;
-        private TextBox MovieDurationTextBox;
-        private Label MovieNameLabel;
-        private TextBox MovieNameTextBox;
-        private Button RectangleFindButton;
-        private Label ClassesRectangleColorLabel;
-        private TextBox ClassesRectangleColorTextBox;
-        private ListBox ClassesRectangleListBox;
-        private Label ClassesRectangleWidthLabel;
-        private TextBox ClassesRectangleWidthTextBox;
-        private GroupBox RectangleCenterGroupBox;
-        private Label ClassesRectangleCenterYLabel;
-        private Label ClassesRectangleCenterXLabel;
-        private TextBox ClassesRectangleCenterYTextBox;
-        private TextBox ClassesRectangleCenterXTextBox;
-        private Label ClassesRectangleIdLabel;
-        private TextBox ClassesRectangleIdTextBox;
         private TabPage RectangleTabPage;
-        private PictureBox RectangleDeletePictureBox;
-        private PictureBox RectangleAddPictureBox;
-        private TextBox RectangleHeightTextBox;
-        private Label RectangleHeightLabel;
-        private TextBox RectangleWidthTextBox;
-        private Label RectangleWidthLabel;
-        private TextBox RectangleYTextBox;
-        private Label RectangleYLabel;
-        private TextBox RectangleXTextBox;
-        private Label RectangleXLabel;
-        private TextBox RectangleIdTextBox;
-        private Label RectangleIdLabel;
-        private Label SelectedRectangleLabel;
-        private ListBox RectangleListBox;
-        private Panel RectangleCanvasPanel;
+        private Panels.WeekdayParsingControl WeekdayParsingControl;
+        private Panels.SeasonsControl SeasonsControl;
+        private Panels.AllEnumerationsControl AllEnumerationsControl;
+        private Panels.RectanglesControl RectanglesControl;
+        private Panels.MoviesColntrol MoviesColntrol;
+        private Panels.RectanglesCollisionControl RectanglesCollisionControl;
     }
 }
