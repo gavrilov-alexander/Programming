@@ -6,12 +6,29 @@ using System.Threading.Tasks;
 
 namespace Programming.Model.Classes
 {
+    /// <summary>
+    /// Хранит данные о времени, количестве часов, минут и секунд.
+    /// </summary>
     public class Time
     {
+        /// <summary>
+        /// Часы.
+        /// </summary>
         private int _hours;
+
+        /// <summary>
+        /// Минуты.
+        /// </summary>
         private int _minutes;
+
+        /// <summary>
+        /// Секунды.
+        /// </summary>
         private int _seconds;
 
+        /// <summary>
+        /// Возвращает и задает количество часов. Должно быть положительно.
+        /// </summary>
         public int Hours
         {
             get => _hours;
@@ -22,6 +39,9 @@ namespace Programming.Model.Classes
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает количество минут. Должно быть в диапозоне от 0 до 59.
+        /// </summary>
         public int Minutes
         {
             get => _minutes;
@@ -33,6 +53,9 @@ namespace Programming.Model.Classes
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает количество секунд. Должно быть в диапозоне от 0 до 59.
+        /// </summary>
         public int Seconds
         {
             get => _seconds;
@@ -44,10 +67,19 @@ namespace Programming.Model.Classes
             }
         }
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Time"/> без инициализации.
+        /// </summary>
         public Time()
         {
         }
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Time"/>.
+        /// </summary>
+        /// <param name="hours">Количество часов. Должно быть положительно.</param>
+        /// <param name="minutes">Количество минут. Должно быть в диапозоне от 0 до 59.</param>
+        /// <param name="seconds">Количество секунд. Должно быть в диапозоне от 0 до 59.</param>
         public Time(int hours, int minutes, int seconds)
         {
             Hours = hours;

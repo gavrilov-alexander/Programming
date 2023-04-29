@@ -11,14 +11,24 @@ using System.Windows.Forms;
 
 namespace Programming.View.Panels
 {
+    /// <summary>
+    /// Хранит логику пользовательского элемента управления <see cref="WeekdayParsingControl"/>.
+    /// </summary>
     public partial class WeekdayParsingControl : UserControl
     {
+        /// <summary>
+        /// Создает объект типа <see cref="WeekdayParsingControl"/>
+        /// </summary>
         public WeekdayParsingControl()
         {
             InitializeComponent();
             ParsingResultLable.Visible = false;
         }
 
+        /// <summary>
+        /// Проверяет введенное в ParsingValueTextBox значение на вхождение в перечисление <see cref="Weekday"/>.
+        /// Если проверяемое значение входит в <see cref="Weekday"/>, в ParsingResultLable выводится номер дня недели.
+        /// </summary>
         private void ParseButton_Click(object sender, EventArgs e)
         {
             if (ParsingValueTextBox.Text == null)

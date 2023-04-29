@@ -11,14 +11,23 @@ using System.Windows.Forms;
 
 namespace Programming.View.Panels
 {
+    /// <summary>
+    /// Хранит логику пользовательского элемента управления <see cref="SeasonsControl"/>.
+    /// </summary>
     public partial class SeasonsControl : UserControl
     {
+        /// <summary>
+        /// Создает объект типа <see cref="SeasonsControl"/>
+        /// </summary>
         public SeasonsControl()
         {
             InitializeComponent();
             InitializeSeasonComboBox();
         }
 
+        /// <summary>
+        /// Заполняет SeasonComboBox элементами перечисления <see cref="Season"/>.
+        /// </summary>
         private void InitializeSeasonComboBox()
         {
             var seasons = Enum.GetValues(typeof(Season));
@@ -29,9 +38,12 @@ namespace Programming.View.Panels
             SeasonComboBox.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Выполняет логику в зависимости от выбранного в SeasonComboBox элемента.
+        /// </summary>
         private void SeasonButton_Click(object sender, EventArgs e)
         {
-            SeasonHandleGroupBox.BackColor = AppColors.Defualt;
+            SeasonHandleGroupBox.BackColor = AppColors.White;
             switch (SeasonComboBox.SelectedIndex)
             {
                 // Зима

@@ -12,12 +12,18 @@ using Rectangle = Programming.Model.Classes.Geometry.Rectangle;
 
 namespace Programming.View.Panels
 {
+    /// <summary>
+    /// Хранит логику пользовательского элемента управления <see cref="RectanglesCollisionControl"/>.
+    /// </summary>
     public partial class RectanglesCollisionControl : UserControl
     {
         private Rectangle _currentRectangle = new Rectangle(1.0, 1.0, "black", new Point2D(1.0, 1.0));
         private BindingList<Rectangle> _rectangles = new BindingList<Rectangle>();
         private BindingList<Panel> _rectanglePanels = new BindingList<Panel>();
 
+        /// <summary>
+        /// Создает объект типа <see cref="RectanglesCollisionControl"/>
+        /// </summary>
         public RectanglesCollisionControl()
         {
             InitializeComponent();
@@ -26,12 +32,19 @@ namespace Programming.View.Panels
             RectangleListBox.SelectedItem = null;
         }
 
+        /// <summary>
+        /// Заполняет RectangleListBox элементами коллекции _rectangles.
+        /// </summary>
         private void InitializeRectangleListBox()
         {
             RectangleListBox.DisplayMember = nameof(Rectangle.Info);
             RectangleListBox.DataSource = _rectangles;
         }
 
+        /// <summary>
+        /// Заполняет RectangleHeightTextBox, RectangleWidthTextBox, RectangleColorTextBox, RectangleXTextBox,
+        /// RectangleYTextBox, RectangleIdTextBox значениями выбранного в RectangleListBox элемента.
+        /// </summary>
         private void RectangleListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (RectangleListBox.SelectedIndex == -1)
@@ -51,11 +64,14 @@ namespace Programming.View.Panels
             RectangleIdTextBox.Text = _currentRectangle.Id.ToString();
         }
 
+        /// <summary>
+        /// Записывает в _currentRectangle значение из RectangleWidthTextBox.
+        /// </summary>
         private void RectangleWidthTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                RectangleWidthTextBox.BackColor = AppColors.Defualt;
+                RectangleWidthTextBox.BackColor = AppColors.White;
                 if (_currentRectangle.Width == Double.Parse(RectangleWidthTextBox.Text))
                 {
                     return;
@@ -74,11 +90,14 @@ namespace Programming.View.Panels
             }
         }
 
+        /// <summary>
+        /// Записывает в _currentRectangle значение из RectangleHeightTextBox.
+        /// </summary>
         private void RectangleHeightTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                RectangleHeightTextBox.BackColor = AppColors.Defualt;
+                RectangleHeightTextBox.BackColor = AppColors.White;
                 if (_currentRectangle.Height == Double.Parse(RectangleHeightTextBox.Text))
                 {
                     return;
@@ -97,11 +116,18 @@ namespace Programming.View.Panels
             }
         }
 
+        /// <summary>
+        /// Контролирует изменение RectangleIdTextBox.
+        /// </summary>
         private void RectangleIdTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Добавляет в _rectangles случайно сгенерированный элемент класса <see cref="Rectangle"/>, 
+        /// в _rectanglePanels новый элемент класса <see cref="Panel"/> и отображает этот элемент на экране.
+        /// </summary>
         private void RectangleAddPictureBox_Click(object sender, EventArgs e)
         {
             var newRectangle = RectangleFactory.Randomize(RectangleCanvasPanel);
@@ -118,6 +144,9 @@ namespace Programming.View.Panels
             RectangleListBox.SelectedItem = newRectangle;
         }
 
+        /// <summary>
+        /// Удаляет из _rectangles и _rectanglePanels выбранный в RectangleListBox элемент.
+        /// </summary>
         private void RectangleDeletePictureBox_Click(object sender, EventArgs e)
         {
             if (RectangleListBox.SelectedItem != null && RectangleListBox.SelectedIndex != -1)
@@ -141,11 +170,14 @@ namespace Programming.View.Panels
             }
         }
 
+        /// <summary>
+        /// Записывает в _currentRectangle значение из RectangleXTextBox.
+        /// </summary>
         private void RectangleXTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                RectangleXTextBox.BackColor = AppColors.Defualt;
+                RectangleXTextBox.BackColor = AppColors.White;
                 if (_currentRectangle.Center.X == Double.Parse(RectangleXTextBox.Text))
                 {
                     return;
@@ -164,11 +196,14 @@ namespace Programming.View.Panels
             }
         }
 
+        /// <summary>
+        /// Записывает в _currentRectangle значение из RectangleYTextBox.
+        /// </summary>
         private void RectangleYTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                RectangleYTextBox.BackColor = AppColors.Defualt;
+                RectangleYTextBox.BackColor = AppColors.White;
                 if (_currentRectangle.Center.Y == Double.Parse(RectangleYTextBox.Text))
                 {
                     return;
@@ -187,12 +222,19 @@ namespace Programming.View.Panels
             }
         }
 
+        /// <summary>
+        /// Обновляет данные, отображаемые в обновляемом ListBox.
+        /// </summary>
+        /// <param name="listBox">Обновляемый ListBox.</param>
         private void UpdateRectangleInfo(ListBox listBox)
         {
             listBox.DisplayMember = null;
             listBox.DisplayMember = nameof(Rectangle.Info);
         }
 
+        /// <summary>
+        /// Удаляет данные из RectangleHeightTextBox, RectangleWidthTextBox, RectangleXTextBox, RectangleYTextBox, RectangleIdTextBox.
+        /// </summary>
         private void ClearRectangleInfo()
         {
             RectangleHeightTextBox.Clear();
@@ -202,6 +244,11 @@ namespace Programming.View.Panels
             RectangleIdTextBox.Clear();
         }
 
+        /// <summary>
+        /// Находит пересечения проверяемого элемента с другими элементами коллекции _rectangles, 
+        /// изменяет цвет панели проверяемого элемента в зависимости от пересечений.
+        /// </summary>
+        /// <param name="rectangle"></param>
         private void FindCollisions(Rectangle rectangle)
         {
             _rectanglePanels[_rectangles.IndexOf(rectangle)].BackColor = AppColors.Green;
@@ -220,6 +267,10 @@ namespace Programming.View.Panels
             }
         }
 
+        /// <summary>
+        /// Находит пересечения всех элементов коллекции _rectangles, 
+        /// изменяет цвет панелей элементов в зависимости от пересечений.
+        /// </summary>
         private void FindAllCollisions()
         {
             for (int i = 0; i < _rectangles.Count; i++)
@@ -239,6 +290,10 @@ namespace Programming.View.Panels
             }
         }
 
+        /// <summary>
+        /// Изменяет размеры и локацию панели на соответствующие им значения переданного в метод элемента.
+        /// </summary>
+        /// <param name="rectangle">Элемент, панель которого обновляется.</param>
         private void UpdateRectanglePanel(Rectangle rectangle)
         {
             int index = _rectangles.IndexOf(rectangle);

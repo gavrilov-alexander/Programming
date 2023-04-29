@@ -12,12 +12,18 @@ using Rectangle = Programming.Model.Classes.Geometry.Rectangle;
 
 namespace Programming.View.Panels
 {
+    /// <summary>
+    /// Хранит логику пользовательского элемента управления <see cref="RectanglesControl"/>.
+    /// </summary>
     public partial class RectanglesControl : UserControl
     {
         private const int DefaultSize = 5;
         private Rectangle[] _rectangles = new Rectangle[DefaultSize];
         private Rectangle _currentRectangle;
 
+        /// <summary>
+        /// Создает объект типа <see cref="RectanglesControl"/>
+        /// </summary>
         public RectanglesControl()
         {
             InitializeComponent();
@@ -25,16 +31,23 @@ namespace Programming.View.Panels
             {
                 _rectangles[i] = RectangleFactory.Randomize();
             }
-            InitializeClassesRectangleListBox();
+            InitializeRectangleListBox();
             RectangleListBox.SelectedIndex = 0;
         }
 
-        private void InitializeClassesRectangleListBox()
+        /// <summary>
+        /// Заполняет RectangleListBox элементами коллекции _rectangles.
+        /// </summary>
+        private void InitializeRectangleListBox()
         {
             RectangleListBox.DisplayMember = nameof(Rectangle.Info);
             RectangleListBox.DataSource = _rectangles;
         }
 
+        /// <summary>
+        /// Заполняет RectangleHeightTextBox, RectangleWidthTextBox, RectangleColorTextBox, RectangleCenterXTextBox,
+        /// RectangleCenterYTextBox, RectangleIdTextBox значениями выбранного в RectangleListBox элемента.
+        /// </summary>
         private void RectangleListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_currentRectangle == _rectangles[RectangleListBox.SelectedIndex])
@@ -50,11 +63,14 @@ namespace Programming.View.Panels
             RectangleIdTextBox.Text = _currentRectangle.Id.ToString();
         }
 
+        /// <summary>
+        /// Записывает в _currentRectangle значение из RectangleHeightTextBox.
+        /// </summary>
         private void RectangleHeightTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                RectangleHeightTextBox.BackColor = AppColors.Defualt;
+                RectangleHeightTextBox.BackColor = AppColors.White;
                 _currentRectangle.Height = Double.Parse(RectangleHeightTextBox.Text);
                 UpdateRectangleInfo(RectangleListBox);
             }
@@ -64,11 +80,14 @@ namespace Programming.View.Panels
             }
         }
 
+        /// <summary>
+        /// Записывает в _currentRectangle значение из RectangleWidthTextBox.
+        /// </summary>
         private void RectangleWidthTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                RectangleWidthTextBox.BackColor = AppColors.Defualt;
+                RectangleWidthTextBox.BackColor = AppColors.White;
                 _currentRectangle.Width = Double.Parse(RectangleWidthTextBox.Text);
                 UpdateRectangleInfo(RectangleListBox);
             }
@@ -78,11 +97,18 @@ namespace Programming.View.Panels
             }
         }
 
+        /// <summary>
+        /// Записывает в _currentRectangle значение из RectangleColorTextBox.
+        /// </summary>
         private void RectangleColorTextBox_TextChanged(object sender, EventArgs e)
         {
             _currentRectangle.Color = RectangleColorTextBox.Text;
         }
 
+        /// <summary>
+        /// Выбирает в RectangleListBox найденный элемент коллекции _rectangles с максимальным 
+        /// значением <see cref="Rectangle.Width"/>.
+        /// </summary>
         private void FindRectangleWithMaxWidth()
         {
             double maxWidth = _rectangles[0].Width;
@@ -100,11 +126,18 @@ namespace Programming.View.Panels
             RectangleListBox.SelectedIndex = maxWidthIndex;
         }
 
+        /// <summary>
+        /// Вызывает метод FindRectangleWithMaxWidth.
+        /// </summary>
         private void RectangleFindButton_Click(object sender, EventArgs e)
         {
             FindRectangleWithMaxWidth();
         }
 
+        /// <summary>
+        /// Обновляет данные, отображаемые в обновляемом ListBox.
+        /// </summary>
+        /// <param name="listBox">Обновляемый ListBox.</param>
         private void UpdateRectangleInfo(ListBox listBox)
         {
             listBox.DisplayMember = null;

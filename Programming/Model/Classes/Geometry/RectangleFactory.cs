@@ -9,8 +9,15 @@ using Color = Programming.Model.Enums.Color;
 
 namespace Programming.Model.Classes.Geometry
 {
+    /// <summary>
+    /// Предоставляет методы случайного создания объектов класса <see cref="Rectangle"/>.
+    /// </summary>
     public static class RectangleFactory
     {
+        /// <summary>
+        /// Создает случайно сгенерированный объект класса <see cref="Rectangle"/>.
+        /// </summary>
+        /// <returns>Объект класса <see cref="Rectangle"/>.</returns>
         public static Rectangle Randomize()
         {
             Random random = new Random();
@@ -21,6 +28,12 @@ namespace Programming.Model.Classes.Geometry
             Point2D center = new Point2D(random.NextDouble() * 100, random.NextDouble() * 100);
             return new Rectangle(height, width, color, center);
         }
+
+        /// <summary>
+        /// Создает случайно сгенерированный объект класса <see cref="Rectangle"/> в зависимости от размеров панели.
+        /// </summary>
+        /// <param name="canvas">Панель.</param>
+        /// <returns>Объект класса <see cref="Rectangle"/>.</returns>
         public static Rectangle Randomize(Panel canvas)
         {
             Random random = new Random();
