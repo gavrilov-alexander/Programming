@@ -17,8 +17,19 @@ namespace Programming.View.Panels
     /// </summary>
     public partial class RectanglesCollisionControl : UserControl
     {
+        /// <summary>
+        /// Выбранный в RectangleListBox элемент.
+        /// </summary>
         private Rectangle _currentRectangle = new Rectangle(1.0, 1.0, "black", new Point2D(1.0, 1.0));
+
+        /// <summary>
+        /// Коллекция элементов класса <see cref="Rectangle"/>.
+        /// </summary>
         private BindingList<Rectangle> _rectangles = new BindingList<Rectangle>();
+
+        /// <summary>
+        /// Коллекция элементов класса <see cref="Panel"/>.
+        /// </summary>
         private BindingList<Panel> _rectanglePanels = new BindingList<Panel>();
 
         /// <summary>

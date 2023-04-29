@@ -13,32 +13,32 @@ namespace Programming.View
     public static class AppColors
     {
         /// <summary>
-        /// Хранит данные белого цвета приложения.
+        /// Белый цвет приложения.
         /// </summary>
         public static Color White = Color.White;
 
         /// <summary>
-        /// Хранит данные светло-розового цвета приложения.
+        /// Светло-розовый цвет приложения.
         /// </summary>
         public static Color LightPink = Color.LightPink;
 
         /// <summary>
-        /// Хранит данные красного цвета приложения.
+        /// Красный цвет приложения.
         /// </summary>
         public static Color Red = Color.FromArgb(127, 255, 127, 127);
 
         /// <summary>
-        /// Хранит данные зеленого цвета приложения.
+        /// Зеленый цвет приложения.
         /// </summary>
         public static Color Green = Color.FromArgb(127, 127, 255, 127);
 
         /// <summary>
-        /// Хранит данные весеннего зеленого цвета приложения.
+        /// Весенний зеленый цвет приложения.
         /// </summary>
         public static Color SpringGreen = Color.FromArgb(85, 156, 69);
 
         /// <summary>
-        /// Хранит данные осеннего желтого цвета приложения.
+        /// Осенний желтый цвет приложения.
         /// </summary>
         public static Color AutumnYellow = Color.FromArgb(226, 156, 69);
     }

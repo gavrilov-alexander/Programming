@@ -17,8 +17,19 @@ namespace Programming.View.Panels
     /// </summary>
     public partial class RectanglesControl : UserControl
     {
+        /// <summary>
+        /// Количество случайно генерируемых элементов коллекции _rectangles.
+        /// </summary>
         private const int DefaultSize = 5;
+
+        /// <summary>
+        /// Коллекция элементов класса <see cref="Rectangle"/>.
+        /// </summary>
         private Rectangle[] _rectangles = new Rectangle[DefaultSize];
+
+        /// <summary>
+        /// Выбранный в RectangleListBox элемент.
+        /// </summary>
         private Rectangle _currentRectangle;
 
         /// <summary>

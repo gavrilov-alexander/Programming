@@ -17,10 +17,25 @@ namespace Programming.View.Panels
     /// </summary>
     public partial class MoviesColntrol : UserControl
     {
+        /// <summary>
+        /// Количество случайно генерируемых элементов коллекции _movies.
+        /// </summary>
         private const int DefaultSize = 5;
+
+        /// <summary>
+        /// Коллекция элементов класса <see cref="Movie"/>. 
+        /// </summary>
         private Movie[] _movies = new Movie[DefaultSize];
+
+        /// <summary>
+        /// Выбранный в MovieListBox элемент.
+        /// </summary>
         private Movie _currentMovie;
-        private Random random = new Random();
+
+        /// <summary>
+        /// Элемент класса <see cref="Random"/>.
+        /// </summary>
+        private Random _random = new Random();
 
         /// <summary>
         /// Создает объект типа <see cref="MoviesColntrol"/>
@@ -51,10 +66,10 @@ namespace Programming.View.Panels
             for (int i = 0; i < DefaultSize; i++)
             {
                 string name = (i + 1).ToString();
-                int duration = random.Next(1, 301);
-                int year = random.Next(1900, 2024);
-                string genre = genres.GetValue(index: random.Next(0, genres.Length)).ToString();
-                double rating = random.NextDouble() * 10;
+                int duration = _random.Next(1, 301);
+                int year = _random.Next(1900, 2024);
+                string genre = genres.GetValue(index: _random.Next(0, genres.Length)).ToString();
+                double rating = _random.NextDouble() * 10;
                 _movies[i] = new Movie(name, duration, year, genre, rating);
             }
         }
