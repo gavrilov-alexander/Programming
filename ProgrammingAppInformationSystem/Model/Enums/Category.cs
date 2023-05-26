@@ -8,16 +8,16 @@ namespace ProgrammingAppInformationSystem.Model.Enums
 {
     public enum Category
     {
-        AmusementPark,
-        Cafe,
-        Cinema,
-        Club,
-        EducationalInstitution,
-        Hospital,
-        Municipal,
-        Museum,
-        Restaurant,
-        ShoppingCenter,
-        Supermarket
+        ПаркРазвлечений,
+        Кафе,
+        Кинотеатр,
+        Клуб,
+        ОбразовательноеУчреждение,
+        Больница,
+        Муниципалитет,
+        Музей,
+        Ресторан,
+        ТорговыйЦентр,
+        Супермаркет
     }
 }

@@ -58,7 +58,7 @@
             this.OrganizationListBox.ItemHeight = 25;
             this.OrganizationListBox.Location = new System.Drawing.Point(12, 12);
             this.OrganizationListBox.Name = "OrganizationListBox";
-            this.OrganizationListBox.Size = new System.Drawing.Size(230, 525);
+            this.OrganizationListBox.Size = new System.Drawing.Size(410, 525);
             this.OrganizationListBox.TabIndex = 12;
             this.OrganizationListBox.SelectedIndexChanged += new System.EventHandler(this.OrganizationListBox_SelectedIndexChanged);
             // 
@@ -133,7 +133,7 @@
             // 
             this.AddOrganizationPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AddOrganizationPictureBox.Image = global::ProgrammingAppInformationSystem.Properties.Resources.organization_add_50x50;
-            this.AddOrganizationPictureBox.Location = new System.Drawing.Point(248, 309);
+            this.AddOrganizationPictureBox.Location = new System.Drawing.Point(428, 309);
             this.AddOrganizationPictureBox.Name = "AddOrganizationPictureBox";
             this.AddOrganizationPictureBox.Size = new System.Drawing.Size(50, 50);
             this.AddOrganizationPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -152,7 +152,7 @@
             this.SelectedOrganizationGroupBox.Controls.Add(this.RatingTextBox);
             this.SelectedOrganizationGroupBox.Controls.Add(this.AddressTextBox);
             this.SelectedOrganizationGroupBox.Controls.Add(this.RatingLabel);
-            this.SelectedOrganizationGroupBox.Location = new System.Drawing.Point(248, 12);
+            this.SelectedOrganizationGroupBox.Location = new System.Drawing.Point(428, 12);
             this.SelectedOrganizationGroupBox.Name = "SelectedOrganizationGroupBox";
             this.SelectedOrganizationGroupBox.Size = new System.Drawing.Size(540, 291);
             this.SelectedOrganizationGroupBox.TabIndex = 13;
@@ -171,7 +171,7 @@
             // 
             this.RemoveOrganizationPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RemoveOrganizationPictureBox.Image = global::ProgrammingAppInformationSystem.Properties.Resources.organization_remove_50x50;
-            this.RemoveOrganizationPictureBox.Location = new System.Drawing.Point(360, 309);
+            this.RemoveOrganizationPictureBox.Location = new System.Drawing.Point(540, 309);
             this.RemoveOrganizationPictureBox.Name = "RemoveOrganizationPictureBox";
             this.RemoveOrganizationPictureBox.Size = new System.Drawing.Size(50, 50);
             this.RemoveOrganizationPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -183,7 +183,7 @@
             // 
             this.EditOrganizationPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EditOrganizationPictureBox.Image = global::ProgrammingAppInformationSystem.Properties.Resources.organization_edit_50x50;
-            this.EditOrganizationPictureBox.Location = new System.Drawing.Point(304, 309);
+            this.EditOrganizationPictureBox.Location = new System.Drawing.Point(484, 309);
             this.EditOrganizationPictureBox.Name = "EditOrganizationPictureBox";
             this.EditOrganizationPictureBox.Size = new System.Drawing.Size(50, 50);
             this.EditOrganizationPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -195,7 +195,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 549);
+            this.ClientSize = new System.Drawing.Size(980, 549);
             this.Controls.Add(this.EditOrganizationPictureBox);
             this.Controls.Add(this.RemoveOrganizationPictureBox);
             this.Controls.Add(this.OrganizationListBox);
