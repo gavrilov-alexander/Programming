@@ -12,32 +12,68 @@ using System.Windows.Forms;
 
 namespace ProgrammingAppInformationSystem.View
 {
+    /// <summary>
+    /// Хранит логику дополнительного окна приложения.
+    /// </summary>
     public partial class AddAndEditForm : Form
     {
+        /// <summary>
+        /// Объект класса <see cref="Organization"/> который заполняется.
+        /// </summary>
+        public Organization currentOrganization;
+
+        /// <summary>
+        /// Флаг корректности введенных в NameTextBox данных.
+        /// </summary>
         private bool _nameFlag = false;
+
+        /// <summary>
+        /// Флаг корректности введенных в AddressTextBox данных.
+        /// </summary>
         private bool _addressFlag = false;
+
+        /// <summary>
+        /// Флаг корректности введенных в CategoryComboBox данных.
+        /// </summary>
         private bool _categoryFlag = false;
+
+        /// <summary>
+        /// Флаг корректности введенных в RatingTextBox данных.
+        /// </summary>
         private bool _ratingFlag = false;
-        public AddAndEditForm()
+
+        /// <summary>
+        /// Создает объект типа <see cref="AddAndEditForm"/>.
+        /// </summary>
+        public AddAndEditForm(Organization organization)
         {
             InitializeComponent();
             InitializeCategoryComboBox();
-            if (StaticData.currentOrganization.Name != null)
+            currentOrganization = organization;
+            if (organization.Name != null)
             {
                 InitializeOrganizationGroupBox();
             }
         }
+
+        /// <summary>
+        /// Заполняет NameTextBox, AddressTextBox, CategoryComboBox, RatingTextBox значениями параметров <see cref="MainForm.AddOrEditOrganization"/>.
+        /// </summary>
         private void InitializeOrganizationGroupBox()
         {
-            NameTextBox.Text = StaticData.currentOrganization.Name;
-            AddressTextBox.Text = StaticData.currentOrganization.Address;
+            NameTextBox.Text = currentOrganization.Name;
+            AddressTextBox.Text = currentOrganization.Address;
             object parsedValue;
-            if (Enum.TryParse(typeof(Category), StaticData.currentOrganization.Category, out parsedValue))
+            if (Enum.TryParse(typeof(Category), currentOrganization.Category, out parsedValue))
             {
                 CategoryComboBox.SelectedItem = parsedValue;
             }
-            RatingTextBox.Text = StaticData.currentOrganization.Rating.ToString();
+            RatingTextBox.Text = currentOrganization.Rating.ToString();
         }
+
+        /// <summary>
+        /// Заполняет CategoryComboBox элементами перечисления <see cref="Category"/>.
+        /// </summary>
         private void InitializeCategoryComboBox()
         {
             var categories = Enum.GetValues(typeof(Category));
@@ -47,12 +83,15 @@ namespace ProgrammingAppInformationSystem.View
             }
         }
 
+        /// <summary>
+        /// Записывает в <see cref="MainForm.AddOrEditOrganization"/> значение из NameTextBox.
+        /// </summary>
         private void NameTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 NameTextBox.BackColor = AppColors.White;
-                StaticData.currentOrganization.Name = NameTextBox.Text;
+                currentOrganization.Name = NameTextBox.Text;
                 _nameFlag = true;
             }
             catch
@@ -62,12 +101,15 @@ namespace ProgrammingAppInformationSystem.View
             }
         }
 
+        /// <summary>
+        /// Записывает в <see cref="MainForm.AddOrEditOrganization"/> значение из AddressTextBox.
+        /// </summary>
         private void AddressTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 AddressTextBox.BackColor = AppColors.White;
-                StaticData.currentOrganization.Address = AddressTextBox.Text;
+                currentOrganization.Address = AddressTextBox.Text;
                 _addressFlag = true;
             }
             catch
@@ -77,12 +119,15 @@ namespace ProgrammingAppInformationSystem.View
             }
         }
 
+        /// <summary>
+        /// Записывает в <see cref="MainForm.AddOrEditOrganization"/> значение из CategoryComboBox.
+        /// </summary>
         private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
                 CategoryComboBox.BackColor = AppColors.White;
-                StaticData.currentOrganization.Category = CategoryComboBox.Text;
+                currentOrganization.Category = CategoryComboBox.Text;
                 _categoryFlag = true;
             }
             catch
@@ -92,12 +137,15 @@ namespace ProgrammingAppInformationSystem.View
             }
         }
 
+        /// <summary>
+        /// Записывает в <see cref="MainForm.AddOrEditOrganization"/> значение из RatingTextBox.
+        /// </summary>
         private void RatingTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 RatingTextBox.BackColor = AppColors.White;
-                StaticData.currentOrganization.Rating = Double.Parse(RatingTextBox.Text);
+                currentOrganization.Rating = Double.Parse(RatingTextBox.Text);
                 _ratingFlag = true;
             }
             catch
@@ -107,6 +155,10 @@ namespace ProgrammingAppInformationSystem.View
             }
         }
 
+        /// <summary>
+        /// Проверяет введенные в NameTextBox, AddressTextBox, CategoryComboBox, RatingTextBox 
+        /// значения на корректность.
+        /// </summary>
         private void AcceptPictureBox_Click(object sender, EventArgs e)
         {
             if (!(_nameFlag && _addressFlag && _categoryFlag && _ratingFlag))
@@ -129,13 +181,24 @@ namespace ProgrammingAppInformationSystem.View
                 }
                 return;
             }
-            StaticData.Flag = true;
+            DialogResult = DialogResult.OK;
             this.Close();
         }
 
+        /// <summary>
+        /// Контролирует изменение CategoryComboBox.
+        /// </summary>
         private void CategoryComboBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        /// <summary>
+        /// Закрывает форму.
+        /// </summary>
+        private void CLosePictureBox_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

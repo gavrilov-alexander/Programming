@@ -50,9 +50,8 @@
             // 
             // OrganizationListBox
             // 
-            this.OrganizationListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.OrganizationListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.OrganizationListBox.FormattingEnabled = true;
             this.OrganizationListBox.IntegralHeight = false;
             this.OrganizationListBox.ItemHeight = 25;
@@ -64,7 +63,6 @@
             // 
             // NameLabel
             // 
-            this.NameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.NameLabel.AutoSize = true;
             this.NameLabel.Location = new System.Drawing.Point(6, 27);
             this.NameLabel.Name = "NameLabel";
@@ -74,7 +72,8 @@
             // 
             // NameTextBox
             // 
-            this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.NameTextBox.Location = new System.Drawing.Point(6, 55);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(528, 31);
@@ -83,7 +82,6 @@
             // 
             // CategoryLabel
             // 
-            this.CategoryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CategoryLabel.AutoSize = true;
             this.CategoryLabel.Location = new System.Drawing.Point(6, 151);
             this.CategoryLabel.Name = "CategoryLabel";
@@ -93,7 +91,6 @@
             // 
             // AdressLabel
             // 
-            this.AdressLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AdressLabel.AutoSize = true;
             this.AdressLabel.Location = new System.Drawing.Point(6, 89);
             this.AdressLabel.Name = "AdressLabel";
@@ -103,7 +100,8 @@
             // 
             // RatingTextBox
             // 
-            this.RatingTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.RatingTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.RatingTextBox.Location = new System.Drawing.Point(6, 243);
             this.RatingTextBox.Name = "RatingTextBox";
             this.RatingTextBox.Size = new System.Drawing.Size(264, 31);
@@ -112,7 +110,8 @@
             // 
             // AddressTextBox
             // 
-            this.AddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.AddressTextBox.Location = new System.Drawing.Point(6, 117);
             this.AddressTextBox.Name = "AddressTextBox";
             this.AddressTextBox.Size = new System.Drawing.Size(264, 31);
@@ -121,7 +120,6 @@
             // 
             // RatingLabel
             // 
-            this.RatingLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RatingLabel.AutoSize = true;
             this.RatingLabel.Location = new System.Drawing.Point(6, 215);
             this.RatingLabel.Name = "RatingLabel";
@@ -131,7 +129,6 @@
             // 
             // AddOrganizationPictureBox
             // 
-            this.AddOrganizationPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AddOrganizationPictureBox.Image = global::ProgrammingAppInformationSystem.Properties.Resources.organization_add_50x50;
             this.AddOrganizationPictureBox.Location = new System.Drawing.Point(428, 309);
             this.AddOrganizationPictureBox.Name = "AddOrganizationPictureBox";
@@ -143,7 +140,8 @@
             // 
             // SelectedOrganizationGroupBox
             // 
-            this.SelectedOrganizationGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SelectedOrganizationGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SelectedOrganizationGroupBox.Controls.Add(this.CategoryTextBox);
             this.SelectedOrganizationGroupBox.Controls.Add(this.NameLabel);
             this.SelectedOrganizationGroupBox.Controls.Add(this.NameTextBox);
@@ -161,6 +159,8 @@
             // 
             // CategoryTextBox
             // 
+            this.CategoryTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CategoryTextBox.Location = new System.Drawing.Point(6, 179);
             this.CategoryTextBox.Name = "CategoryTextBox";
             this.CategoryTextBox.Size = new System.Drawing.Size(264, 31);
@@ -169,7 +169,6 @@
             // 
             // RemoveOrganizationPictureBox
             // 
-            this.RemoveOrganizationPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RemoveOrganizationPictureBox.Image = global::ProgrammingAppInformationSystem.Properties.Resources.organization_remove_50x50;
             this.RemoveOrganizationPictureBox.Location = new System.Drawing.Point(540, 309);
             this.RemoveOrganizationPictureBox.Name = "RemoveOrganizationPictureBox";
@@ -181,7 +180,6 @@
             // 
             // EditOrganizationPictureBox
             // 
-            this.EditOrganizationPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EditOrganizationPictureBox.Image = global::ProgrammingAppInformationSystem.Properties.Resources.organization_edit_50x50;
             this.EditOrganizationPictureBox.Location = new System.Drawing.Point(484, 309);
             this.EditOrganizationPictureBox.Name = "EditOrganizationPictureBox";

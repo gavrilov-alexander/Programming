@@ -6,44 +6,73 @@ using Newtonsoft.Json;
 
 namespace ProgrammingAppInformationSystem.View
 {
+    /// <summary>
+    /// Хранит логику главного окна приложения.
+    /// </summary>
     public partial class MainForm : Form
     {
+        public static Organization organization;
+        /// <summary>
+        /// Коллекция элементов класса <see cref="Organization"/>.
+        /// </summary>
         private static List<Organization> _organizations = new List<Organization>();
-        private static Organization _currentOrganization;
-        private static string _fileName = "input.json";
-        //public const int DefualtSize = 5;
 
+        /// <summary>
+        /// Элемент, выбранный в OrganizationListBox.
+        /// </summary>
+        private static Organization _currentOrganization;
+
+        /// <summary>
+        /// Название файла, хранящего ранее добавленные объекты.
+        /// </summary>
+        private static string _fileName;
+
+        /// <summary>
+        /// Создает объект типа <see cref="MainForm"/>.
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
-            //RandomOrganizations();
             DeserializeData();
             InitializeOrganizationListBox();
             OrganizationListBox.SelectedIndex = -1;
+            SelectedOrganizationClear();
         }
-        /*private void RandomOrganizations()
-        {
-            var categories = Enum.GetValues(typeof(Category));
-            Random random = new Random();
-            for (int i = 0; i < DefualtSize; i++)
-            {
-                _organizations.Add(new Organization($"{i}", $"{i}", 
-                                   categories.GetValue(random.Next(0, categories.Length)).ToString(), 
-                                   random.Next(0, 4) + random.NextDouble()));
-            }
-        }*/
+        
+        /// <summary>
+        /// Создает файл, для хранения данных, десериализует ранее записанную в файл информацию.
+        /// </summary>
         private void DeserializeData()
         {
-            JsonTextReader reader = new JsonTextReader(new StreamReader(_fileName));
-            reader.SupportMultipleContent = true;
-            while (reader.Read())
+            string direcoryName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),"OrganizationApp");
+            DirectoryInfo directoryInfo = new DirectoryInfo(direcoryName);
+            if (!directoryInfo.Exists)
             {
-                JsonSerializer serializer = new JsonSerializer();
-                Organization organization = serializer.Deserialize<Organization>(reader);
-                _organizations.Add(organization);
+                directoryInfo.Create();
             }
-            reader.Close();
+            _fileName = Path.Combine(direcoryName, "input.json");
+            FileInfo fileInfo = new FileInfo(_fileName);
+            if (!fileInfo.Exists)
+            {
+                File.WriteAllText(_fileName, string.Empty);
+            }
+            else
+            {
+                JsonTextReader reader = new JsonTextReader(new StreamReader(_fileName));
+                reader.SupportMultipleContent = true;
+                while (reader.Read())
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    Organization organization = serializer.Deserialize<Organization>(reader);
+                    _organizations.Add(organization);
+                }
+                reader.Close();
+            }
         }
+
+        /// <summary>
+        /// Сериализует информацию об объектах, используемых в программе.
+        /// </summary>
         private void SerializeData()
         {
             File.WriteAllText(_fileName, string.Empty);
@@ -52,17 +81,29 @@ namespace ProgrammingAppInformationSystem.View
                 File.AppendAllText(_fileName, JsonConvert.SerializeObject(organization));
             }
         }
+
+        /// <summary>
+        /// Заполняет OrganizationListBox.
+        /// </summary>
         private void InitializeOrganizationListBox()
         {
             OrganizationListBox.DisplayMember = nameof(Organization.Info);
             OrganizationListBox.DataSource = _organizations;
         }
+
+        /// <summary>
+        /// Обновляет данные, отобрвжвемые в OrganizationListBox.
+        /// </summary>
         private void UpdateOrganizationListBox()
         {
             OrganizationListBox.DataSource = null;
-            OrganizationListBox.DisplayMember = nameof(Organization.Info);
             OrganizationListBox.DataSource = _organizations;
+            OrganizationListBox.DisplayMember = nameof(Organization.Info);
         }
+
+        /// <summary>
+        /// Очищает поля, отображающие информацию о выбранном в OrganizationListBox объекте.
+        /// </summary>
         private void SelectedOrganizationClear()
         {
             NameTextBox.Clear();
@@ -70,6 +111,10 @@ namespace ProgrammingAppInformationSystem.View
             CategoryTextBox.Clear();
             RatingTextBox.Clear();
         }
+
+        /// <summary>
+        /// Очищает поля, отображающие информацию о выбранном в OrganizationListBox объекте.
+        /// </summary>
         private void UpdateCurrentOrganization()
         {
             if (OrganizationListBox.SelectedItem == null)
@@ -84,6 +129,10 @@ namespace ProgrammingAppInformationSystem.View
             RatingTextBox.Text = _currentOrganization.Rating.ToString();
         }
 
+        /// <summary>
+        /// Заполняет NameTextBox, AddressTextBox, CategoryTextBox, RatingTextBox значениями 
+        /// выбранного в OrganizationListBox элемента.
+        /// </summary>
         private void OrganizationListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (OrganizationListBox.SelectedItem == null)
@@ -101,18 +150,19 @@ namespace ProgrammingAppInformationSystem.View
             RatingTextBox.Text = _currentOrganization.Rating.ToString();
         }
 
+        /// <summary>
+        /// Вызывет новую форму для добавления нового объекта.
+        /// </summary>
         private void AddOrganizationPictureBox_Click(object sender, EventArgs e)
         {
-            StaticData.currentOrganization = new Organization();
-            StaticData.Flag = false;
-            AddAndEditForm addAndEditForm = new AddAndEditForm();
+            AddAndEditForm addAndEditForm = new AddAndEditForm(new Organization());
             addAndEditForm.ShowDialog();
-            if (StaticData.Flag)
+            if (addAndEditForm.DialogResult == DialogResult.OK)
             {
-                _organizations.Add(StaticData.currentOrganization);
+                _organizations.Add(addAndEditForm.currentOrganization);
                 _organizations.Sort(Organization.Compare);
                 UpdateOrganizationListBox();
-                OrganizationListBox.SelectedItem = StaticData.currentOrganization;
+                OrganizationListBox.SelectedItem = addAndEditForm.currentOrganization;
             }
             else
             {
@@ -120,6 +170,9 @@ namespace ProgrammingAppInformationSystem.View
             }
         }
 
+        /// <summary>
+        /// Вызывет новую форму для изменения выбранного объекта.
+        /// </summary>
         private void EditOrganizationPictureBox_Click(object sender, EventArgs e)
         {
             if (OrganizationListBox.SelectedIndex == -1)
@@ -130,16 +183,14 @@ namespace ProgrammingAppInformationSystem.View
             {
                 return;
             }
-            StaticData.currentOrganization = new Organization(_currentOrganization);
-            StaticData.Flag = false;
-            AddAndEditForm addAndEditForm = new AddAndEditForm();
+            AddAndEditForm addAndEditForm = new AddAndEditForm(new Organization(_currentOrganization));
             addAndEditForm.ShowDialog();
-            if (StaticData.Flag)
+            if (addAndEditForm.DialogResult == DialogResult.OK)
             {
-                _currentOrganization.Name = StaticData.currentOrganization.Name;
-                _currentOrganization.Address = StaticData.currentOrganization.Address;
-                _currentOrganization.Category = StaticData.currentOrganization.Category;
-                _currentOrganization.Rating = StaticData.currentOrganization.Rating;
+                _currentOrganization.Name = addAndEditForm.currentOrganization.Name;
+                _currentOrganization.Address = addAndEditForm.currentOrganization.Address;
+                _currentOrganization.Category = addAndEditForm.currentOrganization.Category;
+                _currentOrganization.Rating = addAndEditForm.currentOrganization.Rating;
                 _organizations.Sort(Organization.Compare);
                 UpdateOrganizationListBox();
                 OrganizationListBox.SelectedItem = _currentOrganization;
@@ -151,6 +202,9 @@ namespace ProgrammingAppInformationSystem.View
             }
         }
 
+        /// <summary>
+        /// Удаляет из коллекции выбранный в OrganizationListBox объект.
+        /// </summary>
         private void RemoveOrganizationPictureBox_Click(object sender, EventArgs e)
         {
             if (OrganizationListBox.SelectedItem == null)
@@ -172,26 +226,41 @@ namespace ProgrammingAppInformationSystem.View
             SelectedOrganizationClear();
         }
 
+        /// <summary>
+        /// Контролирует изменение NameTextBox.
+        /// </summary>
         private void NameTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Контролирует изменение AddressTextBox.
+        /// </summary>
         private void AddressTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Контролирует изменение CategoryTextBox.
+        /// </summary>
         private void CategoryTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Контролирует изменение RatingTextBox.
+        /// </summary>
         private void RatingTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Хранит логику, выполняемую при закрытии главного окна приложения.
+        /// </summary>
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             SerializeData();

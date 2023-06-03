@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddAndEditForm));
             this.OrganizationGroupBox = new System.Windows.Forms.GroupBox();
+            this.CLosePictureBox = new System.Windows.Forms.PictureBox();
             this.AcceptPictureBox = new System.Windows.Forms.PictureBox();
             this.NameLabel = new System.Windows.Forms.Label();
             this.CategoryComboBox = new System.Windows.Forms.ComboBox();
@@ -40,11 +41,13 @@
             this.AddressTextBox = new System.Windows.Forms.TextBox();
             this.RatingLabel = new System.Windows.Forms.Label();
             this.OrganizationGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CLosePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AcceptPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // OrganizationGroupBox
             // 
+            this.OrganizationGroupBox.Controls.Add(this.CLosePictureBox);
             this.OrganizationGroupBox.Controls.Add(this.AcceptPictureBox);
             this.OrganizationGroupBox.Controls.Add(this.NameLabel);
             this.OrganizationGroupBox.Controls.Add(this.CategoryComboBox);
@@ -61,12 +64,23 @@
             this.OrganizationGroupBox.TabStop = false;
             this.OrganizationGroupBox.Text = "Organization";
             // 
+            // CLosePictureBox
+            // 
+            this.CLosePictureBox.Image = global::ProgrammingAppInformationSystem.Properties.Resources.close_100x100;
+            this.CLosePictureBox.Location = new System.Drawing.Point(346, 194);
+            this.CLosePictureBox.Name = "CLosePictureBox";
+            this.CLosePictureBox.Size = new System.Drawing.Size(90, 90);
+            this.CLosePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CLosePictureBox.TabIndex = 11;
+            this.CLosePictureBox.TabStop = false;
+            this.CLosePictureBox.Click += new System.EventHandler(this.CLosePictureBox_Click);
+            // 
             // AcceptPictureBox
             // 
             this.AcceptPictureBox.Image = global::ProgrammingAppInformationSystem.Properties.Resources.accept_150x150;
-            this.AcceptPictureBox.Location = new System.Drawing.Point(384, 135);
+            this.AcceptPictureBox.Location = new System.Drawing.Point(442, 194);
             this.AcceptPictureBox.Name = "AcceptPictureBox";
-            this.AcceptPictureBox.Size = new System.Drawing.Size(150, 150);
+            this.AcceptPictureBox.Size = new System.Drawing.Size(90, 90);
             this.AcceptPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.AcceptPictureBox.TabIndex = 10;
             this.AcceptPictureBox.TabStop = false;
@@ -162,6 +176,7 @@
             this.Text = "AddAndEditForm";
             this.OrganizationGroupBox.ResumeLayout(false);
             this.OrganizationGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CLosePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AcceptPictureBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -179,5 +194,6 @@
         private TextBox AddressTextBox;
         private Label RatingLabel;
         private PictureBox AcceptPictureBox;
+        private PictureBox CLosePictureBox;
     }
 }

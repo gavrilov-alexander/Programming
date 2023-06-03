@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProgrammingAppInformationSystem.Model.Enums
 {
+    /// <summary>
+    /// Хранит перечисление категорий организаций.
+    /// </summary>
     public enum Category
     {
         ПаркРазвлечений,
