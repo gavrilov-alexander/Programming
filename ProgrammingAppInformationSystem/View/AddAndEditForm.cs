@@ -50,7 +50,9 @@ namespace ProgrammingAppInformationSystem.View
             InitializeComponent();
             InitializeCategoryComboBox();
             currentOrganization = organization;
-            if (organization.Name != null)
+
+            if (organization.Name != null || organization.Address != null
+             || organization.Category != null || organization.Rating != default)
             {
                 InitializeOrganizationGroupBox();
             }
