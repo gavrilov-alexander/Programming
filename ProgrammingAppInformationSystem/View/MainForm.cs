@@ -50,6 +50,7 @@ namespace ProgrammingAppInformationSystem.View
             {
                 directoryInfo.Create();
             }
+
             _fileName = Path.Combine(direcoryName, "input.json");
             FileInfo fileInfo = new FileInfo(_fileName);
             if (!fileInfo.Exists)
