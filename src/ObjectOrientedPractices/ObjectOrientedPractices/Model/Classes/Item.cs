@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ObjectOrientedPractices.Model.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,6 +42,8 @@ namespace ObjectOrientedPractices.Model.Classes
         /// Возвращает идентификатор предмета.
         /// </summary>
         public int Id { get { return _id; } }
+
+        public Category Category { get; set; }
 
         /// <summary>
         /// Возвращает и задает название предмета. Длина строки должна быть меньше 200 символов.
@@ -91,13 +94,14 @@ namespace ObjectOrientedPractices.Model.Classes
         /// <param name="name">Название предмета. Длина строки должна быть меньше 200 символов.</param>
         /// <param name="info">Описание предмета. Длина строки должна быть меньше 1000 символов.</param>
         /// <param name="cost">Стоимость предмета. Должна быть в диапозоне от 0 до 100000.</param>
-        public Item(string name, string info, double cost)
+        public Item(string name, string info, double cost, Category category)
         {
             _id = _idCounter;
             _idCounter++;
             Name = name;
             Info = info;
             Cost = cost;
+            Category = category;
         }
 
         /// <summary>

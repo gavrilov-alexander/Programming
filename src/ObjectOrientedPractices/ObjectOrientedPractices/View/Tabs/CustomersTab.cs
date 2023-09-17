@@ -66,9 +66,7 @@ namespace ObjectOrientedPractices.View.Tabs
         {
             IdTextBox.Text = "";
             FullNameTextBox.Text = "";
-            AddressTextBox.Text = "";
             FullNameTextBox.BackColor = Color.White;
-            AddressTextBox.BackColor = Color.White;
         }
 
         /// <summary>
@@ -101,7 +99,6 @@ namespace ObjectOrientedPractices.View.Tabs
             _currentCustomer = _customers[CustomersListBox.SelectedIndex];
             IdTextBox.Text = _currentCustomer.Id.ToString();
             FullNameTextBox.Text = _currentCustomer.FullName.ToString();
-            AddressTextBox.Text = _currentCustomer.Address;
         }
 
         /// <summary>
@@ -156,9 +153,7 @@ namespace ObjectOrientedPractices.View.Tabs
         private void ApplyButton_Click(object sender, EventArgs e)
         {
             if (FullNameTextBox.BackColor == Color.Pink
-                || AddressTextBox.BackColor == Color.Pink
                 || FullNameTextBox.Text == ""
-                || AddressTextBox.Text == ""
                 || _currentCustomer != _newCustomer)
             {
                 return;
@@ -201,7 +196,7 @@ namespace ObjectOrientedPractices.View.Tabs
         /// <summary>
         /// Записывает в _currentCustomer значение из AddressTextBox.
         /// </summary>
-        private void AddressTextBox_TextChanged(object sender, EventArgs e)
+        /*private void AddressTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -212,6 +207,6 @@ namespace ObjectOrientedPractices.View.Tabs
             {
                 AddressTextBox.BackColor = Color.Pink;
             }
-        }
+        }*/
     }
 }

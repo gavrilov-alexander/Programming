@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Model.Classes.Address address1 = new Model.Classes.Address();
             CustomersListBox = new ListBox();
             ControlTableLayoutPanel = new TableLayoutPanel();
             CustomersTableLayoutPanel = new TableLayoutPanel();
@@ -39,12 +40,11 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             SelectedCustomerGroupBox = new GroupBox();
             ApplyButton = new Button();
-            AddressTextBox = new TextBox();
-            AddressLabel = new Label();
             FullNameTextBox = new TextBox();
             FullNameLabel = new Label();
             IdTextBox = new TextBox();
             IdLabel = new Label();
+            addressControl1 = new Controls.AddressControl();
             ControlTableLayoutPanel.SuspendLayout();
             CustomersTableLayoutPanel.SuspendLayout();
             ButtonsTableLayoutPanel.SuspendLayout();
@@ -61,7 +61,7 @@
             CustomersListBox.ItemHeight = 25;
             CustomersListBox.Location = new Point(3, 27);
             CustomersListBox.Name = "CustomersListBox";
-            CustomersListBox.Size = new Size(455, 731);
+            CustomersListBox.Size = new Size(521, 731);
             CustomersListBox.TabIndex = 0;
             CustomersListBox.SelectedIndexChanged += CustomersListBox_SelectedIndexChanged;
             // 
@@ -77,7 +77,7 @@
             ControlTableLayoutPanel.Name = "ControlTableLayoutPanel";
             ControlTableLayoutPanel.RowCount = 1;
             ControlTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            ControlTableLayoutPanel.Size = new Size(1184, 828);
+            ControlTableLayoutPanel.Size = new Size(1349, 828);
             ControlTableLayoutPanel.TabIndex = 1;
             // 
             // CustomersTableLayoutPanel
@@ -92,7 +92,7 @@
             CustomersTableLayoutPanel.RowCount = 2;
             CustomersTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             CustomersTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
-            CustomersTableLayoutPanel.Size = new Size(467, 822);
+            CustomersTableLayoutPanel.Size = new Size(533, 822);
             CustomersTableLayoutPanel.TabIndex = 0;
             // 
             // ButtonsTableLayoutPanel
@@ -109,15 +109,15 @@
             ButtonsTableLayoutPanel.Name = "ButtonsTableLayoutPanel";
             ButtonsTableLayoutPanel.RowCount = 1;
             ButtonsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            ButtonsTableLayoutPanel.Size = new Size(461, 49);
+            ButtonsTableLayoutPanel.Size = new Size(527, 49);
             ButtonsTableLayoutPanel.TabIndex = 0;
             // 
             // AddListButton
             // 
             AddListButton.Dock = DockStyle.Fill;
-            AddListButton.Location = new Point(156, 3);
+            AddListButton.Location = new Point(178, 3);
             AddListButton.Name = "AddListButton";
-            AddListButton.Size = new Size(147, 43);
+            AddListButton.Size = new Size(169, 43);
             AddListButton.TabIndex = 2;
             AddListButton.Text = "Add List";
             AddListButton.UseVisualStyleBackColor = true;
@@ -126,9 +126,9 @@
             // RemoveButton
             // 
             RemoveButton.Dock = DockStyle.Fill;
-            RemoveButton.Location = new Point(309, 3);
+            RemoveButton.Location = new Point(353, 3);
             RemoveButton.Name = "RemoveButton";
-            RemoveButton.Size = new Size(149, 43);
+            RemoveButton.Size = new Size(171, 43);
             RemoveButton.TabIndex = 1;
             RemoveButton.Text = "Remove";
             RemoveButton.UseVisualStyleBackColor = true;
@@ -139,7 +139,7 @@
             AddButton.Dock = DockStyle.Fill;
             AddButton.Location = new Point(3, 3);
             AddButton.Name = "AddButton";
-            AddButton.Size = new Size(147, 43);
+            AddButton.Size = new Size(169, 43);
             AddButton.TabIndex = 0;
             AddButton.Text = "Add";
             AddButton.UseVisualStyleBackColor = true;
@@ -152,7 +152,7 @@
             CustomersGroupBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             CustomersGroupBox.Location = new Point(3, 3);
             CustomersGroupBox.Name = "CustomersGroupBox";
-            CustomersGroupBox.Size = new Size(461, 761);
+            CustomersGroupBox.Size = new Size(527, 761);
             CustomersGroupBox.TabIndex = 1;
             CustomersGroupBox.TabStop = false;
             CustomersGroupBox.Text = "Customers";
@@ -163,19 +163,18 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Controls.Add(SelectedCustomerGroupBox, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(476, 3);
+            tableLayoutPanel1.Location = new Point(542, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(705, 822);
+            tableLayoutPanel1.Size = new Size(804, 822);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // SelectedCustomerGroupBox
             // 
+            SelectedCustomerGroupBox.Controls.Add(addressControl1);
             SelectedCustomerGroupBox.Controls.Add(ApplyButton);
-            SelectedCustomerGroupBox.Controls.Add(AddressTextBox);
-            SelectedCustomerGroupBox.Controls.Add(AddressLabel);
             SelectedCustomerGroupBox.Controls.Add(FullNameTextBox);
             SelectedCustomerGroupBox.Controls.Add(FullNameLabel);
             SelectedCustomerGroupBox.Controls.Add(IdTextBox);
@@ -184,7 +183,7 @@
             SelectedCustomerGroupBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             SelectedCustomerGroupBox.Location = new Point(3, 3);
             SelectedCustomerGroupBox.Name = "SelectedCustomerGroupBox";
-            SelectedCustomerGroupBox.Size = new Size(699, 405);
+            SelectedCustomerGroupBox.Size = new Size(798, 405);
             SelectedCustomerGroupBox.TabIndex = 0;
             SelectedCustomerGroupBox.TabStop = false;
             SelectedCustomerGroupBox.Text = "Selected Customer";
@@ -192,7 +191,7 @@
             // ApplyButton
             // 
             ApplyButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            ApplyButton.Location = new Point(107, 328);
+            ApplyButton.Location = new Point(6, 290);
             ApplyButton.Name = "ApplyButton";
             ApplyButton.Size = new Size(147, 43);
             ApplyButton.TabIndex = 9;
@@ -200,34 +199,13 @@
             ApplyButton.UseVisualStyleBackColor = true;
             ApplyButton.Click += ApplyButton_Click;
             // 
-            // AddressTextBox
-            // 
-            AddressTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            AddressTextBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            AddressTextBox.Location = new Point(107, 103);
-            AddressTextBox.Multiline = true;
-            AddressTextBox.Name = "AddressTextBox";
-            AddressTextBox.Size = new Size(586, 223);
-            AddressTextBox.TabIndex = 5;
-            AddressTextBox.TextChanged += AddressTextBox_TextChanged;
-            // 
-            // AddressLabel
-            // 
-            AddressLabel.AutoSize = true;
-            AddressLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            AddressLabel.Location = new Point(6, 107);
-            AddressLabel.Name = "AddressLabel";
-            AddressLabel.Size = new Size(81, 25);
-            AddressLabel.TabIndex = 4;
-            AddressLabel.Text = "Address:";
-            // 
             // FullNameTextBox
             // 
             FullNameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             FullNameTextBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             FullNameTextBox.Location = new Point(107, 67);
             FullNameTextBox.Name = "FullNameTextBox";
-            FullNameTextBox.Size = new Size(586, 31);
+            FullNameTextBox.Size = new Size(685, 31);
             FullNameTextBox.TabIndex = 3;
             FullNameTextBox.TextChanged += FullNameTextBox_TextChanged;
             // 
@@ -260,13 +238,27 @@
             IdLabel.TabIndex = 0;
             IdLabel.Text = "ID:";
             // 
+            // addressControl1
+            // 
+            address1.Apartment = null;
+            address1.Building = null;
+            address1.City = null;
+            address1.Country = null;
+            address1.Index = 0;
+            address1.Street = null;
+            addressControl1.Address = address1;
+            addressControl1.Location = new Point(0, 104);
+            addressControl1.Name = "addressControl1";
+            addressControl1.Size = new Size(792, 180);
+            addressControl1.TabIndex = 10;
+            // 
             // CustomersTab
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(ControlTableLayoutPanel);
             Name = "CustomersTab";
-            Size = new Size(1184, 828);
+            Size = new Size(1349, 828);
             ControlTableLayoutPanel.ResumeLayout(false);
             CustomersTableLayoutPanel.ResumeLayout(false);
             ButtonsTableLayoutPanel.ResumeLayout(false);
@@ -290,11 +282,10 @@
         private GroupBox SelectedCustomerGroupBox;
         private TextBox IdTextBox;
         private Label IdLabel;
-        private TextBox AddressTextBox;
-        private Label AddressLabel;
         private TextBox FullNameTextBox;
         private Label FullNameLabel;
         private Button AddListButton;
         private Button ApplyButton;
+        private Controls.AddressControl addressControl1;
     }
 }

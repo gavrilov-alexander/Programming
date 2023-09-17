@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ObjectOrientedPractices.Model.Classes;
 using ObjectOrientedPractices.Services;
+using ObjectOrientedPractices.Model.Enums;
 
 namespace ObjectOrientedPractices.View.Tabs
 {
@@ -37,6 +38,8 @@ namespace ObjectOrientedPractices.View.Tabs
         /// </summary>
         public const int DesualtSize = 10;
 
+        public Array Categories = Enum.GetValues(typeof(Category));
+
         /// <summary>
         /// Создает объект типа <see cref="ItemsTab"/>
         /// </summary>
@@ -46,6 +49,10 @@ namespace ObjectOrientedPractices.View.Tabs
             _currentItem = _newItem;
             IdTextBox.Text = _currentItem.Id.ToString();
             FillItemsListBox();
+            /*var categories = Enum.GetValues(typeof(Category));
+            Categories = categories;*/
+            CategoryComboBox.Items.Clear();
+            CategoryComboBox.DataSource = Categories;
         }
 
         /// <summary>
@@ -70,6 +77,7 @@ namespace ObjectOrientedPractices.View.Tabs
             CostTextBox.BackColor = Color.White;
             NameTextBox.BackColor = Color.White;
             InfoTextBox.BackColor = Color.White;
+            CategoryComboBox.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -103,6 +111,7 @@ namespace ObjectOrientedPractices.View.Tabs
             IdTextBox.Text = _currentItem.Id.ToString();
             CostTextBox.Text = _currentItem.Cost.ToString();
             NameTextBox.Text = _currentItem.Name;
+            CategoryComboBox.SelectedItem = _currentItem.Category;
             InfoTextBox.Text = _currentItem.Info;
         }
 
@@ -232,6 +241,16 @@ namespace ObjectOrientedPractices.View.Tabs
             {
                 InfoTextBox.BackColor = Color.Pink;
             }
+        }
+
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _currentItem.Category = (Category)(CategoryComboBox.SelectedItem);
+        }
+
+        private void CategoryComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

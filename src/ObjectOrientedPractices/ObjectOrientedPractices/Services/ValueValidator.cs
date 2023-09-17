@@ -42,5 +42,13 @@ namespace ObjectOrientedPractices.Services
                 throw new ArgumentException($"{propertyName} должен быть в диапозоне от {min} до {max}");
             }
         }
+
+        public static void AssertValueInRange(int value, int min, int max, [CallerMemberName] string propertyName = "")
+        {
+            if (!((value > min) && (value < max)))
+            {
+                throw new ArgumentException($"{propertyName} должен быть в диапозоне от {min} до {max}");
+            }
+        }
     }
 }
