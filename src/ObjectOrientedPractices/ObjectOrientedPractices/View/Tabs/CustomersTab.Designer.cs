@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Model.Classes.Address address1 = new Model.Classes.Address();
+            components = new System.ComponentModel.Container();
             CustomersListBox = new ListBox();
             ControlTableLayoutPanel = new TableLayoutPanel();
             CustomersTableLayoutPanel = new TableLayoutPanel();
@@ -39,12 +39,13 @@
             CustomersGroupBox = new GroupBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             SelectedCustomerGroupBox = new GroupBox();
+            AddressControl1 = new Controls.AddressControl();
             ApplyButton = new Button();
             FullNameTextBox = new TextBox();
             FullNameLabel = new Label();
             IdTextBox = new TextBox();
             IdLabel = new Label();
-            addressControl1 = new Controls.AddressControl();
+            toolTip1 = new ToolTip(components);
             ControlTableLayoutPanel.SuspendLayout();
             CustomersTableLayoutPanel.SuspendLayout();
             ButtonsTableLayoutPanel.SuspendLayout();
@@ -64,6 +65,7 @@
             CustomersListBox.Size = new Size(521, 731);
             CustomersListBox.TabIndex = 0;
             CustomersListBox.SelectedIndexChanged += CustomersListBox_SelectedIndexChanged;
+            CustomersListBox.Leave += CustomersListBox_Leave;
             // 
             // ControlTableLayoutPanel
             // 
@@ -173,7 +175,7 @@
             // 
             // SelectedCustomerGroupBox
             // 
-            SelectedCustomerGroupBox.Controls.Add(addressControl1);
+            SelectedCustomerGroupBox.Controls.Add(AddressControl1);
             SelectedCustomerGroupBox.Controls.Add(ApplyButton);
             SelectedCustomerGroupBox.Controls.Add(FullNameTextBox);
             SelectedCustomerGroupBox.Controls.Add(FullNameLabel);
@@ -188,10 +190,21 @@
             SelectedCustomerGroupBox.TabStop = false;
             SelectedCustomerGroupBox.Text = "Selected Customer";
             // 
+            // AddressControl1
+            // 
+            AddressControl1.Address = null;
+            AddressControl1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            AddressControl1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            AddressControl1.Location = new Point(0, 104);
+            AddressControl1.Name = "AddressControl1";
+            AddressControl1.Size = new Size(792, 180);
+            AddressControl1.TabIndex = 10;
+            // 
             // ApplyButton
             // 
             ApplyButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            ApplyButton.Location = new Point(6, 290);
+            ApplyButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ApplyButton.Location = new Point(6, 356);
             ApplyButton.Name = "ApplyButton";
             ApplyButton.Size = new Size(147, 43);
             ApplyButton.TabIndex = 9;
@@ -207,6 +220,7 @@
             FullNameTextBox.Name = "FullNameTextBox";
             FullNameTextBox.Size = new Size(685, 31);
             FullNameTextBox.TabIndex = 3;
+            toolTip1.SetToolTip(FullNameTextBox, "Не более 200 символов");
             FullNameTextBox.TextChanged += FullNameTextBox_TextChanged;
             // 
             // FullNameLabel
@@ -237,20 +251,6 @@
             IdLabel.Size = new Size(34, 25);
             IdLabel.TabIndex = 0;
             IdLabel.Text = "ID:";
-            // 
-            // addressControl1
-            // 
-            address1.Apartment = null;
-            address1.Building = null;
-            address1.City = null;
-            address1.Country = null;
-            address1.Index = 0;
-            address1.Street = null;
-            addressControl1.Address = address1;
-            addressControl1.Location = new Point(0, 104);
-            addressControl1.Name = "addressControl1";
-            addressControl1.Size = new Size(792, 180);
-            addressControl1.TabIndex = 10;
             // 
             // CustomersTab
             // 
@@ -286,6 +286,7 @@
         private Label FullNameLabel;
         private Button AddListButton;
         private Button ApplyButton;
-        private Controls.AddressControl addressControl1;
+        private Controls.AddressControl AddressControl1;
+        private ToolTip toolTip1;
     }
 }

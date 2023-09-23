@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ObjectOrientedPractices.Model.Classes;
 using ObjectOrientedPractices.Services;
+using ObjectOrientedPractices.View.Controls;
 
 namespace ObjectOrientedPractices.View.Tabs
 {
@@ -21,22 +22,30 @@ namespace ObjectOrientedPractices.View.Tabs
         /// <summary>
         /// Коллекция элементов класса <see cref="Customer"/>.
         /// </summary>
-        private static BindingList<Customer> _customers = new BindingList<Customer>();
+        private BindingList<Customer> _customers;
+
+        public BindingList<Customer> Customers
+        {
+            get { return _customers; }
+            set { _customers = value; }
+        }
 
         /// <summary>
         /// Выбранный в CustomersListBox элемент.
         /// </summary>
-        private static Customer _currentCustomer;
+        private Customer _currentCustomer;
 
         /// <summary>
         /// Создаваемый объект класса <see cref="Customer"/>.
         /// </summary>
-        private static Customer _newCustomer = new Customer();
+        private Customer _newCustomer = new Customer();
 
         /// <summary>
         /// Количество случайно генерируемых элементов коллекции _customers по нажатию кнопки AddListButton.
         /// </summary>
         public const int DesualtSize = 10;
+
+
 
         /// <summary>
         /// Создает объект типа <see cref="CustomersTab"/>
@@ -47,6 +56,7 @@ namespace ObjectOrientedPractices.View.Tabs
             _currentCustomer = _newCustomer;
             IdTextBox.Text = _currentCustomer.Id.ToString();
             FillCustomersListBox();
+            AddressControl1.Address = _currentCustomer.Address;
         }
 
         /// <summary>
@@ -55,7 +65,8 @@ namespace ObjectOrientedPractices.View.Tabs
         private void FillCustomersListBox()
         {
             CustomersListBox.DataSource = null;
-            CustomersListBox.DataSource = _customers;
+            CustomersListBox.DataSource = Customers;
+            CustomersListBox.DisplayMember = null;
             CustomersListBox.DisplayMember = nameof(Customer.FullName);
         }
 
@@ -64,15 +75,15 @@ namespace ObjectOrientedPractices.View.Tabs
         /// </summary>
         private void ClearCurrentItem()
         {
-            IdTextBox.Text = "";
-            FullNameTextBox.Text = "";
+            IdTextBox.Clear();
+            FullNameTextBox.Clear();
             FullNameTextBox.BackColor = Color.White;
         }
 
         /// <summary>
         /// Обновляет данные, отображаемые в CustomersListBox.
         /// </summary>
-        private void UpdateCustomersListBox()
+        private void UpdateCustomersListBoxDisplayMember()
         {
             CustomersListBox.DisplayMember = null;
             CustomersListBox.DisplayMember = nameof(Customer.FullName);
@@ -83,22 +94,20 @@ namespace ObjectOrientedPractices.View.Tabs
         /// </summary>
         private void CustomersListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CustomersListBox.SelectedIndex == -1 || _customers.Count == 0)
+            if (CustomersListBox.SelectedIndex == -1 || Customers.Count == 0)
             {
-                if (_currentCustomer == _newCustomer || _customers.Count == 0)
-                {
-                    ClearCurrentItem();
-                    IdTextBox.Text = _newCustomer.Id.ToString();
-                    ApplyButton.Visible = true;
-                    return;
-                }
+                _currentCustomer = _newCustomer;
+                AddressControl1.Address = _currentCustomer.Address;
                 ClearCurrentItem();
+                IdTextBox.Text = _newCustomer.Id.ToString();
+                ApplyButton.Visible = true;
                 return;
             }
             ApplyButton.Visible = false;
-            _currentCustomer = _customers[CustomersListBox.SelectedIndex];
+            _currentCustomer = Customers[CustomersListBox.SelectedIndex];
+            AddressControl1.Address = _currentCustomer.Address;
             IdTextBox.Text = _currentCustomer.Id.ToString();
-            FullNameTextBox.Text = _currentCustomer.FullName.ToString();
+            FullNameTextBox.Text = _currentCustomer.FullName;
         }
 
         /// <summary>
@@ -110,8 +119,6 @@ namespace ObjectOrientedPractices.View.Tabs
             {
                 return;
             }
-            _currentCustomer = null;
-            _currentCustomer = _newCustomer;
             CustomersListBox.SelectedIndex = -1;
         }
 
@@ -125,10 +132,10 @@ namespace ObjectOrientedPractices.View.Tabs
             {
                 _currentCustomer = null;
                 _currentCustomer = CustomerFactory.GenerateCustomer();
-                _customers.Add(_currentCustomer);
+                Customers.Add(_currentCustomer);
             }
             _currentCustomer = null;
-            _currentCustomer = _newCustomer;
+            FillCustomersListBox();
             CustomersListBox.SelectedIndex = -1;
         }
 
@@ -142,8 +149,6 @@ namespace ObjectOrientedPractices.View.Tabs
                 return;
             }
             _customers.Remove(_currentCustomer);
-            _currentCustomer = null;
-            _currentCustomer = _newCustomer;
             CustomersListBox.SelectedIndex = -1;
         }
 
@@ -158,10 +163,10 @@ namespace ObjectOrientedPractices.View.Tabs
             {
                 return;
             }
-            _customers.Add(_currentCustomer);
             _currentCustomer = null;
+            Customers.Add(_newCustomer);
             _newCustomer = new Customer();
-            _currentCustomer = _newCustomer;
+            FillCustomersListBox();
             CustomersListBox.SelectedIndex = -1;
         }
 
@@ -180,11 +185,19 @@ namespace ObjectOrientedPractices.View.Tabs
         {
             try
             {
+                if (_currentCustomer == null)
+                {
+                    return;
+                }
                 FullNameTextBox.BackColor = Color.White;
+                if (_currentCustomer.FullName == FullNameTextBox.Text)
+                {
+                    return;
+                }
                 _currentCustomer.FullName = FullNameTextBox.Text;
                 if (!(_currentCustomer == _newCustomer))
                 {
-                    UpdateCustomersListBox();
+                    UpdateCustomersListBoxDisplayMember();
                 }
             }
             catch
@@ -193,20 +206,9 @@ namespace ObjectOrientedPractices.View.Tabs
             }
         }
 
-        /// <summary>
-        /// Записывает в _currentCustomer значение из AddressTextBox.
-        /// </summary>
-        /*private void AddressTextBox_TextChanged(object sender, EventArgs e)
+        private void CustomersListBox_Leave(object sender, EventArgs e)
         {
-            try
-            {
-                AddressTextBox.BackColor = Color.White;
-                _currentCustomer.Address = AddressTextBox.Text;
-            }
-            catch
-            {
-                AddressTextBox.BackColor = Color.Pink;
-            }
-        }*/
+            UpdateCustomersListBoxDisplayMember();
+        }
     }
 }

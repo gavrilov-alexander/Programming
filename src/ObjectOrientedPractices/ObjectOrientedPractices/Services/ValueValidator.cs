@@ -21,7 +21,7 @@ namespace ObjectOrientedPractices.Services
         /// <exception cref="ArgumentException">Возникает, если длина строки больше максимального количесва символов.</exception>
         public static void AssertStringOnLength(string value, int maxLength, [CallerMemberName] string propertyName = "")
         {
-            if (!(value.Length < maxLength))
+            if (value == null || (!(value.Length < maxLength)))
             {
                 throw new ArgumentException($"{propertyName} должен быть меньше {maxLength} символов");
             }

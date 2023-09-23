@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ObjectOrientedPractices.Model.Classes;
 using ObjectOrientedPractices.Services;
 using ObjectOrientedPractices.Model.Enums;
+using System.Diagnostics;
 
 namespace ObjectOrientedPractices.View.Tabs
 {
@@ -21,17 +22,25 @@ namespace ObjectOrientedPractices.View.Tabs
         /// <summary>
         /// Коллекция элементов класса <see cref="Item"/>.
         /// </summary>
-        private static BindingList<Item> _items = new BindingList<Item>();
+        private BindingList<Item> _items;
 
-        /// <summary>
-        /// Выбранный в ItemsListBox элемент.
-        /// </summary>
-        private static Item _currentItem;
+        public BindingList<Item> Items
+        {
+            get { return _items; }
+            set { _items = value; }
+        }
+
+        
 
         /// <summary>
         /// Создаваемый объект класса <see cref="Item"/>.
         /// </summary>
-        private static Item _newItem = new Item();
+        private Item _newItem = new Item();
+
+        /// <summary>
+        /// Выбранный в ItemsListBox элемент.
+        /// </summary>
+        private Item _currentItem;
 
         /// <summary>
         /// Количество случайно генерируемых элементов коллекции _items по нажатию кнопки AddListButton.
@@ -49,8 +58,6 @@ namespace ObjectOrientedPractices.View.Tabs
             _currentItem = _newItem;
             IdTextBox.Text = _currentItem.Id.ToString();
             FillItemsListBox();
-            /*var categories = Enum.GetValues(typeof(Category));
-            Categories = categories;*/
             CategoryComboBox.Items.Clear();
             CategoryComboBox.DataSource = Categories;
         }
@@ -61,7 +68,8 @@ namespace ObjectOrientedPractices.View.Tabs
         private void FillItemsListBox()
         {
             ItemsListBox.DataSource = null;
-            ItemsListBox.DataSource = _items;
+            ItemsListBox.DataSource = Items;
+            ItemsListBox.DisplayMember = null;
             ItemsListBox.DisplayMember = nameof(Item.Name);
         }
 
@@ -70,10 +78,10 @@ namespace ObjectOrientedPractices.View.Tabs
         /// </summary>
         private void ClearCurrentItem()
         {
-            IdTextBox.Text = "";
-            CostTextBox.Text = "";
-            NameTextBox.Text = "";
-            InfoTextBox.Text = "";
+            IdTextBox.Clear();
+            CostTextBox.Clear();
+            NameTextBox.Clear();
+            InfoTextBox.Clear();
             CostTextBox.BackColor = Color.White;
             NameTextBox.BackColor = Color.White;
             InfoTextBox.BackColor = Color.White;
@@ -83,7 +91,7 @@ namespace ObjectOrientedPractices.View.Tabs
         /// <summary>
         /// Обновляет данные, отображаемые в ItemsListBox.
         /// </summary>
-        private void UpdateItemsListBox()
+        private void UpdateItemsListBoxDisplayMember()
         {
             ItemsListBox.DisplayMember = null;
             ItemsListBox.DisplayMember = nameof(Item.Name);
@@ -94,20 +102,16 @@ namespace ObjectOrientedPractices.View.Tabs
         /// </summary>
         private void ItemsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ItemsListBox.SelectedIndex == -1 || _items.Count == 0)
+            if (ItemsListBox.SelectedIndex == -1 || Items.Count == 0)
             {
-                if (_currentItem == _newItem || _items.Count == 0)
-                {
-                    ClearCurrentItem();
-                    IdTextBox.Text = _newItem.Id.ToString();
-                    ApplyButton.Visible = true;
-                    return;
-                }
+                _currentItem = _newItem;
                 ClearCurrentItem();
+                IdTextBox.Text = _newItem.Id.ToString();
+                ApplyButton.Visible = true;
                 return;
             }
             ApplyButton.Visible = false;
-            _currentItem = _items[ItemsListBox.SelectedIndex];
+            _currentItem = Items[ItemsListBox.SelectedIndex];
             IdTextBox.Text = _currentItem.Id.ToString();
             CostTextBox.Text = _currentItem.Cost.ToString();
             NameTextBox.Text = _currentItem.Name;
@@ -124,9 +128,8 @@ namespace ObjectOrientedPractices.View.Tabs
             {
                 return;
             }
-            _currentItem = null;
-            _currentItem = _newItem;
             ItemsListBox.SelectedIndex = -1;
+            
         }
 
         /// <summary>
@@ -139,11 +142,13 @@ namespace ObjectOrientedPractices.View.Tabs
             {
                 _currentItem = null;
                 _currentItem = ItemFactory.GenerateItem();
-                _items.Add(_currentItem);
+                Items.Add(_currentItem);
             }
+
             _currentItem = null;
-            _currentItem = _newItem;
+            FillItemsListBox();
             ItemsListBox.SelectedIndex = -1;
+
         }
 
         /// <summary>
@@ -155,9 +160,7 @@ namespace ObjectOrientedPractices.View.Tabs
             {
                 return;
             }
-            _items.Remove(_currentItem);
-            _currentItem = null;
-            _currentItem = _newItem;
+            Items.Remove(_currentItem);
             ItemsListBox.SelectedIndex = -1;
         }
 
@@ -176,10 +179,10 @@ namespace ObjectOrientedPractices.View.Tabs
             {
                 return;
             }
-            _items.Add(_currentItem);
             _currentItem = null;
+            Items.Add(_newItem);
             _newItem = new Item();
-            _currentItem = _newItem;
+            FillItemsListBox();
             ItemsListBox.SelectedIndex = -1;
         }
 
@@ -198,8 +201,15 @@ namespace ObjectOrientedPractices.View.Tabs
         {
             try
             {
+                if (_currentItem == null)
+                {
+                    return;
+                }
                 CostTextBox.BackColor = Color.White;
-                _currentItem.Cost = Double.Parse(CostTextBox.Text);
+                if (_currentItem.Cost != Double.Parse(CostTextBox.Text))
+                {
+                    _currentItem.Cost = Double.Parse(CostTextBox.Text);
+                }   
             }
             catch
             {
@@ -214,11 +224,18 @@ namespace ObjectOrientedPractices.View.Tabs
         {
             try
             {
+                if (_currentItem == null)
+                {
+                    return;
+                }
                 NameTextBox.BackColor = Color.White;
-                _currentItem.Name = NameTextBox.Text;
+                if (_currentItem.Name != NameTextBox.Text)
+                {
+                    _currentItem.Name = NameTextBox.Text;
+                }
                 if (!(_currentItem == _newItem))
                 {
-                    UpdateItemsListBox();
+                    UpdateItemsListBoxDisplayMember();
                 }
             }
             catch
@@ -234,8 +251,15 @@ namespace ObjectOrientedPractices.View.Tabs
         {
             try
             {
+                if (_currentItem == null)
+                {
+                    return;
+                }
                 InfoTextBox.BackColor = Color.White;
-                _currentItem.Info = InfoTextBox.Text;
+                if (_currentItem.Info != InfoTextBox.Text)
+                {
+                    _currentItem.Info = InfoTextBox.Text;
+                }
             }
             catch
             {
@@ -245,12 +269,21 @@ namespace ObjectOrientedPractices.View.Tabs
 
         private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (_currentItem == null)
+            {
+                return;
+            }
             _currentItem.Category = (Category)(CategoryComboBox.SelectedItem);
         }
 
         private void CategoryComboBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void ItemsListBox_Leave(object sender, EventArgs e)
+        {
+            ItemsListBox.Update();
         }
     }
 }

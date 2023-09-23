@@ -30,7 +30,7 @@ namespace ObjectOrientedPractices.Model.Classes
         /// <summary>
         /// Адрес покупателя.
         /// </summary>
-        private string _address;
+        public Address Address;
 
         /// <summary>
         /// Возвращает идентификатор предмета.
@@ -54,7 +54,7 @@ namespace ObjectOrientedPractices.Model.Classes
         /// <summary>
         /// Возвращает и задает адрес покупателя. Длина строки должна быть меньше 500 символов.
         /// </summary>
-        public string Address
+        /*public Address Address
         {
             get { return _address; }
             set
@@ -63,14 +63,14 @@ namespace ObjectOrientedPractices.Model.Classes
                 Validator.AssertStringOnLength(value, maxLength);
                 _address = value;
             }
-        }
+        }*/
 
         /// <summary>
         /// Создает экземпляр класса <see cref="Customer"/>.
         /// </summary>
         /// <param name="fullName">Полное имя покупателя. Длина строки должна быть меньше 200 символов.</param>
         /// <param name="address">Адрес покупателя. Длина строки должна быть меньше 500 символов.</param>
-        public Customer(string fullName, string address)
+        public Customer(string fullName, Address address)
         {
             _id = _idCounter;
             _idCounter++;
@@ -85,6 +85,7 @@ namespace ObjectOrientedPractices.Model.Classes
         {
             _id = _idCounter;
             _idCounter++;
+            Address = new Address();
         }
     }
 }

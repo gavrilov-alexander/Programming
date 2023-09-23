@@ -296,6 +296,7 @@
             ItemsListBox.Size = new Size(413, 680);
             ItemsListBox.TabIndex = 0;
             ItemsListBox.SelectedIndexChanged += ItemsListBox_SelectedIndexChanged;
+            ItemsListBox.Leave += ItemsListBox_Leave;
             // 
             // ItemsTab
             // 

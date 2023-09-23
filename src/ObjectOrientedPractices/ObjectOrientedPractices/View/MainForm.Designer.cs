@@ -32,16 +32,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             TabControl = new TabControl();
             ItemsTabPage = new TabPage();
-            ItemsTab = new Tabs.ItemsTab();
+            ItemsTab1 = new Tabs.ItemsTab();
             CustomersTabPage = new TabPage();
-            CustomersTab = new Tabs.CustomersTab();
-            tabPage1 = new TabPage();
+            CustomersTab1 = new Tabs.CustomersTab();
             bindingSource1 = new BindingSource(components);
-            addressControl1 = new Controls.AddressControl();
             TabControl.SuspendLayout();
             ItemsTabPage.SuspendLayout();
             CustomersTabPage.SuspendLayout();
-            tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             SuspendLayout();
             // 
@@ -49,7 +46,6 @@
             // 
             TabControl.Controls.Add(ItemsTabPage);
             TabControl.Controls.Add(CustomersTabPage);
-            TabControl.Controls.Add(tabPage1);
             TabControl.Dock = DockStyle.Fill;
             TabControl.Location = new Point(0, 0);
             TabControl.Margin = new Padding(4, 5, 4, 5);
@@ -60,7 +56,7 @@
             // 
             // ItemsTabPage
             // 
-            ItemsTabPage.Controls.Add(ItemsTab);
+            ItemsTabPage.Controls.Add(ItemsTab1);
             ItemsTabPage.Location = new Point(4, 34);
             ItemsTabPage.Margin = new Padding(4, 5, 4, 5);
             ItemsTabPage.Name = "ItemsTabPage";
@@ -70,17 +66,17 @@
             ItemsTabPage.Text = "Items";
             ItemsTabPage.UseVisualStyleBackColor = true;
             // 
-            // ItemsTab
+            // ItemsTab1
             // 
-            ItemsTab.Dock = DockStyle.Fill;
-            ItemsTab.Location = new Point(4, 5);
-            ItemsTab.Name = "ItemsTab";
-            ItemsTab.Size = new Size(1127, 702);
-            ItemsTab.TabIndex = 1;
+            ItemsTab1.Dock = DockStyle.Fill;
+            ItemsTab1.Location = new Point(4, 5);
+            ItemsTab1.Name = "ItemsTab1";
+            ItemsTab1.Size = new Size(1127, 702);
+            ItemsTab1.TabIndex = 1;
             // 
             // CustomersTabPage
             // 
-            CustomersTabPage.Controls.Add(CustomersTab);
+            CustomersTabPage.Controls.Add(CustomersTab1);
             CustomersTabPage.Location = new Point(4, 34);
             CustomersTabPage.Margin = new Padding(4, 5, 4, 5);
             CustomersTabPage.Name = "CustomersTabPage";
@@ -90,31 +86,13 @@
             CustomersTabPage.Text = "Customers";
             CustomersTabPage.UseVisualStyleBackColor = true;
             // 
-            // CustomersTab
+            // CustomersTab1
             // 
-            CustomersTab.Dock = DockStyle.Fill;
-            CustomersTab.Location = new Point(4, 5);
-            CustomersTab.Name = "CustomersTab";
-            CustomersTab.Size = new Size(1127, 702);
-            CustomersTab.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            tabPage1.Controls.Add(addressControl1);
-            tabPage1.Location = new Point(4, 34);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1135, 712);
-            tabPage1.TabIndex = 2;
-            tabPage1.Text = "tabPage1";
-            tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // addressControl1
-            // 
-            addressControl1.Location = new Point(46, 84);
-            addressControl1.Name = "addressControl1";
-            addressControl1.Size = new Size(1083, 256);
-            addressControl1.TabIndex = 0;
+            CustomersTab1.Dock = DockStyle.Fill;
+            CustomersTab1.Location = new Point(4, 5);
+            CustomersTab1.Name = "CustomersTab1";
+            CustomersTab1.Size = new Size(1127, 702);
+            CustomersTab1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -129,7 +107,6 @@
             TabControl.ResumeLayout(false);
             ItemsTabPage.ResumeLayout(false);
             CustomersTabPage.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
             ResumeLayout(false);
         }
@@ -140,9 +117,7 @@
         private TabPage ItemsTabPage;
         private TabPage CustomersTabPage;
         private BindingSource bindingSource1;
-        private Tabs.ItemsTab ItemsTab;
-        private Tabs.CustomersTab CustomersTab;
-        private TabPage tabPage1;
-        private Controls.AddressControl addressControl1;
+        private Tabs.ItemsTab ItemsTab1;
+        private Tabs.CustomersTab CustomersTab1;
     }
 }
