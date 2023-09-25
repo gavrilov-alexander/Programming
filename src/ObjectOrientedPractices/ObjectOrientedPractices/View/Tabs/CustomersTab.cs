@@ -59,6 +59,11 @@ namespace ObjectOrientedPractices.View.Tabs
             AddressControl1.Address = _currentCustomer.Address;
         }
 
+        public void RefreshData()
+        {
+            FillCustomersListBox();
+        }
+
         /// <summary>
         /// Заполняет CustomersListBox элементами коллекции _customers.
         /// </summary>

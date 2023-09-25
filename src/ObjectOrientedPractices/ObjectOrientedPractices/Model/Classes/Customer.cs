@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,10 @@ namespace ObjectOrientedPractices.Model.Classes
         /// </summary>
         private string _fullName;
 
+        private Cart _cart;
+
+        private BindingList<Order> _orders = new BindingList<Order>();
+
         /// <summary>
         /// Адрес покупателя.
         /// </summary>
@@ -49,6 +54,20 @@ namespace ObjectOrientedPractices.Model.Classes
                 Validator.AssertStringOnLength(value, maxLength);
                 _fullName = value;
             }
+        }
+        public Cart Cart
+        {
+            get { return _cart; }
+            private set
+            {
+                _cart = value;
+            }
+        }
+
+        public BindingList<Order> Orders
+        {
+            get { return _orders; }
+            set { _orders = value; }
         }
 
         /// <summary>
@@ -76,6 +95,7 @@ namespace ObjectOrientedPractices.Model.Classes
             _idCounter++;
             FullName = fullName;
             Address = address;
+            Cart= new Cart();
         }
 
         /// <summary>
@@ -86,6 +106,7 @@ namespace ObjectOrientedPractices.Model.Classes
             _id = _idCounter;
             _idCounter++;
             Address = new Address();
+            Cart= new Cart();
         }
     }
 }

@@ -11,6 +11,34 @@ namespace ObjectOrientedPractices.View
             InitializeComponent();
             ItemsTab1.Items = _store.Items;
             CustomersTab1.Customers = _store.Customers;
+            CartsTab1.Items = _store.Items;
+            CartsTab1.Customers = _store.Customers;
+        }
+
+        private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (TabControl.SelectedIndex)
+            {
+                case 0:
+                    {
+                        ItemsTab1.RefreshData();
+                        return;
+                    }
+                case 1:
+                    {
+                        CustomersTab1.RefreshData();
+                        return;
+                    }
+                case 2:
+                    {
+                        CartsTab1.RefreshData();
+                        return;
+                    }
+                default:
+                    {
+                        return;
+                    }
+            }
         }
     }
 }

@@ -30,7 +30,11 @@ namespace ObjectOrientedPractices.View.Tabs
             set { _items = value; }
         }
 
-        
+        public void RefreshData()
+        {
+            FillItemsListBox();
+        }
+
 
         /// <summary>
         /// Создаваемый объект класса <see cref="Item"/>.
