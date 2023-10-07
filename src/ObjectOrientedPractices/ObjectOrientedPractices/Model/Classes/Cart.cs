@@ -17,7 +17,7 @@ namespace ObjectOrientedPractices.Model.Classes
             get { return _items; }
             set { _items = value; }
         }
-        public double Amounght
+        public double Amount
         {
             get
             {
@@ -33,22 +33,6 @@ namespace ObjectOrientedPractices.Model.Classes
                 return sum;
             }
         }
-        /*public string Info
-        {
-            get
-            {
-                if (Items == null || Items.Count == 0)
-                {
-                    return "";
-                }
-                string result = "";
-                foreach (Item item in Items)
-                {
-                    result += item.Name + ", ";
-                }
-                return result;
-            }
-        }*/
         public Cart()
         {
             Items = new BindingList<Item>();

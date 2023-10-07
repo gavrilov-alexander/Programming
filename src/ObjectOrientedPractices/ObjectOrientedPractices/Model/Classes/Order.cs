@@ -20,23 +20,69 @@ namespace ObjectOrientedPractices.Model.Classes
         /// </summary>
         private readonly int _id;
 
-        //private readonly Data dataCreation
+        private readonly DateTime _dateCreation;
 
         public BindingList<Item> Items;
 
-        public OrderStatus OrderStatus;
+        public OrderStatus Status;
+        public Customer Customer;
+        public Address Address;
+
+
 
         public int Id { get { return _id; } }
 
-        public Address Address;
+        
+        public DateTime DateCreation
+        {
+            get { return _dateCreation; }
+        }
 
-        public Order(BindingList<Item> items, Address address, OrderStatus orderStatus)
+
+        public string StatusToString
+        {
+            get
+            {
+                return Status.ToString();
+            }
+        }
+        public string CustomerFullNameToString
+        {
+            get
+            {
+                return Customer.FullName;
+            }
+        }
+        public double Amount
+        {
+            get
+            {
+                double amount = 0;
+                foreach (var item in Items)
+                {
+                    amount += item.Cost;
+                }
+                return amount;
+            }
+        }
+        public string AddressToString
+        {
+            get
+            {
+                return $"{Address.Index}, {Address.Country}, {Address.City}, {Address.Street}, {Address.Building}, {Address.Apartment}";
+            }
+        }
+
+
+        public Order(BindingList<Item> items, Address address, OrderStatus status, Customer customer)
         {
             _id = _idCounter;
             _idCounter++;
+            _dateCreation = DateTime.Now;
             Items = items;
             Address = address;
-            OrderStatus = orderStatus;
+            Status = status;
+            Customer = customer;
         }
 
     }

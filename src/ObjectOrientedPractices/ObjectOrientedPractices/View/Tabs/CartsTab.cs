@@ -16,6 +16,7 @@ namespace ObjectOrientedPractices.View.Tabs
     {
         public BindingList<Item> Items;
         public BindingList<Customer> Customers;
+        public BindingList<Order> Orders;
         private Customer _currentCustomer;
         public CartsTab()
         {
@@ -49,7 +50,7 @@ namespace ObjectOrientedPractices.View.Tabs
             {
                 return;
             }
-            AmountLabel.Text = _currentCustomer.Cart.Amounght.ToString();
+            AmountLabel.Text = _currentCustomer.Cart.Amount.ToString();
         }
         private void UpdateCartListBox()
         {
@@ -71,10 +72,6 @@ namespace ObjectOrientedPractices.View.Tabs
             }
             _currentCustomer = Customers[CustomersComboBox.SelectedIndex];
             UpdateCartListBox();
-            /* CartListBox.DataSource = null;
-             CartListBox.DataSource = _currentCustomer.Cart.Items;
-             CartListBox.DisplayMember = null;
-             CartListBox.DisplayMember = nameof(Item.Name);*/
         }
 
         private void AddToCartButton_Click(object sender, EventArgs e)
@@ -85,6 +82,7 @@ namespace ObjectOrientedPractices.View.Tabs
             }
             _currentCustomer.Cart.Items.Add(Items[ItemsListBox.SelectedIndex]);
             RefreshAmountLabel();
+            ItemsListBox.SelectedIndex = -1;
         }
 
         private void RemoveItemButton_Click(object sender, EventArgs e)
@@ -113,7 +111,8 @@ namespace ObjectOrientedPractices.View.Tabs
             {
                 return;
             }
-            _currentCustomer.Orders.Add(new Order(_currentCustomer.Cart.Items, _currentCustomer.Address, OrderStatus.New));
+            Order order = new Order(_currentCustomer.Cart.Items, _currentCustomer.Address, OrderStatus.New, _currentCustomer);
+            _currentCustomer.Orders.Add(order);
             _currentCustomer.Cart.Items = new BindingList<Item>();
             UpdateCartListBox();
             RefreshAmountLabel();

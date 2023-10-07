@@ -37,11 +37,14 @@
             CustomersTab1 = new Tabs.CustomersTab();
             CartsTabPage = new TabPage();
             CartsTab1 = new Tabs.CartsTab();
+            OrdersTabPage = new TabPage();
+            OrdersTab1 = new Tabs.OrdersTab();
             bindingSource1 = new BindingSource(components);
             TabControl.SuspendLayout();
             ItemsTabPage.SuspendLayout();
             CustomersTabPage.SuspendLayout();
             CartsTabPage.SuspendLayout();
+            OrdersTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             SuspendLayout();
             // 
@@ -50,6 +53,7 @@
             TabControl.Controls.Add(ItemsTabPage);
             TabControl.Controls.Add(CustomersTabPage);
             TabControl.Controls.Add(CartsTabPage);
+            TabControl.Controls.Add(OrdersTabPage);
             TabControl.Dock = DockStyle.Fill;
             TabControl.Location = new Point(0, 0);
             TabControl.Margin = new Padding(4, 5, 4, 5);
@@ -120,6 +124,26 @@
             CartsTab1.Size = new Size(1129, 706);
             CartsTab1.TabIndex = 0;
             // 
+            // OrdersTabPage
+            // 
+            OrdersTabPage.Controls.Add(OrdersTab1);
+            OrdersTabPage.Location = new Point(4, 34);
+            OrdersTabPage.Name = "OrdersTabPage";
+            OrdersTabPage.Padding = new Padding(3);
+            OrdersTabPage.Size = new Size(1135, 712);
+            OrdersTabPage.TabIndex = 3;
+            OrdersTabPage.Text = "Orders";
+            OrdersTabPage.UseVisualStyleBackColor = true;
+            // 
+            // OrdersTab1
+            // 
+            OrdersTab1.Customers = null;
+            OrdersTab1.Dock = DockStyle.Fill;
+            OrdersTab1.Location = new Point(3, 3);
+            OrdersTab1.Name = "OrdersTab1";
+            OrdersTab1.Size = new Size(1129, 706);
+            OrdersTab1.TabIndex = 0;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -134,6 +158,7 @@
             ItemsTabPage.ResumeLayout(false);
             CustomersTabPage.ResumeLayout(false);
             CartsTabPage.ResumeLayout(false);
+            OrdersTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
             ResumeLayout(false);
         }
@@ -148,5 +173,7 @@
         private Tabs.CustomersTab CustomersTab1;
         private TabPage CartsTabPage;
         private Tabs.CartsTab CartsTab1;
+        private TabPage OrdersTabPage;
+        private Tabs.OrdersTab OrdersTab1;
     }
 }

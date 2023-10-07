@@ -30,28 +30,34 @@
         {
             components = new System.ComponentModel.Container();
             tableLayoutPanel1 = new TableLayoutPanel();
-            groupBox1 = new GroupBox();
+            SelectedOrderGroupBox = new GroupBox();
             AmountLabel = new Label();
             AmountTextLabel = new Label();
-            listBox1 = new ListBox();
-            label4 = new Label();
-            addressControl1 = new Controls.AddressControl();
-            comboBox1 = new ComboBox();
-            label3 = new Label();
-            textBox2 = new TextBox();
-            label2 = new Label();
-            textBox1 = new TextBox();
-            label1 = new Label();
-            dataGridView1 = new DataGridView();
+            ItemsListBox = new ListBox();
+            ItemsLabel = new Label();
+            AddressControl1 = new Controls.AddressControl();
+            StatusComboBox = new ComboBox();
+            StatusLabel = new Label();
+            DataTextBox = new TextBox();
+            CreationDataLabel = new Label();
+            IdTextBox = new TextBox();
+            IDLabel = new Label();
+            OrdersDataGridView = new DataGridView();
             orderBindingSource = new BindingSource(components);
-            customerBindingSource = new BindingSource(components);
+            ordersBindingSource = new BindingSource(components);
+            storeBindingSource = new BindingSource(components);
             idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            FullName = new DataGridViewTextBoxColumn();
+            dateCreationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            StatusToString = new DataGridViewTextBoxColumn();
+            CustomerFullNameToString = new DataGridViewTextBoxColumn();
+            Amount = new DataGridViewTextBoxColumn();
+            AddressToString = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
-            groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            SelectedOrderGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)OrdersDataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)orderBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)customerBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ordersBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)storeBindingSource).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -59,8 +65,8 @@
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Controls.Add(groupBox1, 1, 0);
-            tableLayoutPanel1.Controls.Add(dataGridView1, 0, 0);
+            tableLayoutPanel1.Controls.Add(SelectedOrderGroupBox, 1, 0);
+            tableLayoutPanel1.Controls.Add(OrdersDataGridView, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -69,32 +75,33 @@
             tableLayoutPanel1.Size = new Size(1400, 824);
             tableLayoutPanel1.TabIndex = 0;
             // 
-            // groupBox1
+            // SelectedOrderGroupBox
             // 
-            groupBox1.Controls.Add(AmountLabel);
-            groupBox1.Controls.Add(AmountTextLabel);
-            groupBox1.Controls.Add(listBox1);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(addressControl1);
-            groupBox1.Controls.Add(comboBox1);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(textBox2);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(textBox1);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Dock = DockStyle.Fill;
-            groupBox1.Location = new Point(703, 3);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(694, 818);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            SelectedOrderGroupBox.Controls.Add(AmountLabel);
+            SelectedOrderGroupBox.Controls.Add(AmountTextLabel);
+            SelectedOrderGroupBox.Controls.Add(ItemsListBox);
+            SelectedOrderGroupBox.Controls.Add(ItemsLabel);
+            SelectedOrderGroupBox.Controls.Add(AddressControl1);
+            SelectedOrderGroupBox.Controls.Add(StatusComboBox);
+            SelectedOrderGroupBox.Controls.Add(StatusLabel);
+            SelectedOrderGroupBox.Controls.Add(DataTextBox);
+            SelectedOrderGroupBox.Controls.Add(CreationDataLabel);
+            SelectedOrderGroupBox.Controls.Add(IdTextBox);
+            SelectedOrderGroupBox.Controls.Add(IDLabel);
+            SelectedOrderGroupBox.Dock = DockStyle.Fill;
+            SelectedOrderGroupBox.Location = new Point(703, 3);
+            SelectedOrderGroupBox.Name = "SelectedOrderGroupBox";
+            SelectedOrderGroupBox.Size = new Size(694, 818);
+            SelectedOrderGroupBox.TabIndex = 0;
+            SelectedOrderGroupBox.TabStop = false;
+            SelectedOrderGroupBox.Text = "Selected Order";
             // 
             // AmountLabel
             // 
+            AmountLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             AmountLabel.AutoSize = true;
             AmountLabel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            AmountLabel.Location = new Point(567, 624);
+            AmountLabel.Location = new Point(567, 777);
             AmountLabel.Name = "AmountLabel";
             AmountLabel.Size = new Size(121, 38);
             AmountLabel.TabIndex = 10;
@@ -102,109 +109,129 @@
             // 
             // AmountTextLabel
             // 
+            AmountTextLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             AmountTextLabel.AutoSize = true;
-            AmountTextLabel.Location = new Point(607, 588);
+            AmountTextLabel.Location = new Point(607, 741);
             AmountTextLabel.Name = "AmountTextLabel";
             AmountTextLabel.Size = new Size(81, 25);
             AmountTextLabel.TabIndex = 9;
             AmountTextLabel.Text = "Amount:\r\n";
             // 
-            // listBox1
+            // ItemsListBox
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 25;
-            listBox1.Location = new Point(6, 381);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(682, 204);
-            listBox1.TabIndex = 8;
+            ItemsListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            ItemsListBox.FormattingEnabled = true;
+            ItemsListBox.ItemHeight = 25;
+            ItemsListBox.Location = new Point(6, 381);
+            ItemsListBox.Name = "ItemsListBox";
+            ItemsListBox.Size = new Size(682, 354);
+            ItemsListBox.TabIndex = 8;
+            ItemsListBox.KeyPress += ItemsListBox_KeyPress;
             // 
-            // label4
+            // ItemsLabel
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(6, 353);
-            label4.Name = "label4";
-            label4.Size = new Size(59, 25);
-            label4.TabIndex = 7;
-            label4.Text = "label4";
+            ItemsLabel.AutoSize = true;
+            ItemsLabel.Location = new Point(6, 353);
+            ItemsLabel.Name = "ItemsLabel";
+            ItemsLabel.Size = new Size(107, 25);
+            ItemsLabel.TabIndex = 7;
+            ItemsLabel.Text = "Order Items";
             // 
-            // addressControl1
+            // AddressControl1
             // 
-            addressControl1.Address = null;
-            addressControl1.Location = new Point(6, 152);
-            addressControl1.Name = "addressControl1";
-            addressControl1.Size = new Size(682, 179);
-            addressControl1.TabIndex = 6;
+            AddressControl1.Address = null;
+            AddressControl1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            AddressControl1.Location = new Point(6, 152);
+            AddressControl1.Name = "AddressControl1";
+            AddressControl1.Size = new Size(682, 179);
+            AddressControl1.TabIndex = 6;
+            AddressControl1.KeyPress += AddressControl1_KeyPress;
             // 
-            // comboBox1
+            // StatusComboBox
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(71, 113);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(150, 33);
-            comboBox1.TabIndex = 5;
+            StatusComboBox.FormattingEnabled = true;
+            StatusComboBox.Location = new Point(89, 113);
+            StatusComboBox.Name = "StatusComboBox";
+            StatusComboBox.Size = new Size(171, 33);
+            StatusComboBox.TabIndex = 5;
+            StatusComboBox.SelectedIndexChanged += StatusComboBox_SelectedIndexChanged;
             // 
-            // label3
+            // StatusLabel
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(6, 116);
-            label3.Name = "label3";
-            label3.Size = new Size(59, 25);
-            label3.TabIndex = 4;
-            label3.Text = "label3";
+            StatusLabel.AutoSize = true;
+            StatusLabel.Location = new Point(6, 116);
+            StatusLabel.Name = "StatusLabel";
+            StatusLabel.Size = new Size(64, 25);
+            StatusLabel.TabIndex = 4;
+            StatusLabel.Text = "Status:";
             // 
-            // textBox2
+            // DataTextBox
             // 
-            textBox2.Location = new Point(71, 76);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(150, 31);
-            textBox2.TabIndex = 3;
+            DataTextBox.Location = new Point(89, 76);
+            DataTextBox.Name = "DataTextBox";
+            DataTextBox.Size = new Size(171, 31);
+            DataTextBox.TabIndex = 3;
+            DataTextBox.KeyPress += DataTextBox_KeyPress;
             // 
-            // label2
+            // CreationDataLabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(6, 79);
-            label2.Name = "label2";
-            label2.Size = new Size(59, 25);
-            label2.TabIndex = 2;
-            label2.Text = "label2";
+            CreationDataLabel.AutoSize = true;
+            CreationDataLabel.Location = new Point(6, 79);
+            CreationDataLabel.Name = "CreationDataLabel";
+            CreationDataLabel.Size = new Size(77, 25);
+            CreationDataLabel.TabIndex = 2;
+            CreationDataLabel.Text = "Created:";
             // 
-            // textBox1
+            // IdTextBox
             // 
-            textBox1.Location = new Point(71, 39);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(150, 31);
-            textBox1.TabIndex = 1;
+            IdTextBox.Location = new Point(89, 39);
+            IdTextBox.Name = "IdTextBox";
+            IdTextBox.Size = new Size(171, 31);
+            IdTextBox.TabIndex = 1;
+            IdTextBox.KeyPress += IdTextBox_KeyPress;
             // 
-            // label1
+            // IDLabel
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(6, 42);
-            label1.Name = "label1";
-            label1.Size = new Size(59, 25);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
+            IDLabel.AutoSize = true;
+            IDLabel.Location = new Point(6, 42);
+            IDLabel.Name = "IDLabel";
+            IDLabel.Size = new Size(34, 25);
+            IDLabel.TabIndex = 0;
+            IDLabel.Text = "ID:";
             // 
-            // dataGridView1
+            // OrdersDataGridView
             // 
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, FullName });
-            dataGridView1.DataSource = customerBindingSource;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.RowTemplate.Height = 33;
-            dataGridView1.Size = new Size(694, 818);
-            dataGridView1.TabIndex = 1;
+            OrdersDataGridView.AllowUserToAddRows = false;
+            OrdersDataGridView.AllowUserToDeleteRows = false;
+            OrdersDataGridView.AllowUserToResizeColumns = false;
+            OrdersDataGridView.AllowUserToResizeRows = false;
+            OrdersDataGridView.AutoGenerateColumns = false;
+            OrdersDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            OrdersDataGridView.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, dateCreationDataGridViewTextBoxColumn, StatusToString, CustomerFullNameToString, Amount, AddressToString });
+            OrdersDataGridView.DataSource = orderBindingSource;
+            OrdersDataGridView.Dock = DockStyle.Fill;
+            OrdersDataGridView.Location = new Point(3, 3);
+            OrdersDataGridView.MultiSelect = false;
+            OrdersDataGridView.Name = "OrdersDataGridView";
+            OrdersDataGridView.ReadOnly = true;
+            OrdersDataGridView.RowHeadersWidth = 62;
+            OrdersDataGridView.RowTemplate.Height = 33;
+            OrdersDataGridView.Size = new Size(694, 818);
+            OrdersDataGridView.TabIndex = 1;
+            OrdersDataGridView.SelectionChanged += OrdersDataGridView_SelectionChanged;
             // 
             // orderBindingSource
             // 
             orderBindingSource.DataSource = typeof(Model.Classes.Order);
             // 
-            // customerBindingSource
+            // ordersBindingSource
             // 
-            customerBindingSource.DataSource = typeof(Model.Classes.Customer);
+            ordersBindingSource.DataMember = "Orders";
+            ordersBindingSource.DataSource = storeBindingSource;
+            // 
+            // storeBindingSource
+            // 
+            storeBindingSource.DataSource = typeof(Model.Classes.Store);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -213,15 +240,52 @@
             idDataGridViewTextBoxColumn.MinimumWidth = 8;
             idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             idDataGridViewTextBoxColumn.ReadOnly = true;
-            idDataGridViewTextBoxColumn.Width = 150;
+            idDataGridViewTextBoxColumn.Width = 50;
             // 
-            // FullName
+            // dateCreationDataGridViewTextBoxColumn
             // 
-            FullName.DataPropertyName = "FullName";
-            FullName.HeaderText = "FullName";
-            FullName.MinimumWidth = 8;
-            FullName.Name = "FullName";
-            FullName.Width = 150;
+            dateCreationDataGridViewTextBoxColumn.DataPropertyName = "DateCreation";
+            dateCreationDataGridViewTextBoxColumn.HeaderText = "Created";
+            dateCreationDataGridViewTextBoxColumn.MinimumWidth = 8;
+            dateCreationDataGridViewTextBoxColumn.Name = "dateCreationDataGridViewTextBoxColumn";
+            dateCreationDataGridViewTextBoxColumn.ReadOnly = true;
+            dateCreationDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // StatusToString
+            // 
+            StatusToString.DataPropertyName = "StatusToString";
+            StatusToString.HeaderText = "Order Status";
+            StatusToString.MinimumWidth = 8;
+            StatusToString.Name = "StatusToString";
+            StatusToString.ReadOnly = true;
+            StatusToString.Width = 150;
+            // 
+            // CustomerFullNameToString
+            // 
+            CustomerFullNameToString.DataPropertyName = "CustomerFullNameToString";
+            CustomerFullNameToString.HeaderText = "Customer Full Name";
+            CustomerFullNameToString.MinimumWidth = 8;
+            CustomerFullNameToString.Name = "CustomerFullNameToString";
+            CustomerFullNameToString.ReadOnly = true;
+            CustomerFullNameToString.Width = 300;
+            // 
+            // Amount
+            // 
+            Amount.DataPropertyName = "Amount";
+            Amount.HeaderText = "Amount";
+            Amount.MinimumWidth = 8;
+            Amount.Name = "Amount";
+            Amount.ReadOnly = true;
+            Amount.Width = 150;
+            // 
+            // AddressToString
+            // 
+            AddressToString.DataPropertyName = "AddressToString";
+            AddressToString.HeaderText = "Address";
+            AddressToString.MinimumWidth = 8;
+            AddressToString.Name = "AddressToString";
+            AddressToString.ReadOnly = true;
+            AddressToString.Width = 450;
             // 
             // OrdersTab
             // 
@@ -231,33 +295,41 @@
             Name = "OrdersTab";
             Size = new Size(1400, 824);
             tableLayoutPanel1.ResumeLayout(false);
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            SelectedOrderGroupBox.ResumeLayout(false);
+            SelectedOrderGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)OrdersDataGridView).EndInit();
             ((System.ComponentModel.ISupportInitialize)orderBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)customerBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ordersBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)storeBindingSource).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private TableLayoutPanel tableLayoutPanel1;
-        private GroupBox groupBox1;
-        private Controls.AddressControl addressControl1;
-        private ComboBox comboBox1;
-        private Label label3;
-        private TextBox textBox2;
-        private Label label2;
-        private TextBox textBox1;
-        private Label label1;
+        private GroupBox SelectedOrderGroupBox;
+        private Controls.AddressControl AddressControl1;
+        private ComboBox StatusComboBox;
+        private Label StatusLabel;
+        private TextBox DataTextBox;
+        private Label CreationDataLabel;
+        private TextBox IdTextBox;
+        private Label IDLabel;
         private Label AmountLabel;
         private Label AmountTextLabel;
-        private ListBox listBox1;
-        private Label label4;
-        private DataGridView dataGridView1;
+        private ListBox ItemsListBox;
+        private Label ItemsLabel;
+        private DataGridView OrdersDataGridView;
+        private DataGridViewTextBoxColumn orderStatusToStringDataGridViewTextBoxColumn;
+        private BindingSource ordersBindingSource;
+        private BindingSource storeBindingSource;
         private BindingSource orderBindingSource;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn FullName;
-        private BindingSource customerBindingSource;
+        private DataGridViewTextBoxColumn dateCreationDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn StatusToString;
+        private DataGridViewTextBoxColumn CustomerFullNameToString;
+        private DataGridViewTextBoxColumn Amount;
+        private DataGridViewTextBoxColumn AddressToString;
     }
 }
