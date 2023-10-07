@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             tableLayoutPanel1 = new TableLayoutPanel();
             SelectedOrderGroupBox = new GroupBox();
             AmountLabel = new Label();
@@ -43,11 +42,6 @@
             IdTextBox = new TextBox();
             IDLabel = new Label();
             OrdersDataGridView = new DataGridView();
-            orderBindingSource = new BindingSource(components);
-            ordersBindingSource = new BindingSource(components);
-            storeBindingSource = new BindingSource(components);
-            idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            dateCreationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             StatusToString = new DataGridViewTextBoxColumn();
             CustomerFullNameToString = new DataGridViewTextBoxColumn();
             Amount = new DataGridViewTextBoxColumn();
@@ -55,9 +49,6 @@
             tableLayoutPanel1.SuspendLayout();
             SelectedOrderGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)OrdersDataGridView).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)orderBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)ordersBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)storeBindingSource).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -205,10 +196,8 @@
             OrdersDataGridView.AllowUserToDeleteRows = false;
             OrdersDataGridView.AllowUserToResizeColumns = false;
             OrdersDataGridView.AllowUserToResizeRows = false;
-            OrdersDataGridView.AutoGenerateColumns = false;
             OrdersDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            OrdersDataGridView.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, dateCreationDataGridViewTextBoxColumn, StatusToString, CustomerFullNameToString, Amount, AddressToString });
-            OrdersDataGridView.DataSource = orderBindingSource;
+            OrdersDataGridView.Columns.AddRange(new DataGridViewColumn[] { StatusToString, CustomerFullNameToString, Amount, AddressToString });
             OrdersDataGridView.Dock = DockStyle.Fill;
             OrdersDataGridView.Location = new Point(3, 3);
             OrdersDataGridView.MultiSelect = false;
@@ -219,37 +208,6 @@
             OrdersDataGridView.Size = new Size(694, 818);
             OrdersDataGridView.TabIndex = 1;
             OrdersDataGridView.SelectionChanged += OrdersDataGridView_SelectionChanged;
-            // 
-            // orderBindingSource
-            // 
-            orderBindingSource.DataSource = typeof(Model.Classes.Order);
-            // 
-            // ordersBindingSource
-            // 
-            ordersBindingSource.DataMember = "Orders";
-            ordersBindingSource.DataSource = storeBindingSource;
-            // 
-            // storeBindingSource
-            // 
-            storeBindingSource.DataSource = typeof(Model.Classes.Store);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            idDataGridViewTextBoxColumn.HeaderText = "Id";
-            idDataGridViewTextBoxColumn.MinimumWidth = 8;
-            idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            idDataGridViewTextBoxColumn.ReadOnly = true;
-            idDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // dateCreationDataGridViewTextBoxColumn
-            // 
-            dateCreationDataGridViewTextBoxColumn.DataPropertyName = "DateCreation";
-            dateCreationDataGridViewTextBoxColumn.HeaderText = "Created";
-            dateCreationDataGridViewTextBoxColumn.MinimumWidth = 8;
-            dateCreationDataGridViewTextBoxColumn.Name = "dateCreationDataGridViewTextBoxColumn";
-            dateCreationDataGridViewTextBoxColumn.ReadOnly = true;
-            dateCreationDataGridViewTextBoxColumn.Width = 150;
             // 
             // StatusToString
             // 
@@ -298,9 +256,6 @@
             SelectedOrderGroupBox.ResumeLayout(false);
             SelectedOrderGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)OrdersDataGridView).EndInit();
-            ((System.ComponentModel.ISupportInitialize)orderBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)ordersBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)storeBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -321,12 +276,7 @@
         private Label ItemsLabel;
         private DataGridView OrdersDataGridView;
         private DataGridViewTextBoxColumn orderStatusToStringDataGridViewTextBoxColumn;
-        private BindingSource ordersBindingSource;
-        private BindingSource storeBindingSource;
-        private BindingSource orderBindingSource;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn dateCreationDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn StatusToString;
         private DataGridViewTextBoxColumn CustomerFullNameToString;
         private DataGridViewTextBoxColumn Amount;

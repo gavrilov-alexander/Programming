@@ -13,7 +13,7 @@ namespace ObjectOrientedPractices.View
             CustomersTab1.Customers = _store.Customers;
             CartsTab1.Items = _store.Items;
             CartsTab1.Customers = _store.Customers;
-            CartsTab1.Orders = _store.Orders;
+            //CartsTab1.Orders = _store.Orders;
             //OrdersTab1.Orders = _store.Orders;
             OrdersTab1.Customers = _store.Customers;
         }
