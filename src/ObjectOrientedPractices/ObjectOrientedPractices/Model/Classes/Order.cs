@@ -84,6 +84,5 @@ namespace ObjectOrientedPractices.Model.Classes
             Status = status;
             Customer = customer;
         }
-
     }
 }

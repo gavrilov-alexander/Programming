@@ -39,6 +39,7 @@
             CustomersGroupBox = new GroupBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             SelectedCustomerGroupBox = new GroupBox();
+            PriorityCheckBox = new CheckBox();
             AddressControl1 = new Controls.AddressControl();
             ApplyButton = new Button();
             FullNameTextBox = new TextBox();
@@ -168,13 +169,14 @@
             tableLayoutPanel1.Location = new Point(542, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 58.3333321F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 41.6666679F));
             tableLayoutPanel1.Size = new Size(804, 822);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // SelectedCustomerGroupBox
             // 
+            SelectedCustomerGroupBox.Controls.Add(PriorityCheckBox);
             SelectedCustomerGroupBox.Controls.Add(AddressControl1);
             SelectedCustomerGroupBox.Controls.Add(ApplyButton);
             SelectedCustomerGroupBox.Controls.Add(FullNameTextBox);
@@ -185,17 +187,29 @@
             SelectedCustomerGroupBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             SelectedCustomerGroupBox.Location = new Point(3, 3);
             SelectedCustomerGroupBox.Name = "SelectedCustomerGroupBox";
-            SelectedCustomerGroupBox.Size = new Size(798, 405);
+            SelectedCustomerGroupBox.Size = new Size(798, 473);
             SelectedCustomerGroupBox.TabIndex = 0;
             SelectedCustomerGroupBox.TabStop = false;
             SelectedCustomerGroupBox.Text = "Selected Customer";
+            // 
+            // PriorityCheckBox
+            // 
+            PriorityCheckBox.AutoSize = true;
+            PriorityCheckBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            PriorityCheckBox.Location = new Point(107, 104);
+            PriorityCheckBox.Name = "PriorityCheckBox";
+            PriorityCheckBox.Size = new Size(112, 29);
+            PriorityCheckBox.TabIndex = 11;
+            PriorityCheckBox.Text = "Is Priority";
+            PriorityCheckBox.UseVisualStyleBackColor = true;
+            PriorityCheckBox.CheckedChanged += PriorityCheckBox_CheckedChanged;
             // 
             // AddressControl1
             // 
             AddressControl1.Address = null;
             AddressControl1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             AddressControl1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            AddressControl1.Location = new Point(0, 104);
+            AddressControl1.Location = new Point(-3, 139);
             AddressControl1.Name = "AddressControl1";
             AddressControl1.Size = new Size(792, 180);
             AddressControl1.TabIndex = 10;
@@ -204,7 +218,7 @@
             // 
             ApplyButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             ApplyButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            ApplyButton.Location = new Point(6, 356);
+            ApplyButton.Location = new Point(6, 424);
             ApplyButton.Name = "ApplyButton";
             ApplyButton.Size = new Size(147, 43);
             ApplyButton.TabIndex = 9;
@@ -288,5 +302,6 @@
         private Button ApplyButton;
         private Controls.AddressControl AddressControl1;
         private ToolTip toolTip1;
+        private CheckBox PriorityCheckBox;
     }
 }

@@ -70,6 +70,7 @@ namespace ObjectOrientedPractices.Model.Classes
             set { _orders = value; }
         }
 
+        public bool IsPriority { get; set; }
         /// <summary>
         /// Возвращает и задает адрес покупателя. Длина строки должна быть меньше 500 символов.
         /// </summary>
@@ -89,13 +90,14 @@ namespace ObjectOrientedPractices.Model.Classes
         /// </summary>
         /// <param name="fullName">Полное имя покупателя. Длина строки должна быть меньше 200 символов.</param>
         /// <param name="address">Адрес покупателя. Длина строки должна быть меньше 500 символов.</param>
-        public Customer(string fullName, Address address)
+        public Customer(string fullName, Address address, bool isPriority)
         {
             _id = _idCounter;
             _idCounter++;
             FullName = fullName;
             Address = address;
             Cart= new Cart();
+            IsPriority = isPriority;
         }
 
         /// <summary>
@@ -107,6 +109,7 @@ namespace ObjectOrientedPractices.Model.Classes
             _idCounter++;
             Address = new Address();
             Cart= new Cart();
+            IsPriority = false;
         }
     }
 }

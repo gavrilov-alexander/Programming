@@ -28,7 +28,7 @@ namespace ObjectOrientedPractices.Services
             string patronymic = _patronymics.GetValue(random.Next(0, _patronymics.Length)).ToString();
             string fullName = surname + " " + name + " " + patronymic;
             Address address = new Address(random.Next(100000, 1000000), "Country", "City", "Street", "Building", "Apartment");
-            return new Customer(fullName, address);
+            return new Customer(fullName, address , false);
         }
     }
 }

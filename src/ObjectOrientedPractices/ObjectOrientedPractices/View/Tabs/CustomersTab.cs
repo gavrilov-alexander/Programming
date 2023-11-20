@@ -78,11 +78,12 @@ namespace ObjectOrientedPractices.View.Tabs
         /// <summary>
         /// Удаляет данные из IdTextBox, FullNameTextBox, AddressTextBox.
         /// </summary>
-        private void ClearCurrentItem()
+        private void ClearCurrentCustomer()
         {
             IdTextBox.Clear();
             FullNameTextBox.Clear();
             FullNameTextBox.BackColor = Color.White;
+            PriorityCheckBox.Checked = false;
         }
 
         /// <summary>
@@ -103,8 +104,9 @@ namespace ObjectOrientedPractices.View.Tabs
             {
                 _currentCustomer = _newCustomer;
                 AddressControl1.Address = _currentCustomer.Address;
-                ClearCurrentItem();
+                ClearCurrentCustomer();
                 IdTextBox.Text = _newCustomer.Id.ToString();
+                PriorityCheckBox.Checked = _newCustomer.IsPriority;
                 ApplyButton.Visible = true;
                 return;
             }
@@ -113,6 +115,7 @@ namespace ObjectOrientedPractices.View.Tabs
             AddressControl1.Address = _currentCustomer.Address;
             IdTextBox.Text = _currentCustomer.Id.ToString();
             FullNameTextBox.Text = _currentCustomer.FullName;
+            PriorityCheckBox.Checked = _currentCustomer.IsPriority;
         }
 
         /// <summary>
@@ -214,6 +217,19 @@ namespace ObjectOrientedPractices.View.Tabs
         private void CustomersListBox_Leave(object sender, EventArgs e)
         {
             UpdateCustomersListBoxDisplayMember();
+        }
+
+        private void PriorityCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_currentCustomer == null)
+            {
+                return;
+            }
+            if (_currentCustomer.IsPriority == PriorityCheckBox.Checked)
+            {
+                return;
+            }
+            _currentCustomer.IsPriority = PriorityCheckBox.Checked;
         }
     }
 }

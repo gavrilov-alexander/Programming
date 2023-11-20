@@ -111,8 +111,17 @@ namespace ObjectOrientedPractices.View.Tabs
             {
                 return;
             }
-            Order order = new Order(_currentCustomer.Cart.Items, _currentCustomer.Address, OrderStatus.New, _currentCustomer);
-            _currentCustomer.Orders.Add(order);
+            if (_currentCustomer.IsPriority)
+            {
+                PriorityOrder order = new PriorityOrder(_currentCustomer.Cart.Items, _currentCustomer.Address, 
+                                                        OrderStatus.New, _currentCustomer , DateTime.Now, "9:00 - 11:00");
+                _currentCustomer.Orders.Add(order);
+            }
+            else
+            {
+                Order order = new Order(_currentCustomer.Cart.Items, _currentCustomer.Address, OrderStatus.New, _currentCustomer);
+                _currentCustomer.Orders.Add(order);
+            }
             _currentCustomer.Cart.Items = new BindingList<Item>();
             UpdateCartListBox();
             RefreshAmountLabel();

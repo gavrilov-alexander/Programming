@@ -30,6 +30,9 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             SelectedOrderGroupBox = new GroupBox();
+            PriorityOptionsGroupBox = new GroupBox();
+            DeliveryTimeComboBox = new ComboBox();
+            DeliveryTimeLabel = new Label();
             AmountLabel = new Label();
             AmountTextLabel = new Label();
             ItemsListBox = new ListBox();
@@ -48,6 +51,7 @@
             AddressToString = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             SelectedOrderGroupBox.SuspendLayout();
+            PriorityOptionsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)OrdersDataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -68,6 +72,7 @@
             // 
             // SelectedOrderGroupBox
             // 
+            SelectedOrderGroupBox.Controls.Add(PriorityOptionsGroupBox);
             SelectedOrderGroupBox.Controls.Add(AmountLabel);
             SelectedOrderGroupBox.Controls.Add(AmountTextLabel);
             SelectedOrderGroupBox.Controls.Add(ItemsListBox);
@@ -86,6 +91,35 @@
             SelectedOrderGroupBox.TabIndex = 0;
             SelectedOrderGroupBox.TabStop = false;
             SelectedOrderGroupBox.Text = "Selected Order";
+            // 
+            // PriorityOptionsGroupBox
+            // 
+            PriorityOptionsGroupBox.Controls.Add(DeliveryTimeComboBox);
+            PriorityOptionsGroupBox.Controls.Add(DeliveryTimeLabel);
+            PriorityOptionsGroupBox.Location = new Point(266, 0);
+            PriorityOptionsGroupBox.Name = "PriorityOptionsGroupBox";
+            PriorityOptionsGroupBox.Size = new Size(289, 91);
+            PriorityOptionsGroupBox.TabIndex = 12;
+            PriorityOptionsGroupBox.TabStop = false;
+            PriorityOptionsGroupBox.Text = "Priority Options";
+            // 
+            // DeliveryTimeComboBox
+            // 
+            DeliveryTimeComboBox.FormattingEnabled = true;
+            DeliveryTimeComboBox.Location = new Point(134, 33);
+            DeliveryTimeComboBox.Name = "DeliveryTimeComboBox";
+            DeliveryTimeComboBox.Size = new Size(149, 33);
+            DeliveryTimeComboBox.TabIndex = 13;
+            DeliveryTimeComboBox.SelectedIndexChanged += DeliveryTimeComboBox_SelectedIndexChanged;
+            // 
+            // DeliveryTimeLabel
+            // 
+            DeliveryTimeLabel.AutoSize = true;
+            DeliveryTimeLabel.Location = new Point(6, 37);
+            DeliveryTimeLabel.Name = "DeliveryTimeLabel";
+            DeliveryTimeLabel.Size = new Size(122, 25);
+            DeliveryTimeLabel.TabIndex = 12;
+            DeliveryTimeLabel.Text = "Delivery Time:";
             // 
             // AmountLabel
             // 
@@ -132,6 +166,7 @@
             // 
             AddressControl1.Address = null;
             AddressControl1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            AddressControl1.Enabled = false;
             AddressControl1.Location = new Point(6, 152);
             AddressControl1.Name = "AddressControl1";
             AddressControl1.Size = new Size(682, 179);
@@ -255,6 +290,8 @@
             tableLayoutPanel1.ResumeLayout(false);
             SelectedOrderGroupBox.ResumeLayout(false);
             SelectedOrderGroupBox.PerformLayout();
+            PriorityOptionsGroupBox.ResumeLayout(false);
+            PriorityOptionsGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)OrdersDataGridView).EndInit();
             ResumeLayout(false);
         }
@@ -281,5 +318,8 @@
         private DataGridViewTextBoxColumn CustomerFullNameToString;
         private DataGridViewTextBoxColumn Amount;
         private DataGridViewTextBoxColumn AddressToString;
+        private GroupBox PriorityOptionsGroupBox;
+        private ComboBox DeliveryTimeComboBox;
+        private Label DeliveryTimeLabel;
     }
 }
