@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedPractices.Model.Classes.Discounts
 {
-    public class PointsDiscount : IDiscount
+    public class PointsDiscount : IDiscount, IComparable<PointsDiscount>
     {
         private int points;
         public int Points
@@ -75,6 +75,31 @@ namespace ObjectOrientedPractices.Model.Classes.Discounts
             }
             return sum;
         }
+
+        public int CompareTo(PointsDiscount? other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            if (other is not PointsDiscount)
+            {
+                return -1;
+            }
+            if (Points == other.Points)
+            {
+                return 0;
+            }
+            if (Points > other.Points)
+            {
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
         public PointsDiscount(int points)
         {
             Points = points;

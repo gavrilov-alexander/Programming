@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ObjectOrientedPractices.Model.Classes.Orders;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,7 +9,7 @@ using Validator = ObjectOrientedPractices.Services.ValueValidator;
 
 namespace ObjectOrientedPractices.Model.Classes
 {
-    public class Address
+    public class Address : ICloneable, IEquatable<Address>
     {
         private int _index;
         private string _country;
@@ -90,6 +91,33 @@ namespace ObjectOrientedPractices.Model.Classes
         }
         public Address()
         {
+        }
+
+        public object Clone()
+        {
+            return new Address(Index, Country, City, Street, Building, Apartment);
+        }
+
+        public bool Equals(Address? other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (other is not Address)
+            {
+                return false;
+            }
+            if (object.ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            if ((Index != other.Index) || (Country != other.Country) || (City != other.City) || (Street != other.Street) 
+                || (Building != other.Building) || (Apartment != other.Apartment))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

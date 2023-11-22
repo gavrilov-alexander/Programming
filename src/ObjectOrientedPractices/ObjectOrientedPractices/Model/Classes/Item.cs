@@ -1,4 +1,5 @@
-﻿using ObjectOrientedPractices.Model.Enums;
+﻿using ObjectOrientedPractices.Model.Classes.Orders;
+using ObjectOrientedPractices.Model.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace ObjectOrientedPractices.Model.Classes
     /// <summary>
     /// Хранит данные о предмете, его названии, описании и стоимости.
     /// </summary>
-    public class Item
+    public class Item : ICloneable, IEquatable<Item>, IComparable<Item>
     {
         /// <summary>
         /// Идентификатор количества всех объектов данного класса.
@@ -111,6 +112,56 @@ namespace ObjectOrientedPractices.Model.Classes
         {
             _id = _idCounter;
             _idCounter++;
+        }
+
+        public object Clone()
+        {
+            return new Item(Name, Info, Cost, Category);
+        }
+
+        public bool Equals(Item? other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (other is not Item)
+            {
+                return false;
+            }
+            if (object.ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            if ((Name != other.Name) || (Info != other.Info) || (Cost != other.Cost) || (Category != other.Category))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public int CompareTo(Item? other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            if (other is not Item)
+            {
+                return -1;
+            }
+            if (Cost == other.Cost)
+            {
+                return 0;
+            }
+            if (Cost > other.Cost)
+            {
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
         }
     }
 }

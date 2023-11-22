@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedPractices.Model.Classes
 {
-    public class Cart
+    public class Cart : ICloneable
     {
         private BindingList<Item> _items;
 
@@ -36,6 +36,15 @@ namespace ObjectOrientedPractices.Model.Classes
         public Cart()
         {
             Items = new BindingList<Item>();
+        }
+        public Cart(BindingList<Item> items)
+        {
+            Items = items;
+        }
+
+        public object Clone()
+        {
+            return new Cart(new BindingList<Item>(Items));
         }
     }
 }

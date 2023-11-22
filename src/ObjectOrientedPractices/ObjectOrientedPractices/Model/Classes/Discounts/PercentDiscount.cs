@@ -12,7 +12,7 @@ using System.ComponentModel;
 
 namespace ObjectOrientedPractices.Model.Classes.Discounts
 {
-    public class PercentDiscount : IDiscount
+    public class PercentDiscount : IDiscount, IComparable<PercentDiscount>
     {
         private int _percents;
         private double _sum;
@@ -79,6 +79,31 @@ namespace ObjectOrientedPractices.Model.Classes.Discounts
             }
             return sum;
         }
+
+        public int CompareTo(PercentDiscount? other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            if (other is not PercentDiscount)
+            {
+                return -1;
+            }
+            if (Percents == other.Percents)
+            {
+                return 0;
+            }
+            if (Percents > other.Percents)
+            {
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
         public PercentDiscount(double sum, Category category)
         {
             Sum = sum;

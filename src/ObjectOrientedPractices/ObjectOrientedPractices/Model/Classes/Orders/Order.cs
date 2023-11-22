@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedPractices.Model.Classes.Orders
 {
-    public class Order
+    public class Order : IEquatable<Order>
     {
         /// <summary>
         /// Идентификатор количества всех объектов данного класса.
@@ -92,6 +92,39 @@ namespace ObjectOrientedPractices.Model.Classes.Orders
             Status = status;
             Customer = customer;
             DiscountAmount = discountAmount;
+        }
+
+        public bool Equals(Order? other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (other is not Order)
+            {
+                return false;
+            }
+            if (object.ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            if (Items.Count != other.Items.Count)
+            {
+                return false;
+            }
+            for (int i = 0; i < Items.Count; i++)
+            {
+                if (!(Items[i].Equals(other.Items[i])))
+                {
+                    return false;
+                }
+            }
+            if ((!(Address.Equals(other.Address))) || (Status != other.Status) || (Customer != other.Customer) 
+                || (DiscountAmount != other.DiscountAmount))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
