@@ -81,8 +81,8 @@ namespace ObjectOrientedPractices.Model.Classes
             get { return _cost; }
             set
             {
-                double min = 0;
-                double max = 100000;
+                double min = 1;
+                double max = 99999;
                 Validator.AssertValueInRange(value, min, max);
                 _cost = value;
             }

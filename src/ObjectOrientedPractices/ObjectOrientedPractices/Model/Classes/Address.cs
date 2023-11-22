@@ -22,8 +22,8 @@ namespace ObjectOrientedPractices.Model.Classes
             get { return _index; }
             set
             {
-                int min = 99999;
-                int max = 1000000;
+                int min = 100000;
+                int max = 999999;
                 Validator.AssertValueInRange(value, min, max);
                 _index = value;
             }

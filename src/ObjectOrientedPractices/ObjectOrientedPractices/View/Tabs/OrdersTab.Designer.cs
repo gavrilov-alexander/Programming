@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             tableLayoutPanel1 = new TableLayoutPanel();
             SelectedOrderGroupBox = new GroupBox();
             PriorityOptionsGroupBox = new GroupBox();
@@ -45,14 +46,21 @@
             IdTextBox = new TextBox();
             IDLabel = new Label();
             OrdersDataGridView = new DataGridView();
+            orderBindingSource = new BindingSource(components);
+            Id = new DataGridViewTextBoxColumn();
             StatusToString = new DataGridViewTextBoxColumn();
+            dateCreationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             CustomerFullNameToString = new DataGridViewTextBoxColumn();
-            Amount = new DataGridViewTextBoxColumn();
             AddressToString = new DataGridViewTextBoxColumn();
+            Amount = new DataGridViewTextBoxColumn();
+            totalDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            TotalLabel = new Label();
+            TotalTextLabel = new Label();
             tableLayoutPanel1.SuspendLayout();
             SelectedOrderGroupBox.SuspendLayout();
             PriorityOptionsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)OrdersDataGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)orderBindingSource).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -72,6 +80,8 @@
             // 
             // SelectedOrderGroupBox
             // 
+            SelectedOrderGroupBox.Controls.Add(TotalLabel);
+            SelectedOrderGroupBox.Controls.Add(TotalTextLabel);
             SelectedOrderGroupBox.Controls.Add(PriorityOptionsGroupBox);
             SelectedOrderGroupBox.Controls.Add(AmountLabel);
             SelectedOrderGroupBox.Controls.Add(AmountTextLabel);
@@ -126,7 +136,7 @@
             AmountLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             AmountLabel.AutoSize = true;
             AmountLabel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            AmountLabel.Location = new Point(567, 777);
+            AmountLabel.Location = new Point(400, 777);
             AmountLabel.Name = "AmountLabel";
             AmountLabel.Size = new Size(121, 38);
             AmountLabel.TabIndex = 10;
@@ -136,7 +146,7 @@
             // 
             AmountTextLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             AmountTextLabel.AutoSize = true;
-            AmountTextLabel.Location = new Point(607, 741);
+            AmountTextLabel.Location = new Point(440, 741);
             AmountTextLabel.Name = "AmountTextLabel";
             AmountTextLabel.Size = new Size(81, 25);
             AmountTextLabel.TabIndex = 9;
@@ -231,8 +241,10 @@
             OrdersDataGridView.AllowUserToDeleteRows = false;
             OrdersDataGridView.AllowUserToResizeColumns = false;
             OrdersDataGridView.AllowUserToResizeRows = false;
+            OrdersDataGridView.AutoGenerateColumns = false;
             OrdersDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            OrdersDataGridView.Columns.AddRange(new DataGridViewColumn[] { StatusToString, CustomerFullNameToString, Amount, AddressToString });
+            OrdersDataGridView.Columns.AddRange(new DataGridViewColumn[] { Id, StatusToString, dateCreationDataGridViewTextBoxColumn, CustomerFullNameToString, AddressToString, Amount, totalDataGridViewTextBoxColumn });
+            OrdersDataGridView.DataSource = orderBindingSource;
             OrdersDataGridView.Dock = DockStyle.Fill;
             OrdersDataGridView.Location = new Point(3, 3);
             OrdersDataGridView.MultiSelect = false;
@@ -244,6 +256,19 @@
             OrdersDataGridView.TabIndex = 1;
             OrdersDataGridView.SelectionChanged += OrdersDataGridView_SelectionChanged;
             // 
+            // orderBindingSource
+            // 
+            orderBindingSource.DataSource = typeof(Model.Classes.Orders.Order);
+            // 
+            // Id
+            // 
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Id";
+            Id.MinimumWidth = 8;
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Width = 150;
+            // 
             // StatusToString
             // 
             StatusToString.DataPropertyName = "StatusToString";
@@ -252,6 +277,15 @@
             StatusToString.Name = "StatusToString";
             StatusToString.ReadOnly = true;
             StatusToString.Width = 150;
+            // 
+            // dateCreationDataGridViewTextBoxColumn
+            // 
+            dateCreationDataGridViewTextBoxColumn.DataPropertyName = "DateCreation";
+            dateCreationDataGridViewTextBoxColumn.HeaderText = "DateCreation";
+            dateCreationDataGridViewTextBoxColumn.MinimumWidth = 8;
+            dateCreationDataGridViewTextBoxColumn.Name = "dateCreationDataGridViewTextBoxColumn";
+            dateCreationDataGridViewTextBoxColumn.ReadOnly = true;
+            dateCreationDataGridViewTextBoxColumn.Width = 150;
             // 
             // CustomerFullNameToString
             // 
@@ -262,6 +296,15 @@
             CustomerFullNameToString.ReadOnly = true;
             CustomerFullNameToString.Width = 300;
             // 
+            // AddressToString
+            // 
+            AddressToString.DataPropertyName = "AddressToString";
+            AddressToString.HeaderText = "Address";
+            AddressToString.MinimumWidth = 8;
+            AddressToString.Name = "AddressToString";
+            AddressToString.ReadOnly = true;
+            AddressToString.Width = 450;
+            // 
             // Amount
             // 
             Amount.DataPropertyName = "Amount";
@@ -271,14 +314,35 @@
             Amount.ReadOnly = true;
             Amount.Width = 150;
             // 
-            // AddressToString
+            // totalDataGridViewTextBoxColumn
             // 
-            AddressToString.DataPropertyName = "AddressToString";
-            AddressToString.HeaderText = "Address";
-            AddressToString.MinimumWidth = 8;
-            AddressToString.Name = "AddressToString";
-            AddressToString.ReadOnly = true;
-            AddressToString.Width = 450;
+            totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
+            totalDataGridViewTextBoxColumn.HeaderText = "Total";
+            totalDataGridViewTextBoxColumn.MinimumWidth = 8;
+            totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
+            totalDataGridViewTextBoxColumn.ReadOnly = true;
+            totalDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // TotalLabel
+            // 
+            TotalLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            TotalLabel.AutoSize = true;
+            TotalLabel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            TotalLabel.Location = new Point(567, 777);
+            TotalLabel.Name = "TotalLabel";
+            TotalLabel.Size = new Size(121, 38);
+            TotalLabel.TabIndex = 14;
+            TotalLabel.Text = "4 999,90";
+            // 
+            // TotalTextLabel
+            // 
+            TotalTextLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            TotalTextLabel.AutoSize = true;
+            TotalTextLabel.Location = new Point(607, 741);
+            TotalTextLabel.Name = "TotalTextLabel";
+            TotalTextLabel.Size = new Size(81, 25);
+            TotalTextLabel.TabIndex = 13;
+            TotalTextLabel.Text = "Amount:\r\n";
             // 
             // OrdersTab
             // 
@@ -293,6 +357,7 @@
             PriorityOptionsGroupBox.ResumeLayout(false);
             PriorityOptionsGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)OrdersDataGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)orderBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -314,12 +379,18 @@
         private DataGridView OrdersDataGridView;
         private DataGridViewTextBoxColumn orderStatusToStringDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn StatusToString;
-        private DataGridViewTextBoxColumn CustomerFullNameToString;
-        private DataGridViewTextBoxColumn Amount;
-        private DataGridViewTextBoxColumn AddressToString;
         private GroupBox PriorityOptionsGroupBox;
         private ComboBox DeliveryTimeComboBox;
         private Label DeliveryTimeLabel;
+        private BindingSource orderBindingSource;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn StatusToString;
+        private DataGridViewTextBoxColumn dateCreationDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn CustomerFullNameToString;
+        private DataGridViewTextBoxColumn AddressToString;
+        private DataGridViewTextBoxColumn Amount;
+        private DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
+        private Label TotalLabel;
+        private Label TotalTextLabel;
     }
 }

@@ -11,6 +11,9 @@ using System.Windows.Forms;
 using ObjectOrientedPractices.Model.Classes;
 using ObjectOrientedPractices.Services;
 using ObjectOrientedPractices.View.Controls;
+using ObjectOrientedPractices.Model.Interfaces;
+using ObjectOrientedPractices.View.Forms;
+using ObjectOrientedPractices.Model.Classes.Discounts;
 
 namespace ObjectOrientedPractices.View.Tabs
 {
@@ -57,6 +60,8 @@ namespace ObjectOrientedPractices.View.Tabs
             IdTextBox.Text = _currentCustomer.Id.ToString();
             FillCustomersListBox();
             AddressControl1.Address = _currentCustomer.Address;
+            DiscountsListBox.DisplayMember = nameof(IDiscount.Info);
+            DiscountsListBox.DataSource = _currentCustomer.Discounts;
         }
 
         public void RefreshData()
@@ -107,6 +112,8 @@ namespace ObjectOrientedPractices.View.Tabs
                 ClearCurrentCustomer();
                 IdTextBox.Text = _newCustomer.Id.ToString();
                 PriorityCheckBox.Checked = _newCustomer.IsPriority;
+                DiscountsListBox.DataSource = _newCustomer.Discounts;
+                DiscountsListBox.SelectedIndex = -1;
                 ApplyButton.Visible = true;
                 return;
             }
@@ -116,6 +123,8 @@ namespace ObjectOrientedPractices.View.Tabs
             IdTextBox.Text = _currentCustomer.Id.ToString();
             FullNameTextBox.Text = _currentCustomer.FullName;
             PriorityCheckBox.Checked = _currentCustomer.IsPriority;
+            DiscountsListBox.DataSource = _currentCustomer.Discounts;
+            DiscountsListBox.SelectedIndex = -1;
         }
 
         /// <summary>
@@ -230,6 +239,27 @@ namespace ObjectOrientedPractices.View.Tabs
                 return;
             }
             _currentCustomer.IsPriority = PriorityCheckBox.Checked;
+        }
+
+        private void AddDiscountButton_Click(object sender, EventArgs e)
+        {
+            AddDiscountForm addDiscountForm = new AddDiscountForm();
+            DialogResult result = addDiscountForm.ShowDialog();
+            if (DialogResult.OK == result)
+            {
+                PercentDiscount newDiscount = new PercentDiscount(0, addDiscountForm.Category);
+                _currentCustomer.Discounts.Add(newDiscount);
+                DiscountsListBox.SelectedItem = newDiscount;
+            }
+        }
+
+        private void RemoveDiscountButton_Click(object sender, EventArgs e)
+        {
+            if (DiscountsListBox.SelectedIndex == -1 || DiscountsListBox.SelectedIndex == 0)
+            {
+                return;
+            }
+            _currentCustomer.Discounts.RemoveAt(DiscountsListBox.SelectedIndex);
         }
     }
 }

@@ -4,6 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ObjectOrientedPractices.Model.Classes.Discounts;
+using ObjectOrientedPractices.Model.Classes.Orders;
+using ObjectOrientedPractices.Model.Interfaces;
 using Validator = ObjectOrientedPractices.Services.ValueValidator;
 
 namespace ObjectOrientedPractices.Model.Classes
@@ -36,6 +39,8 @@ namespace ObjectOrientedPractices.Model.Classes
         /// Адрес покупателя.
         /// </summary>
         public Address Address;
+
+        public BindingList<IDiscount> Discounts {  get; set; }
 
         /// <summary>
         /// Возвращает идентификатор предмета.
@@ -90,7 +95,7 @@ namespace ObjectOrientedPractices.Model.Classes
         /// </summary>
         /// <param name="fullName">Полное имя покупателя. Длина строки должна быть меньше 200 символов.</param>
         /// <param name="address">Адрес покупателя. Длина строки должна быть меньше 500 символов.</param>
-        public Customer(string fullName, Address address, bool isPriority)
+        public Customer(string fullName, Address address, bool isPriority, BindingList<IDiscount> discounts)
         {
             _id = _idCounter;
             _idCounter++;
@@ -98,6 +103,7 @@ namespace ObjectOrientedPractices.Model.Classes
             Address = address;
             Cart= new Cart();
             IsPriority = isPriority;
+            Discounts = discounts;
         }
 
         /// <summary>
@@ -110,6 +116,7 @@ namespace ObjectOrientedPractices.Model.Classes
             Address = new Address();
             Cart= new Cart();
             IsPriority = false;
+            Discounts = new BindingList<IDiscount> { new PointsDiscount() };
         }
     }
 }

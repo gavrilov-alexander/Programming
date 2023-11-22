@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ObjectOrientedPractices.Model.Classes;
+using ObjectOrientedPractices.Model.Classes.Orders;
 using ObjectOrientedPractices.Model.Enums;
 
 namespace ObjectOrientedPractices.View.Tabs
@@ -99,6 +100,7 @@ namespace ObjectOrientedPractices.View.Tabs
             ItemsListBox.DisplayMember = nameof(Item.Name);
             ItemsListBox.SelectedIndex = -1;
             AmountLabel.Text = _currentOrder.Amount.ToString();
+            TotalLabel.Text = _currentOrder.Total.ToString();
         }
 
         private void IdTextBox_KeyPress(object sender, KeyPressEventArgs e)

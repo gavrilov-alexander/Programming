@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ObjectOrientedPractices.Model.Classes;
+using ObjectOrientedPractices.Model.Classes.Orders;
 using ObjectOrientedPractices.Model.Enums;
+using ObjectOrientedPractices.Model.Interfaces;
 
 namespace ObjectOrientedPractices.View.Tabs
 {
@@ -44,6 +46,13 @@ namespace ObjectOrientedPractices.View.Tabs
             CustomersComboBox.DisplayMember = null;
             CustomersComboBox.DisplayMember = nameof(Customer.FullName);
         }
+        private void FillDiscountsCheckedListBox()
+        {
+            DiscountsCheckedListBox.DataSource = null;
+            DiscountsCheckedListBox.DataSource = _currentCustomer.Discounts;
+            DiscountsCheckedListBox.DisplayMember = null;
+            DiscountsCheckedListBox.DisplayMember = nameof(IDiscount.Info);
+        }
         private void RefreshAmountLabel()
         {
             if (_currentCustomer == null || CustomersComboBox.SelectedIndex == -1)
@@ -51,6 +60,9 @@ namespace ObjectOrientedPractices.View.Tabs
                 return;
             }
             AmountLabel.Text = _currentCustomer.Cart.Amount.ToString();
+            DiscountsAmountLabel.Text = "0";
+            TotalLabel.Text = _currentCustomer.Cart.Amount.ToString();
+            UpdateCheckedDiscountsAmount();
         }
         private void UpdateCartListBox()
         {
@@ -72,6 +84,7 @@ namespace ObjectOrientedPractices.View.Tabs
             }
             _currentCustomer = Customers[CustomersComboBox.SelectedIndex];
             UpdateCartListBox();
+            FillDiscountsCheckedListBox();
         }
 
         private void AddToCartButton_Click(object sender, EventArgs e)
@@ -111,20 +124,53 @@ namespace ObjectOrientedPractices.View.Tabs
             {
                 return;
             }
+            double discountAmount = 0;
+            foreach (IDiscount discount in DiscountsCheckedListBox.CheckedItems)
+            {
+                discountAmount += discount.Apply(_currentCustomer.Cart.Items);
+            }
+            foreach (IDiscount discount in _currentCustomer.Discounts)
+            {
+                discount.Update(_currentCustomer.Cart.Items);
+            }
             if (_currentCustomer.IsPriority)
             {
-                PriorityOrder order = new PriorityOrder(_currentCustomer.Cart.Items, _currentCustomer.Address, 
-                                                        OrderStatus.New, _currentCustomer , DateTime.Now, "9:00 - 11:00");
+                PriorityOrder order = new PriorityOrder(_currentCustomer.Cart.Items, _currentCustomer.Address, OrderStatus.New,
+                                                        _currentCustomer, discountAmount, DateTime.Now, "9:00 - 11:00");
                 _currentCustomer.Orders.Add(order);
             }
             else
             {
-                Order order = new Order(_currentCustomer.Cart.Items, _currentCustomer.Address, OrderStatus.New, _currentCustomer);
+                Order order = new Order(_currentCustomer.Cart.Items, _currentCustomer.Address, OrderStatus.New, _currentCustomer, discountAmount);
                 _currentCustomer.Orders.Add(order);
             }
             _currentCustomer.Cart.Items = new BindingList<Item>();
             UpdateCartListBox();
             RefreshAmountLabel();
+            FillDiscountsCheckedListBox();
+        }
+        private void DiscountsCheckedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            UpdateCheckedDiscountsAmount();
+        }
+
+        private void DiscountsCheckedListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateCheckedDiscountsAmount();
+        }
+        private void UpdateCheckedDiscountsAmount()
+        {
+            if (CustomersComboBox.SelectedIndex == -1 || _currentCustomer == null)
+            {
+                return;
+            }
+            double discountAmount = 0;
+            foreach (IDiscount discount in DiscountsCheckedListBox.CheckedItems)
+            {
+                discountAmount += discount.Calculate(_currentCustomer.Cart.Items);
+            }
+            DiscountsAmountLabel.Text = discountAmount.ToString();
+            TotalLabel.Text = (_currentCustomer.Cart.Amount - discountAmount).ToString();
         }
     }
 }

@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ObjectOrientedPractices.Services;
+using ObjectOrientedPractices.Model.Classes.Orders;
 
 namespace ObjectOrientedPractices.View.Tabs
 {
@@ -38,7 +39,7 @@ namespace ObjectOrientedPractices.View.Tabs
                 items.Add(ItemFactory.GenerateItem());
             }
             Customer customer = CustomerFactory.GenerateCustomer();
-            Order = new PriorityOrder(items, customer.Address, OrderStatus.New, customer, DateTime.Now, _deliverytimes[0]);
+            Order = new PriorityOrder(items, customer.Address, OrderStatus.New, customer, 0, DateTime.Now, _deliverytimes[0]);
             FillOrderStatusComboBox();
             FillOrderDeliveryTimeComboBox();
             FillOrderData();
@@ -111,7 +112,7 @@ namespace ObjectOrientedPractices.View.Tabs
                 items.Add(ItemFactory.GenerateItem());
             }
             Customer customer = CustomerFactory.GenerateCustomer();
-            Order = new PriorityOrder(items, customer.Address, OrderStatus.New, customer, DateTime.Now, _deliverytimes[0]);
+            Order = new PriorityOrder(items, customer.Address, OrderStatus.New, customer, 0, DateTime.Now, _deliverytimes[0]);
             FillOrderData();
         }
 

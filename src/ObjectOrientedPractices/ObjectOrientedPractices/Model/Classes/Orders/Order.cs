@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjectOrientedPractices.Model.Classes
+namespace ObjectOrientedPractices.Model.Classes.Orders
 {
     public class Order
     {
@@ -24,15 +24,16 @@ namespace ObjectOrientedPractices.Model.Classes
 
         public BindingList<Item> Items;
 
-        public OrderStatus Status;
-        public Customer Customer;
-        public Address Address;
+        public OrderStatus Status { get; set; }
+        public Customer Customer { get; set; }
+        public Address Address { get; set; }
+        public double DiscountAmount { get; set; }
 
 
 
         public int Id { get { return _id; } }
 
-        
+
         public DateTime DateCreation
         {
             get { return _dateCreation; }
@@ -65,6 +66,13 @@ namespace ObjectOrientedPractices.Model.Classes
                 return amount;
             }
         }
+        public double Total
+        {
+            get
+            {
+                return Amount - DiscountAmount;
+            }
+        }
         public string AddressToString
         {
             get
@@ -74,7 +82,7 @@ namespace ObjectOrientedPractices.Model.Classes
         }
 
 
-        public Order(BindingList<Item> items, Address address, OrderStatus status, Customer customer)
+        public Order(BindingList<Item> items, Address address, OrderStatus status, Customer customer, double discountAmount)
         {
             _id = _idCounter;
             _idCounter++;
@@ -83,6 +91,7 @@ namespace ObjectOrientedPractices.Model.Classes
             Address = address;
             Status = status;
             Customer = customer;
+            DiscountAmount = discountAmount;
         }
     }
 }

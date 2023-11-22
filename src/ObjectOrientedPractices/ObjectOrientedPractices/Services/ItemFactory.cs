@@ -22,10 +22,10 @@ namespace ObjectOrientedPractices.Services
             Random random = new Random();
             Array names = Enum.GetValues(typeof(ItemNames));
             Array categories = Enum.GetValues(typeof(Category));
-            string name = names.GetValue(random.Next(0, names.Length)).ToString();
+            Category category = (Category)categories.GetValue(random.Next(0, categories.Length));
+            string name = category.ToString();
             string info = name;
             double cost = random.Next(0, 100000);
-            Category category = (Category)categories.GetValue(random.Next(0, categories.Length));
             return new Item(name, info, cost, category);
         }
     }
