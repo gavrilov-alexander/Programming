@@ -16,6 +16,7 @@ namespace ObjectOrientedPractices.View.Tabs
 {
     public partial class CartsTab : UserControl
     {
+        public event EventHandler OrdersChanged;
         public BindingList<Item> Items;
         public BindingList<Customer> Customers;
         public BindingList<Order> Orders;
@@ -26,7 +27,7 @@ namespace ObjectOrientedPractices.View.Tabs
             FillItemsListBox();
             FillCustomersComboBox();
         }
-        public void RefreshData()
+        public void RefreshData(object sender, EventArgs e)
         {
             FillItemsListBox();
             FillCustomersComboBox();
@@ -89,7 +90,7 @@ namespace ObjectOrientedPractices.View.Tabs
 
         private void AddToCartButton_Click(object sender, EventArgs e)
         {
-            if (_currentCustomer == null || CustomersComboBox.SelectedIndex == -1)
+            if (_currentCustomer == null || CustomersComboBox.SelectedIndex == -1 || ItemsListBox.SelectedIndex == -1)
             {
                 return;
             }
@@ -148,6 +149,7 @@ namespace ObjectOrientedPractices.View.Tabs
             UpdateCartListBox();
             RefreshAmountLabel();
             FillDiscountsCheckedListBox();
+            OrdersChanged?.Invoke(this, EventArgs.Empty);
         }
         private void DiscountsCheckedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
         {

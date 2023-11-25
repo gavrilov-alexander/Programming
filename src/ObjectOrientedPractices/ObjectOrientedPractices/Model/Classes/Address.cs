@@ -11,6 +11,7 @@ namespace ObjectOrientedPractices.Model.Classes
 {
     public class Address : ICloneable, IEquatable<Address>
     {
+        public event EventHandler AddressChanged;
         private int _index;
         private string _country;
         private string _city;
@@ -26,7 +27,11 @@ namespace ObjectOrientedPractices.Model.Classes
                 int min = 100000;
                 int max = 999999;
                 Validator.AssertValueInRange(value, min, max);
-                _index = value;
+                if (_index != value)
+                {
+                    _index = value;
+                    AddressChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
         public string Country
@@ -36,7 +41,11 @@ namespace ObjectOrientedPractices.Model.Classes
             {
                 int maxLength = 50;
                 Validator.AssertStringOnLength(value, maxLength);
-                _country = value;
+                if (_country != value)
+                {
+                    _country = value;
+                    AddressChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
         public string City
@@ -46,7 +55,11 @@ namespace ObjectOrientedPractices.Model.Classes
             {
                 int maxLength = 50;
                 Validator.AssertStringOnLength(value, maxLength);
-                _city = value;
+                if (_city != value)
+                {
+                    _city = value;
+                    AddressChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
         public string Street
@@ -56,7 +69,11 @@ namespace ObjectOrientedPractices.Model.Classes
             {
                 int maxLength = 100;
                 Validator.AssertStringOnLength(value, maxLength);
-                _street = value;
+                if (_street != value)
+                {
+                    _street = value;
+                    AddressChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
         public string Building
@@ -66,7 +83,11 @@ namespace ObjectOrientedPractices.Model.Classes
             {
                 int maxLength = 10;
                 Validator.AssertStringOnLength(value, maxLength);
-                _building = value;
+                if (_building != value)
+                {
+                    _building = value;
+                    AddressChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
         public string Apartment
@@ -76,7 +97,11 @@ namespace ObjectOrientedPractices.Model.Classes
             {
                 int maxLength = 10;
                 Validator.AssertStringOnLength(value, maxLength);
-                _apartment = value;
+                if (_apartment != value)
+                {
+                    _apartment = value;
+                    AddressChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 

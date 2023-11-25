@@ -121,13 +121,13 @@
             // AmountLabel
             // 
             AmountLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            AmountLabel.AutoSize = true;
             AmountLabel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            AmountLabel.Location = new Point(549, 723);
+            AmountLabel.Location = new Point(498, 726);
             AmountLabel.Name = "AmountLabel";
-            AmountLabel.Size = new Size(121, 38);
+            AmountLabel.Size = new Size(171, 38);
             AmountLabel.TabIndex = 18;
-            AmountLabel.Text = "4 999,90";
+            AmountLabel.Text = "0";
+            AmountLabel.TextAlign = ContentAlignment.TopRight;
             // 
             // AmoutTextLabel
             // 

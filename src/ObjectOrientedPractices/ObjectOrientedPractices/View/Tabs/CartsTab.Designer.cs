@@ -161,13 +161,13 @@
             // TotalLabel
             // 
             TotalLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            TotalLabel.AutoSize = true;
             TotalLabel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            TotalLabel.Location = new Point(483, 676);
+            TotalLabel.Location = new Point(440, 681);
             TotalLabel.Name = "TotalLabel";
-            TotalLabel.Size = new Size(121, 38);
+            TotalLabel.Size = new Size(164, 38);
             TotalLabel.TabIndex = 17;
-            TotalLabel.Text = "4 999,90";
+            TotalLabel.Text = "0";
+            TotalLabel.TextAlign = ContentAlignment.TopRight;
             // 
             // TotalTextLabel
             // 
@@ -182,13 +182,14 @@
             // DiscountsAmountLabel
             // 
             DiscountsAmountLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            DiscountsAmountLabel.AutoSize = true;
             DiscountsAmountLabel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            DiscountsAmountLabel.Location = new Point(483, 504);
+            DiscountsAmountLabel.ImageAlign = ContentAlignment.MiddleRight;
+            DiscountsAmountLabel.Location = new Point(440, 505);
             DiscountsAmountLabel.Name = "DiscountsAmountLabel";
-            DiscountsAmountLabel.Size = new Size(121, 38);
+            DiscountsAmountLabel.Size = new Size(164, 38);
             DiscountsAmountLabel.TabIndex = 15;
-            DiscountsAmountLabel.Text = "4 999,90";
+            DiscountsAmountLabel.Text = "0";
+            DiscountsAmountLabel.TextAlign = ContentAlignment.TopRight;
             // 
             // DiscountsAmountTextLabel
             // 
@@ -269,13 +270,13 @@
             // AmountLabel
             // 
             AmountLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            AmountLabel.AutoSize = true;
             AmountLabel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            AmountLabel.Location = new Point(483, 344);
+            AmountLabel.Location = new Point(440, 343);
             AmountLabel.Name = "AmountLabel";
-            AmountLabel.Size = new Size(121, 38);
+            AmountLabel.Size = new Size(164, 38);
             AmountLabel.TabIndex = 6;
-            AmountLabel.Text = "4 999,90";
+            AmountLabel.Text = "0";
+            AmountLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
             // AmountTextLabel
             // 
