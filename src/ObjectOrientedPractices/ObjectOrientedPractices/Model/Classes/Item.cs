@@ -14,9 +14,21 @@ namespace ObjectOrientedPractices.Model.Classes
     /// </summary>
     public class Item : ICloneable, IEquatable<Item>, IComparable<Item>
     {
+        /// <summary>
+        /// Событие, которое вызывается при каждом изменении поля <see cref="Name"/>.
+        /// </summary>
         public event EventHandler NameChanged;
+
+        /// <summary>
+        /// Событие, которое вызывается при каждом изменении поля <see cref="Cost"/>.
+        /// </summary>
         public event EventHandler CostChanged;
+
+        /// <summary>
+        /// Событие, которое вызывается при каждом изменении поля <see cref="Info"/>.
+        /// </summary>
         public event EventHandler InfoChanged;
+
         /// <summary>
         /// Идентификатор количества всех объектов данного класса.
         /// </summary>
@@ -47,6 +59,9 @@ namespace ObjectOrientedPractices.Model.Classes
         /// </summary>
         public int Id { get { return _id; } }
 
+        /// <summary>
+        /// Возвращает и задает категорию товара.
+        /// </summary>
         public Category Category { get; set; }
 
         /// <summary>
@@ -110,6 +125,7 @@ namespace ObjectOrientedPractices.Model.Classes
         /// <param name="name">Название предмета. Длина строки должна быть меньше 200 символов.</param>
         /// <param name="info">Описание предмета. Длина строки должна быть меньше 1000 символов.</param>
         /// <param name="cost">Стоимость предмета. Должна быть в диапозоне от 0 до 100000.</param>
+        /// <param name="category">Категория товара.</param>
         public Item(string name, string info, double cost, Category category)
         {
             _id = _idCounter;
@@ -129,11 +145,20 @@ namespace ObjectOrientedPractices.Model.Classes
             _idCounter++;
         }
 
+        /// <summary>
+        /// Клонирует текущий объект.
+        /// </summary>
+        /// <returns>Новый объект, с теми же значениями полей.</returns>
         public object Clone()
         {
             return new Item(Name, Info, Cost, Category);
         }
 
+        /// <summary>
+        /// Проверяет, совпадают ли текущий объект с предоставляемым. 
+        /// </summary>
+        /// <param name="other">Предоставляемы для сравнения объект.</param>
+        /// <returns>Логическое значение.</returns>
         public bool Equals(Item? other)
         {
             if (other == null)
@@ -155,6 +180,11 @@ namespace ObjectOrientedPractices.Model.Classes
             return true;
         }
 
+        /// <summary>
+        /// Сравнивает текущий объект, с предоставленным по стоимости.
+        /// </summary>
+        /// <param name="other">Объект, с которым сравнивается текущий объект.</param>
+        /// <returns>Число, показывающее, расположен ли данный экземпляр перед, после или на той же позиции в порядке сортировки</returns>
         public int CompareTo(Item? other)
         {
             if (other == null)

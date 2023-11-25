@@ -11,9 +11,19 @@ using ObjectOrientedPractices.Model.Classes;
 
 namespace ObjectOrientedPractices.View.Controls
 {
+    /// <summary>
+    /// Хранит логику пользовательского элемента управления <see cref="AddressControl"/>.
+    /// </summary>
     public partial class AddressControl : UserControl
     {
+        /// <summary>
+        /// Элемент класса <see cref="Model.Classes.Address"/>.
+        /// </summary>
         private Address _address;
+
+        /// <summary>
+        /// Возвращает и задает элемент класса <see cref="Model.Classes.Address"/>.
+        /// </summary>
         public Address Address
         {
             get { return _address; }
@@ -23,10 +33,18 @@ namespace ObjectOrientedPractices.View.Controls
                 UpdateAddressTextBoxes();
             }
         }
+
+        /// <summary>
+        /// Создает объект типа <see cref="AddressControl"/>
+        /// </summary>
         public AddressControl()
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Заполняет IndexTextBox, CountryTextBox, CityTextBox, StreetTextBox, BuildingTextBox, ApartmentTextBox значениями из Address.
+        /// </summary>
         private void FillAdressTextBoxes()
         {
             IndexTextBox.Text = Address.Index.ToString();
@@ -36,6 +54,10 @@ namespace ObjectOrientedPractices.View.Controls
             BuildingTextBox.Text = Address.Building;
             ApartmentTextBox.Text = Address.Apartment;
         }
+
+        /// <summary>
+        /// Очищает IndexTextBox, CountryTextBox, CityTextBox, StreetTextBox, BuildingTextBox, ApartmentTextBox.
+        /// </summary>
         private void UpdateAddressTextBoxes()
         {
             if (Address == null || Address.Index == 0 || Address.Country == "" || Address.City == ""
@@ -52,6 +74,9 @@ namespace ObjectOrientedPractices.View.Controls
             FillAdressTextBoxes();
         }
 
+        /// <summary>
+        /// Записывает значение из IndexTextBox в Address.
+        /// </summary>
         private void IndexTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -69,6 +94,9 @@ namespace ObjectOrientedPractices.View.Controls
             }
         }
 
+        /// <summary>
+        /// Записывает значение из CountryTextBox в Address.
+        /// </summary>
         private void CountryTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -82,6 +110,9 @@ namespace ObjectOrientedPractices.View.Controls
             }
         }
 
+        /// <summary>
+        /// Записывает значение из CityTextBox в Address.
+        /// </summary>
         private void CityTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -95,6 +126,9 @@ namespace ObjectOrientedPractices.View.Controls
             }
         }
 
+        /// <summary>
+        /// Записывает значение из StreetTextBox в Address.
+        /// </summary>
         private void StreetTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -108,6 +142,9 @@ namespace ObjectOrientedPractices.View.Controls
             }
         }
 
+        /// <summary>
+        /// Записывает значение из BuildingTextBox в Address.
+        /// </summary>
         private void BuildingTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -121,6 +158,9 @@ namespace ObjectOrientedPractices.View.Controls
             }
         }
 
+        /// <summary>
+        /// Записывает значение из ApartmentTextBox в Address.
+        /// </summary>
         private void ApartmentTextBox_TextChanged(object sender, EventArgs e)
         {
             try

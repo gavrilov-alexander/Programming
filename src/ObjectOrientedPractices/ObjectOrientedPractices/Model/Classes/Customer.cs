@@ -31,8 +31,14 @@ namespace ObjectOrientedPractices.Model.Classes
         /// </summary>
         private string _fullName;
 
+        /// <summary>
+        /// Корзина.
+        /// </summary>
         private Cart _cart;
 
+        /// <summary>
+        /// Список товаров.
+        /// </summary>
         private BindingList<Order> _orders = new BindingList<Order>();
 
         /// <summary>
@@ -40,6 +46,9 @@ namespace ObjectOrientedPractices.Model.Classes
         /// </summary>
         public Address Address;
 
+        /// <summary>
+        /// Список скидок.
+        /// </summary>
         public BindingList<IDiscount> Discounts {  get; set; }
 
         /// <summary>
@@ -60,6 +69,10 @@ namespace ObjectOrientedPractices.Model.Classes
                 _fullName = value;
             }
         }
+
+        /// <summary>
+        /// Возвращает и задает корзину товаров.
+        /// </summary>
         public Cart Cart
         {
             get { return _cart; }
@@ -69,32 +82,27 @@ namespace ObjectOrientedPractices.Model.Classes
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает список заказов.
+        /// </summary>
         public BindingList<Order> Orders
         {
             get { return _orders; }
             set { _orders = value; }
         }
 
-        public bool IsPriority { get; set; }
         /// <summary>
-        /// Возвращает и задает адрес покупателя. Длина строки должна быть меньше 500 символов.
+        /// Возвращает и задает указатель приоритетности покупателя.
         /// </summary>
-        /*public Address Address
-        {
-            get { return _address; }
-            set
-            {
-                int maxLength = 500;
-                Validator.AssertStringOnLength(value, maxLength);
-                _address = value;
-            }
-        }*/
+        public bool IsPriority { get; set; }
 
         /// <summary>
         /// Создает экземпляр класса <see cref="Customer"/>.
         /// </summary>
         /// <param name="fullName">Полное имя покупателя. Длина строки должна быть меньше 200 символов.</param>
         /// <param name="address">Адрес покупателя. Длина строки должна быть меньше 500 символов.</param>
+        /// <param name="isPriority">Указатель приоритетности.</param>
+        /// <param name="discounts">Список скидок.</param>
         public Customer(string fullName, Address address, bool isPriority, BindingList<IDiscount> discounts)
         {
             _id = _idCounter;

@@ -22,12 +22,19 @@ namespace ObjectOrientedPractices.View.Tabs
     /// </summary>
     public partial class CustomersTab : UserControl
     {
+        //// <summary>
+        /// Событие, вызываемое при каждом изменении покупателей.
+        /// </summary>
         public event EventHandler CustomersChanged;
+
         /// <summary>
         /// Коллекция элементов класса <see cref="Customer"/>.
         /// </summary>
         private BindingList<Customer> _customers;
 
+        /// <summary>
+        /// Возвращает и задает коллекция элементов класса <see cref="Customer"/>.
+        /// </summary>
         public BindingList<Customer> Customers
         {
             get { return _customers; }
@@ -65,13 +72,8 @@ namespace ObjectOrientedPractices.View.Tabs
             DiscountsListBox.DataSource = _currentCustomer.Discounts;
         }
 
-        public void RefreshData()
-        {
-            FillCustomersListBox();
-        }
-
         /// <summary>
-        /// Заполняет CustomersListBox элементами коллекции _customers.
+        /// Заполняет CustomersListBox элементами коллекции Customers.
         /// </summary>
         private void FillCustomersListBox()
         {
@@ -82,7 +84,7 @@ namespace ObjectOrientedPractices.View.Tabs
         }
 
         /// <summary>
-        /// Удаляет данные из IdTextBox, FullNameTextBox, AddressTextBox.
+        /// Удаляет данные из IdTextBox, FullNameTextBox, AddressTextBox, PriorityCheckBox.
         /// </summary>
         private void ClearCurrentCustomer()
         {
@@ -102,7 +104,7 @@ namespace ObjectOrientedPractices.View.Tabs
         }
 
         /// <summary>
-        /// Заполняет IdTextBox, FullNameTextBox, AddressTextBox значениями выбранного в CustomersListBox элемента.
+        /// Заполняет IdTextBox, FullNameTextBox, AddressTextBox, PriorityCheckBox, DiscountsListBox значениями выбранного в CustomersListBox элемента.
         /// </summary>
         private void CustomersListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -168,13 +170,13 @@ namespace ObjectOrientedPractices.View.Tabs
             {
                 return;
             }
-            _customers.Remove(_currentCustomer);
+            Customers.Remove(_currentCustomer);
             CustomersListBox.SelectedIndex = -1;
             CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
-        /// Добавляет в _customers заполненный значениям элемент _newCustomer.
+        /// Добавляет в Customers заполненный значениям элемент _newCustomer.
         /// </summary>
         private void ApplyButton_Click(object sender, EventArgs e)
         {
@@ -229,11 +231,17 @@ namespace ObjectOrientedPractices.View.Tabs
             }
         }
 
+        /// <summary>
+        /// Контролирует фокусировку CustomersListBox.
+        /// </summary>
         private void CustomersListBox_Leave(object sender, EventArgs e)
         {
             UpdateCustomersListBoxDisplayMember();
         }
 
+        /// <summary>
+        /// Записывает в _currentCustomer значение из PriorityCheckBox.
+        /// </summary>
         private void PriorityCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (_currentCustomer == null)
@@ -248,6 +256,9 @@ namespace ObjectOrientedPractices.View.Tabs
             CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Вызывает форму класса <see cref="AddDiscountForm"/>.
+        /// </summary>
         private void AddDiscountButton_Click(object sender, EventArgs e)
         {
             AddDiscountForm addDiscountForm = new AddDiscountForm();
@@ -261,6 +272,9 @@ namespace ObjectOrientedPractices.View.Tabs
             }
         }
 
+        /// <summary>
+        /// Удаляет из _currentCustomer.Discounts выбранный в DiscountsListBox элемент.
+        /// </summary>
         private void RemoveDiscountButton_Click(object sender, EventArgs e)
         {
             if (DiscountsListBox.SelectedIndex == -1 || DiscountsListBox.SelectedIndex == 0)

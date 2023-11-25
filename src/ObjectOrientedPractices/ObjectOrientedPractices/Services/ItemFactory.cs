@@ -20,7 +20,6 @@ namespace ObjectOrientedPractices.Services
         public static Item GenerateItem()
         {
             Random random = new Random();
-            Array names = Enum.GetValues(typeof(ItemNames));
             Array categories = Enum.GetValues(typeof(Category));
             Category category = (Category)categories.GetValue(random.Next(0, categories.Length));
             string name = category.ToString();
