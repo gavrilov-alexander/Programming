@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjectOrientedPractices.Model.Classes
+namespace ObjectOrientedPractices.Services
 {
     /// <summary>
     /// Хранит данные о методе сортировки и его названии.
