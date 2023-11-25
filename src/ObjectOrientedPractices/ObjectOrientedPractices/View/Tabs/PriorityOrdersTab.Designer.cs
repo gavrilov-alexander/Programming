@@ -30,7 +30,7 @@
         {
             SelectedOrderGroupBox = new GroupBox();
             ItemsListBox = new ListBox();
-            ClearOrderButton = new Button();
+            GenerateNewOrderButton = new Button();
             RemoveItemButton = new Button();
             AddItemButton = new Button();
             AmountLabel = new Label();
@@ -53,7 +53,7 @@
             // SelectedOrderGroupBox
             // 
             SelectedOrderGroupBox.Controls.Add(ItemsListBox);
-            SelectedOrderGroupBox.Controls.Add(ClearOrderButton);
+            SelectedOrderGroupBox.Controls.Add(GenerateNewOrderButton);
             SelectedOrderGroupBox.Controls.Add(RemoveItemButton);
             SelectedOrderGroupBox.Controls.Add(AddItemButton);
             SelectedOrderGroupBox.Controls.Add(AmountLabel);
@@ -85,16 +85,16 @@
             ItemsListBox.Size = new Size(665, 304);
             ItemsListBox.TabIndex = 8;
             // 
-            // ClearOrderButton
+            // GenerateNewOrderButton
             // 
-            ClearOrderButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            ClearOrderButton.Location = new Point(540, 782);
-            ClearOrderButton.Name = "ClearOrderButton";
-            ClearOrderButton.Size = new Size(130, 33);
-            ClearOrderButton.TabIndex = 21;
-            ClearOrderButton.Text = "Clear Order";
-            ClearOrderButton.UseVisualStyleBackColor = true;
-            ClearOrderButton.Click += ClearOrderButton_Click;
+            GenerateNewOrderButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            GenerateNewOrderButton.Location = new Point(525, 782);
+            GenerateNewOrderButton.Name = "GenerateNewOrderButton";
+            GenerateNewOrderButton.Size = new Size(145, 33);
+            GenerateNewOrderButton.TabIndex = 21;
+            GenerateNewOrderButton.Text = "Generate Order";
+            GenerateNewOrderButton.UseVisualStyleBackColor = true;
+            GenerateNewOrderButton.Click += ClearOrderButton_Click;
             // 
             // RemoveItemButton
             // 
@@ -270,7 +270,7 @@
         private GroupBox PriorityOptionsGroupBox;
         private ComboBox DeliveryTimeComboBox;
         private Label DeliveryTimeLabel;
-        private Button ClearOrderButton;
+        private Button GenerateNewOrderButton;
         private Button RemoveItemButton;
         private Button AddItemButton;
         private Label AmountLabel;

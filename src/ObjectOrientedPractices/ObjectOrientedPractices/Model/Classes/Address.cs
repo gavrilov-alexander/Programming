@@ -9,16 +9,49 @@ using Validator = ObjectOrientedPractices.Services.ValueValidator;
 
 namespace ObjectOrientedPractices.Model.Classes
 {
+    /// <summary>
+    /// Хранит данные об адресе.
+    /// </summary>
     public class Address : ICloneable, IEquatable<Address>
     {
+        /// <summary>
+        /// Событие, которое вызывается при каждом изменении полей объекта.
+        /// </summary>
         public event EventHandler AddressChanged;
+
+        /// <summary>
+        /// Индекс.
+        /// </summary>
         private int _index;
+
+        /// <summary>
+        /// Страна.
+        /// </summary>
         private string _country;
+
+        /// <summary>
+        /// Город.
+        /// </summary>
         private string _city;
+
+        /// <summary>
+        /// Улица.
+        /// </summary>
         private string _street;
+
+        /// <summary>
+        /// Строение.
+        /// </summary>
         private string _building;
+
+        /// <summary>
+        /// Номер квартиры.
+        /// </summary>
         private string _apartment;
 
+        /// <summary>
+        /// Возвращает и задает индекс. Должен быть шестизначным.
+        /// </summary>
         public int Index
         {
             get { return _index; }
@@ -34,6 +67,10 @@ namespace ObjectOrientedPractices.Model.Classes
                 }
             }
         }
+
+        /// <summary>
+        /// Возвращает и задает страну. Должна быть длиной до 50 символов.
+        /// </summary>
         public string Country
         {
             get { return _country; }
@@ -48,6 +85,10 @@ namespace ObjectOrientedPractices.Model.Classes
                 }
             }
         }
+
+        /// <summary>
+        /// Возвращает и задает город. Должн быть длиной до 50 символов.
+        /// </summary>
         public string City
         {
             get { return _city; }
@@ -62,6 +103,10 @@ namespace ObjectOrientedPractices.Model.Classes
                 }
             }
         }
+
+        /// <summary>
+        /// Возвращает и задает улицу. Должна быть длиной до 100 символов.
+        /// </summary>
         public string Street
         {
             get { return _street; }
@@ -76,6 +121,10 @@ namespace ObjectOrientedPractices.Model.Classes
                 }
             }
         }
+
+        /// <summary>
+        /// Возвращает и задает строение. Должно быть длиной до 10 символов.
+        /// </summary>
         public string Building
         {
             get { return _building; }
@@ -90,6 +139,10 @@ namespace ObjectOrientedPractices.Model.Classes
                 }
             }
         }
+
+        /// <summary>
+        /// Возвращает и задает номер квартиры. Должн быть длиной до 10 символов.
+        /// </summary>
         public string Apartment
         {
             get { return _apartment; }
@@ -105,6 +158,15 @@ namespace ObjectOrientedPractices.Model.Classes
             }
         }
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Address"/>.
+        /// </summary>
+        /// <param name="index">Индекс. Должен быть шестизначным.</param>
+        /// <param name="country">Страна. Длиной до 50 символов</param>
+        /// <param name="city">Город. Длиной до 50 символов</param>
+        /// <param name="street">Улица. Длиной до 100 символов</param>
+        /// <param name="building">Строение. Длиной до 10 символов</param>
+        /// <param name="apartment">Номер квартиры. Длиной до 10 символов</param>
         public Address(int index, string country, string city, string street, string building, string apartment)
         {
             Index = index;
@@ -114,15 +176,28 @@ namespace ObjectOrientedPractices.Model.Classes
             Building = building;
             Apartment = apartment;
         }
+
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Address"/> без инициализации.
+        /// </summary>
         public Address()
         {
         }
 
+        /// <summary>
+        /// Клонирует текущий объект.
+        /// </summary>
+        /// <returns>Новый объект, с теми же значениями полей.</returns>
         public object Clone()
         {
             return new Address(Index, Country, City, Street, Building, Apartment);
         }
 
+        /// <summary>
+        /// Проверяет, совпадают ли текущий объект с предоставляемым. 
+        /// </summary>
+        /// <param name="other">Предоставляемы для сравнения объект.</param>
+        /// <returns>Логическое значение.</returns>
         public bool Equals(Address? other)
         {
             if (other == null)

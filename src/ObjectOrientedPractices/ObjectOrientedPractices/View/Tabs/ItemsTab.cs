@@ -20,10 +20,18 @@ namespace ObjectOrientedPractices.View.Tabs
     /// </summary>
     public partial class ItemsTab : UserControl
     {
+        /// <summary>
+        /// Событие, вызываемое при каждом изменении элементов Items.
+        /// </summary>
         public event EventHandler ItemsChanged;
-        private BindingList<Item> _items;
+
         /// <summary>
         /// Коллекция элементов класса <see cref="Item"/>.
+        /// </summary>
+        private BindingList<Item> _items;
+
+        /// <summary>
+        /// Возвращает и задает коллекцию элементов класса <see cref="Item"/>.
         /// </summary>
         public BindingList<Item> Items
         {
@@ -37,7 +45,14 @@ namespace ObjectOrientedPractices.View.Tabs
             }
         }
 
+        /// <summary>
+        /// Коллекция элементов класса <see cref="Item"/>, отображаемая в ItemsListBox.
+        /// </summary>
         private BindingList<Item> _displayedItems;
+
+        /// <summary>
+        /// Возвращает и задает коллекцию элементов класса <see cref="Item"/>, отображаемаю в ItemsListBox.
+        /// </summary>
         public BindingList<Item> DisplayedItems
         {
             get
@@ -50,13 +65,11 @@ namespace ObjectOrientedPractices.View.Tabs
                 //FillItemsListBox();
             }
         }
+
+        /// <summary>
+        /// Текущий фильтр.
+        /// </summary>
         private string _currentFilter = "";
-
-        public void RefreshData()
-        {
-            FillItemsListBox();
-        }
-
 
         /// <summary>
         /// Создаваемый объект класса <see cref="Item"/>.
@@ -73,8 +86,14 @@ namespace ObjectOrientedPractices.View.Tabs
         /// </summary>
         public const int DefualtSize = 10;
 
+        /// <summary>
+        /// Коллекция элементов перечисления <see cref="Category"/>.
+        /// </summary>
         public Array Categories = Enum.GetValues(typeof(Category));
 
+        /// <summary>
+        /// Коллекция методов сортировки класса <see cref="SortingMethod"/>.
+        /// </summary>
         public SortingMethod[] SortingMethods = new SortingMethod[] { new SortingMethod("Name (Alphabetical)",
                                                                             (x1, x2) => {return string.Compare(((Item)x1).Name,((Item)x2).Name) > 0; }),
                                                                         new SortingMethod("Name (Reverse Alphabetical)",
@@ -89,7 +108,7 @@ namespace ObjectOrientedPractices.View.Tabs
                                                                             (x1, x2) => { return (((Item)x1).Id < ((Item)x2).Id); }) };
 
         /// <summary>
-        /// Создает объект типа <see cref="ItemsTab"/>
+        /// Создает объект типа <see cref="ItemsTab"/>.
         /// </summary>
         public ItemsTab()
         {
@@ -103,7 +122,7 @@ namespace ObjectOrientedPractices.View.Tabs
         }
 
         /// <summary>
-        /// Заполняет ItemsListBox элементами коллекции _items.
+        /// Заполняет ItemsListBox элементами коллекции DisplayedItems.
         /// </summary>
         private void FillItemsListBox()
         {
@@ -112,6 +131,9 @@ namespace ObjectOrientedPractices.View.Tabs
             ItemsListBox.DisplayMember = null;
             ItemsListBox.DisplayMember = nameof(Item.Name);
         }
+        /// <summary>
+        /// Заполняет OrderByComboBox элементами коллекции SortingMethods.
+        /// </summary>
         private void FillOrderByComboBox()
         {
             OrderByComboBox.DataSource = null;
@@ -144,7 +166,7 @@ namespace ObjectOrientedPractices.View.Tabs
         }
 
         /// <summary>
-        /// Заполняет IdTextBox, CostTextBox, NameTextBox, InfoTextBox значениями выбранного в ItemsListBox элемента.
+        /// Заполняет IdTextBox, CostTextBox, NameTextBox, CategoryComboBox, InfoTextBox значениями выбранного в ItemsListBox элемента.
         /// </summary>
         private void ItemsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -187,7 +209,7 @@ namespace ObjectOrientedPractices.View.Tabs
         }
 
         /// <summary>
-        /// Добавляет в _items случайно сгенерированные элементы класса <see cref="Item"/>.
+        /// Добавляет в Items случайно сгенерированные элементы класса <see cref="Item"/>.
         /// </summary>
         private void AddListButton_Click(object sender, EventArgs e)
         {
@@ -207,7 +229,7 @@ namespace ObjectOrientedPractices.View.Tabs
         }
 
         /// <summary>
-        /// Удаляет из _items выбранный в ItemsListBox элемент.
+        /// Удаляет из Items выбранный в ItemsListBox элемент.
         /// </summary>
         private void RemoveButton_Click(object sender, EventArgs e)
         {
@@ -223,7 +245,7 @@ namespace ObjectOrientedPractices.View.Tabs
         }
 
         /// <summary>
-        /// Добавляет в _items заполненный значениям элемент _newItem.
+        /// Добавляет в Items заполненный значениями элемент _newItem.
         /// </summary>
         private void ApplyButton_Click(object sender, EventArgs e)
         {
@@ -326,6 +348,9 @@ namespace ObjectOrientedPractices.View.Tabs
             }
         }
 
+        /// <summary>
+        /// Записывает в _currentItem значение из CategoryComboBox.
+        /// </summary>
         private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_currentItem == null)
@@ -335,20 +360,33 @@ namespace ObjectOrientedPractices.View.Tabs
             _currentItem.Category = (Category)(CategoryComboBox.SelectedItem);
         }
 
+        /// <summary>
+        /// Контролирует изменение CategoryComboBox.
+        /// </summary>
         private void CategoryComboBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Контролирует фокусировку ItemsListBox.
+        /// </summary>
         private void ItemsListBox_Leave(object sender, EventArgs e)
         {
             ItemsListBox.Update();
         }
 
+        /// <summary>
+        /// Вызывает метод обновления отображаемых элементов.
+        /// </summary>
         private void FindTextBox_TextChanged(object sender, EventArgs e)
         {
             UpdateDisplaedItems();
         }
+
+        /// <summary>
+        /// Обновляет отображаемые в ItemsListBox объекты.
+        /// </summary>
         private void UpdateDisplaedItems()
         {
             if (Items == null)
@@ -369,6 +407,10 @@ namespace ObjectOrientedPractices.View.Tabs
             }
             SortDisplaedItems();
         }
+
+        /// <summary>
+        /// Фильтрует отображаемые в ItemsListBox объекты.
+        /// </summary>
         private void FilterDisplayedItems(BindingList<Item> list)
         {
             if (FindTextBox.Text == "")
@@ -395,6 +437,10 @@ namespace ObjectOrientedPractices.View.Tabs
             DisplayedItems = result;
             _currentFilter = FindTextBox.Text;
         }
+
+        /// <summary>
+        /// Сортирует отображаемые в ItemsListBox объекты.
+        /// </summary>
         private void SortDisplaedItems()
         {
             SortingMethod method = (SortingMethod)OrderByComboBox.SelectedItem;
@@ -413,6 +459,9 @@ namespace ObjectOrientedPractices.View.Tabs
             FillItemsListBox();
         }
 
+        /// <summary>
+        /// Обновляет отображаемые в ItemsListBox объекты.
+        /// </summary>
         private void OrederByComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (DisplayedItems == null || DisplayedItems.Count == 0)

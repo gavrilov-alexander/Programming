@@ -43,6 +43,14 @@ namespace ObjectOrientedPractices.Services
             }
         }
 
+        /// <summary>
+        /// Проверяет число на вхождение в диапозон.
+        /// </summary>
+        /// <param name="value">Проверяемое число.</param>
+        /// <param name="min">Начало диапозона.</param>
+        /// <param name="max">Конец диапозона.</param>
+        /// <param name="propertyName">Имя свойства или объекта, которое подлежит проверке.</param>
+        /// <exception cref="ArgumentException">Возникает, если число находится вне диапозона.</exception>
         public static void AssertValueInRange(int value, int min, int max, [CallerMemberName] string propertyName = "")
         {
             if (!((value >= min) && (value <= max)))
@@ -50,6 +58,7 @@ namespace ObjectOrientedPractices.Services
                 throw new ArgumentException($"{propertyName} должен быть в диапозоне от {min} до {max}");
             }
         }
+
         /// <summary>
         /// Проверяет число на положительность.
         /// </summary>

@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedPractices.Model.Classes.Orders
 {
+    /// <summary>
+    /// Хранит данные о заказе.
+    /// </summary>
     public class Order : IEquatable<Order>
     {
         /// <summary>
@@ -20,40 +23,62 @@ namespace ObjectOrientedPractices.Model.Classes.Orders
         /// </summary>
         private readonly int _id;
 
+        /// <summary>
+        /// Дата создания объекта.
+        /// </summary>
         private readonly DateTime _dateCreation;
 
+        /// <summary>
+        /// Лист типа <see cref="Item"/>, хранящий заказанные товары.
+        /// </summary>
         public BindingList<Item> Items;
 
+        /// <summary>
+        /// Возвращает и задает статус.
+        /// </summary>
         public OrderStatus Status { get; set; }
+
+        /// <summary>
+        /// Возвращает и задает покупателя, типа <see cref="Classes.Customer"/>.
+        /// </summary>
         public Customer Customer { get; set; }
+
+        /// <summary>
+        /// Возвращает и задает адрес, типа <see cref="Classes.Address"/>.
+        /// </summary>
         public Address Address { get; set; }
+
+        /// <summary>
+        /// Возвращает и задает сумму предоставляемой по данному заказу скидки.
+        /// </summary>
         public double DiscountAmount { get; set; }
 
-
-
+        /// <summary>
+        /// Возвращает уникальный идентификатор.
+        /// </summary>
         public int Id { get { return _id; } }
 
-
+        /// <summary>
+        /// Возвращает дату создания.
+        /// </summary>
         public DateTime DateCreation
         {
             get { return _dateCreation; }
         }
 
+        /// <summary>
+        /// Возвращает статус в виде строки.
+        /// </summary>
+        public string StatusToString => Status.ToString();
 
-        public string StatusToString
-        {
-            get
-            {
-                return Status.ToString();
-            }
-        }
-        public string CustomerFullNameToString
-        {
-            get
-            {
-                return Customer.FullName;
-            }
-        }
+        /// <summary>
+        /// Возвращает полное имя покупателя в виде строки.
+        /// </summary>
+        public string CustomerFullNameToString => Customer.FullName;
+
+        /// <summary>
+        /// Возвращает стоимость заказа.
+        /// </summary>
         public double Amount
         {
             get
@@ -66,6 +91,10 @@ namespace ObjectOrientedPractices.Model.Classes.Orders
                 return amount;
             }
         }
+
+        /// <summary>
+        /// Возвращает итоговую стоимость заказа.
+        /// </summary>
         public double Total
         {
             get
@@ -73,15 +102,20 @@ namespace ObjectOrientedPractices.Model.Classes.Orders
                 return Amount - DiscountAmount;
             }
         }
-        public string AddressToString
-        {
-            get
-            {
-                return $"{Address.Index}, {Address.Country}, {Address.City}, {Address.Street}, {Address.Building}, {Address.Apartment}";
-            }
-        }
 
+        /// <summary>
+        /// Возвращает адрес заказа в виде строки.
+        /// </summary>
+        public string AddressToString => $"{Address.Index}, {Address.Country}, {Address.City}, {Address.Street}, {Address.Building}, {Address.Apartment}";
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Order"/>.
+        /// </summary>
+        /// <param name="items">Список товаров.</param>
+        /// <param name="address">Адрес.</param>
+        /// <param name="status">Статус.</param>
+        /// <param name="customer">Покупатель.</param>
+        /// <param name="discountAmount">Размер скидки.</param>
         public Order(BindingList<Item> items, Address address, OrderStatus status, Customer customer, double discountAmount)
         {
             _id = _idCounter;
@@ -94,6 +128,11 @@ namespace ObjectOrientedPractices.Model.Classes.Orders
             DiscountAmount = discountAmount;
         }
 
+        /// <summary>
+        /// Проверяет, совпадают ли текущий объект с предоставляемым. 
+        /// </summary>
+        /// <param name="other">Предоставляемы для сравнения объект.</param>
+        /// <returns>Логическое значение.</returns>
         public bool Equals(Order? other)
         {
             if (other == null)
