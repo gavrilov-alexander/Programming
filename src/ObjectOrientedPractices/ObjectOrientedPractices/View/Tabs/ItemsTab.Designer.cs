@@ -47,6 +47,10 @@
             RemoveButton = new Button();
             AddButton = new Button();
             ItemsGroupBox = new GroupBox();
+            OrderByComboBox = new ComboBox();
+            OrderByLabel = new Label();
+            FindTextBox = new TextBox();
+            FindLabel = new Label();
             ItemsListBox = new ListBox();
             ControlTableLayoutPanel.SuspendLayout();
             SelectedItemGroupBox.SuspendLayout();
@@ -275,6 +279,10 @@
             // 
             // ItemsGroupBox
             // 
+            ItemsGroupBox.Controls.Add(OrderByComboBox);
+            ItemsGroupBox.Controls.Add(OrderByLabel);
+            ItemsGroupBox.Controls.Add(FindTextBox);
+            ItemsGroupBox.Controls.Add(FindLabel);
             ItemsGroupBox.Controls.Add(ItemsListBox);
             ItemsGroupBox.Dock = DockStyle.Fill;
             ItemsGroupBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -285,15 +293,58 @@
             ItemsGroupBox.TabStop = false;
             ItemsGroupBox.Text = "Items";
             // 
+            // OrderByComboBox
+            // 
+            OrderByComboBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            OrderByComboBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            OrderByComboBox.FormattingEnabled = true;
+            OrderByComboBox.Location = new Point(96, 671);
+            OrderByComboBox.Name = "OrderByComboBox";
+            OrderByComboBox.Size = new Size(317, 33);
+            OrderByComboBox.TabIndex = 4;
+            OrderByComboBox.SelectedIndexChanged += OrederByComboBox_SelectedIndexChanged;
+            // 
+            // OrderByLabel
+            // 
+            OrderByLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            OrderByLabel.AutoSize = true;
+            OrderByLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            OrderByLabel.Location = new Point(3, 674);
+            OrderByLabel.Name = "OrderByLabel";
+            OrderByLabel.Size = new Size(87, 25);
+            OrderByLabel.TabIndex = 3;
+            OrderByLabel.Text = "Order by:";
+            // 
+            // FindTextBox
+            // 
+            FindTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            FindTextBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            FindTextBox.Location = new Point(59, 42);
+            FindTextBox.Name = "FindTextBox";
+            FindTextBox.Size = new Size(354, 31);
+            FindTextBox.TabIndex = 2;
+            FindTextBox.TextChanged += FindTextBox_TextChanged;
+            // 
+            // FindLabel
+            // 
+            FindLabel.AutoSize = true;
+            FindLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            FindLabel.Location = new Point(3, 45);
+            FindLabel.Name = "FindLabel";
+            FindLabel.Size = new Size(50, 25);
+            FindLabel.TabIndex = 1;
+            FindLabel.Text = "Find:";
+            // 
             // ItemsListBox
             // 
-            ItemsListBox.Dock = DockStyle.Fill;
+            ItemsListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ItemsListBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             ItemsListBox.FormattingEnabled = true;
+            ItemsListBox.IntegralHeight = false;
             ItemsListBox.ItemHeight = 25;
-            ItemsListBox.Location = new Point(3, 27);
+            ItemsListBox.Location = new Point(3, 78);
             ItemsListBox.Name = "ItemsListBox";
-            ItemsListBox.Size = new Size(413, 680);
+            ItemsListBox.Size = new Size(413, 587);
             ItemsListBox.TabIndex = 0;
             ItemsListBox.SelectedIndexChanged += ItemsListBox_SelectedIndexChanged;
             ItemsListBox.Leave += ItemsListBox_Leave;
@@ -311,6 +362,7 @@
             ItemsTableLayoutPanel.ResumeLayout(false);
             ButtonsTableLayoutPanel.ResumeLayout(false);
             ItemsGroupBox.ResumeLayout(false);
+            ItemsGroupBox.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -336,5 +388,9 @@
         private Button AddListButton;
         private ComboBox CategoryComboBox;
         private Label CategoryLabel;
+        private Label FindLabel;
+        private TextBox FindTextBox;
+        private Label OrderByLabel;
+        private ComboBox OrderByComboBox;
     }
 }

@@ -11,6 +11,7 @@ using ObjectOrientedPractices.Model.Classes;
 using ObjectOrientedPractices.Services;
 using ObjectOrientedPractices.Model.Enums;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace ObjectOrientedPractices.View.Tabs
 {
@@ -19,16 +20,36 @@ namespace ObjectOrientedPractices.View.Tabs
     /// </summary>
     public partial class ItemsTab : UserControl
     {
+        private BindingList<Item> _items;
         /// <summary>
         /// Коллекция элементов класса <see cref="Item"/>.
         /// </summary>
-        private BindingList<Item> _items;
-
         public BindingList<Item> Items
         {
-            get { return _items; }
-            set { _items = value; }
+            get
+            {
+                return _items;
+            }
+            set
+            {
+                _items = value;
+            }
         }
+
+        private BindingList<Item> _displayedItems;
+        public BindingList<Item> DisplayedItems
+        {
+            get
+            {
+                return _displayedItems;
+            }
+            set
+            {
+                _displayedItems = value;
+                //FillItemsListBox();
+            }
+        }
+        private string _currentFilter = "";
 
         public void RefreshData()
         {
@@ -49,9 +70,22 @@ namespace ObjectOrientedPractices.View.Tabs
         /// <summary>
         /// Количество случайно генерируемых элементов коллекции _items по нажатию кнопки AddListButton.
         /// </summary>
-        public const int DesualtSize = 10;
+        public const int DefualtSize = 10;
 
         public Array Categories = Enum.GetValues(typeof(Category));
+
+        public SortingMethod[] SortingMethods = new SortingMethod[] { new SortingMethod("Name (Alphabetical)",
+                                                                            (x1, x2) => {return string.Compare(((Item)x1).Name,((Item)x2).Name) > 0; }),
+                                                                        new SortingMethod("Name (Reverse Alphabetical)",
+                                                                            (x1, x2) => {return string.Compare(((Item)x1).Name,((Item)x2).Name) < 0; }),
+                                                                        new SortingMethod("Cost (Ascending)",
+                                                                            (x1, x2) => { return (((Item)x1).Cost > ((Item)x2).Cost); }),
+                                                                        new SortingMethod("Cost (Descending)",
+                                                                            (x1, x2) => { return (((Item)x1).Cost < ((Item)x2).Cost); }),
+                                                                        new SortingMethod("Id (Ascending)",
+                                                                            (x1, x2) => { return (((Item)x1).Id > ((Item)x2).Id); }),
+                                                                        new SortingMethod("Id (Descending )",
+                                                                            (x1, x2) => { return (((Item)x1).Id < ((Item)x2).Id); }) };
 
         /// <summary>
         /// Создает объект типа <see cref="ItemsTab"/>
@@ -64,6 +98,7 @@ namespace ObjectOrientedPractices.View.Tabs
             FillItemsListBox();
             CategoryComboBox.Items.Clear();
             CategoryComboBox.DataSource = Categories;
+            FillOrderByComboBox();
         }
 
         /// <summary>
@@ -72,9 +107,16 @@ namespace ObjectOrientedPractices.View.Tabs
         private void FillItemsListBox()
         {
             ItemsListBox.DataSource = null;
-            ItemsListBox.DataSource = Items;
+            ItemsListBox.DataSource = DisplayedItems;
             ItemsListBox.DisplayMember = null;
             ItemsListBox.DisplayMember = nameof(Item.Name);
+        }
+        private void FillOrderByComboBox()
+        {
+            OrderByComboBox.DataSource = null;
+            OrderByComboBox.DataSource = SortingMethods;
+            OrderByComboBox.DisplayMember = null;
+            OrderByComboBox.DisplayMember = nameof(SortingMethod.Name);
         }
 
         /// <summary>
@@ -89,7 +131,6 @@ namespace ObjectOrientedPractices.View.Tabs
             CostTextBox.BackColor = Color.White;
             NameTextBox.BackColor = Color.White;
             InfoTextBox.BackColor = Color.White;
-            CategoryComboBox.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -106,16 +147,17 @@ namespace ObjectOrientedPractices.View.Tabs
         /// </summary>
         private void ItemsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ItemsListBox.SelectedIndex == -1 || Items.Count == 0)
+            if (ItemsListBox.SelectedIndex == -1 || DisplayedItems.Count == 0)
             {
                 _currentItem = _newItem;
                 ClearCurrentItem();
                 IdTextBox.Text = _newItem.Id.ToString();
+                CategoryComboBox.SelectedIndex = 0;
                 ApplyButton.Visible = true;
                 return;
             }
             ApplyButton.Visible = false;
-            _currentItem = Items[ItemsListBox.SelectedIndex];
+            _currentItem = DisplayedItems[ItemsListBox.SelectedIndex];
             IdTextBox.Text = _currentItem.Id.ToString();
             CostTextBox.Text = _currentItem.Cost.ToString();
             NameTextBox.Text = _currentItem.Name;
@@ -133,7 +175,7 @@ namespace ObjectOrientedPractices.View.Tabs
                 return;
             }
             ItemsListBox.SelectedIndex = -1;
-            
+
         }
 
         /// <summary>
@@ -142,13 +184,13 @@ namespace ObjectOrientedPractices.View.Tabs
         private void AddListButton_Click(object sender, EventArgs e)
         {
 
-            for (int i = 0; i < DesualtSize; i++)
+            for (int i = 0; i < DefualtSize; i++)
             {
                 _currentItem = null;
                 _currentItem = ItemFactory.GenerateItem();
                 Items.Add(_currentItem);
             }
-
+            UpdateDisplaedItems();
             _currentItem = null;
             FillItemsListBox();
             ItemsListBox.SelectedIndex = -1;
@@ -165,6 +207,7 @@ namespace ObjectOrientedPractices.View.Tabs
                 return;
             }
             Items.Remove(_currentItem);
+            UpdateDisplaedItems();
             ItemsListBox.SelectedIndex = -1;
         }
 
@@ -186,7 +229,7 @@ namespace ObjectOrientedPractices.View.Tabs
             _currentItem = null;
             Items.Add(_newItem);
             _newItem = new Item();
-            FillItemsListBox();
+            UpdateDisplaedItems();
             ItemsListBox.SelectedIndex = -1;
         }
 
@@ -213,7 +256,7 @@ namespace ObjectOrientedPractices.View.Tabs
                 if (_currentItem.Cost != Double.Parse(CostTextBox.Text))
                 {
                     _currentItem.Cost = Double.Parse(CostTextBox.Text);
-                }   
+                }
             }
             catch
             {
@@ -288,6 +331,81 @@ namespace ObjectOrientedPractices.View.Tabs
         private void ItemsListBox_Leave(object sender, EventArgs e)
         {
             ItemsListBox.Update();
+        }
+
+        private void FindTextBox_TextChanged(object sender, EventArgs e)
+        {
+            UpdateDisplaedItems();
+        }
+        private void UpdateDisplaedItems()
+        {
+            if (Items == null || Items.Count == 0)
+            {
+                return;
+            }
+            if (FindTextBox.Text.Length > _currentFilter.Length)
+            {
+                FilterDisplayedItems(DisplayedItems);
+            }
+            else
+            {
+                FilterDisplayedItems(Items);
+            }
+            SortDisplaedItems();
+        }
+        private void FilterDisplayedItems(BindingList<Item> list)
+        {
+            if (FindTextBox.Text == "")
+            {
+                DisplayedItems = Items;
+                _currentFilter = "";
+                return;
+            }
+            BindingList<Item> result = new BindingList<Item>();
+            BindingList<object> filteredList = new BindingList<object>();
+            foreach (Item item in Items)
+            {
+                filteredList.Add(item);
+            }
+            BindingList<object> resultList = DataTools.Filter(filteredList, (x) =>
+            {
+                return ((((Item)x).Id).ToString().Contains(FindTextBox.Text)
+                || ((Item)x).Name.Contains(FindTextBox.Text));
+            });
+            foreach (Item item in resultList)
+            {
+                result.Add(item);
+            }
+            DisplayedItems = result;
+            _currentFilter = FindTextBox.Text;
+        }
+        private void SortDisplaedItems()
+        {
+            SortingMethod method = (SortingMethod)OrderByComboBox.SelectedItem;
+            BindingList<Item> result = new BindingList<Item>();
+            BindingList<object> sortedList = new BindingList<object>();
+            foreach (Item item in DisplayedItems)
+            {
+                sortedList.Add(item);
+            }
+            BindingList<object> resultList = DataTools.Sort(sortedList, method.Method);
+            foreach (Item item in resultList)
+            {
+                result.Add(item);
+            }
+            DisplayedItems = result;
+            FillItemsListBox();
+        }
+
+        private void OrederByComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DisplayedItems == null || DisplayedItems.Count == 0)
+            {
+                return;
+            }
+            var selectedItem = ItemsListBox.SelectedItem;
+            SortDisplaedItems();
+            ItemsListBox.SelectedItem = selectedItem;
         }
     }
 }

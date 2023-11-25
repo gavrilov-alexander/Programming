@@ -78,7 +78,7 @@
             // ItemsTab1
             // 
             ItemsTab1.Dock = DockStyle.Fill;
-            ItemsTab1.Items = null;
+            ItemsTab1.DisplayedItems = null;
             ItemsTab1.Location = new Point(4, 5);
             ItemsTab1.Name = "ItemsTab1";
             ItemsTab1.Size = new Size(1127, 702);
