@@ -22,6 +22,7 @@ namespace ObjectOrientedPractices.View.Tabs
     /// </summary>
     public partial class CustomersTab : UserControl
     {
+        public event EventHandler CustomersChanged;
         /// <summary>
         /// Коллекция элементов класса <see cref="Customer"/>.
         /// </summary>
@@ -125,6 +126,7 @@ namespace ObjectOrientedPractices.View.Tabs
             PriorityCheckBox.Checked = _currentCustomer.IsPriority;
             DiscountsListBox.DataSource = _currentCustomer.Discounts;
             DiscountsListBox.SelectedIndex = -1;
+            _currentCustomer.Address.AddressChanged += delegate { CustomersChanged?.Invoke(this, EventArgs.Empty); };
         }
 
         /// <summary>
@@ -154,6 +156,7 @@ namespace ObjectOrientedPractices.View.Tabs
             _currentCustomer = null;
             FillCustomersListBox();
             CustomersListBox.SelectedIndex = -1;
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -167,6 +170,7 @@ namespace ObjectOrientedPractices.View.Tabs
             }
             _customers.Remove(_currentCustomer);
             CustomersListBox.SelectedIndex = -1;
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -185,6 +189,7 @@ namespace ObjectOrientedPractices.View.Tabs
             _newCustomer = new Customer();
             FillCustomersListBox();
             CustomersListBox.SelectedIndex = -1;
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -212,6 +217,7 @@ namespace ObjectOrientedPractices.View.Tabs
                     return;
                 }
                 _currentCustomer.FullName = FullNameTextBox.Text;
+                CustomersChanged?.Invoke(this, EventArgs.Empty);
                 if (!(_currentCustomer == _newCustomer))
                 {
                     UpdateCustomersListBoxDisplayMember();
@@ -239,6 +245,7 @@ namespace ObjectOrientedPractices.View.Tabs
                 return;
             }
             _currentCustomer.IsPriority = PriorityCheckBox.Checked;
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void AddDiscountButton_Click(object sender, EventArgs e)
@@ -250,6 +257,7 @@ namespace ObjectOrientedPractices.View.Tabs
                 PercentDiscount newDiscount = new PercentDiscount(0, addDiscountForm.Category);
                 _currentCustomer.Discounts.Add(newDiscount);
                 DiscountsListBox.SelectedItem = newDiscount;
+                CustomersChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -260,6 +268,7 @@ namespace ObjectOrientedPractices.View.Tabs
                 return;
             }
             _currentCustomer.Discounts.RemoveAt(DiscountsListBox.SelectedIndex);
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

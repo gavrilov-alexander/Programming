@@ -20,6 +20,7 @@ namespace ObjectOrientedPractices.View.Tabs
     /// </summary>
     public partial class ItemsTab : UserControl
     {
+        public event EventHandler ItemsChanged;
         private BindingList<Item> _items;
         /// <summary>
         /// Коллекция элементов класса <see cref="Item"/>.
@@ -136,7 +137,7 @@ namespace ObjectOrientedPractices.View.Tabs
         /// <summary>
         /// Обновляет данные, отображаемые в ItemsListBox.
         /// </summary>
-        private void UpdateItemsListBoxDisplayMember()
+        private void UpdateItemsListBoxDisplayMember(object sender, EventArgs e)
         {
             ItemsListBox.DisplayMember = null;
             ItemsListBox.DisplayMember = nameof(Item.Name);
@@ -147,6 +148,10 @@ namespace ObjectOrientedPractices.View.Tabs
         /// </summary>
         private void ItemsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (_currentItem == ItemsListBox.SelectedItem)
+            {
+                return;
+            }
             if (ItemsListBox.SelectedIndex == -1 || DisplayedItems.Count == 0)
             {
                 _currentItem = _newItem;
@@ -163,6 +168,9 @@ namespace ObjectOrientedPractices.View.Tabs
             NameTextBox.Text = _currentItem.Name;
             CategoryComboBox.SelectedItem = _currentItem.Category;
             InfoTextBox.Text = _currentItem.Info;
+            _currentItem.NameChanged += UpdateItemsListBoxDisplayMember;
+            _currentItem.NameChanged += delegate { ItemsChanged?.Invoke(this, EventArgs.Empty); };
+            _currentItem.CostChanged += delegate { ItemsChanged?.Invoke(this, EventArgs.Empty); };
         }
 
         /// <summary>
@@ -194,6 +202,7 @@ namespace ObjectOrientedPractices.View.Tabs
             _currentItem = null;
             FillItemsListBox();
             ItemsListBox.SelectedIndex = -1;
+            ItemsChanged?.Invoke(this, EventArgs.Empty);
 
         }
 
@@ -207,8 +216,10 @@ namespace ObjectOrientedPractices.View.Tabs
                 return;
             }
             Items.Remove(_currentItem);
+            _currentItem.NameChanged -= UpdateItemsListBoxDisplayMember;
             UpdateDisplaedItems();
             ItemsListBox.SelectedIndex = -1;
+            ItemsChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -231,6 +242,7 @@ namespace ObjectOrientedPractices.View.Tabs
             _newItem = new Item();
             UpdateDisplaedItems();
             ItemsListBox.SelectedIndex = -1;
+            ItemsChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -282,7 +294,7 @@ namespace ObjectOrientedPractices.View.Tabs
                 }
                 if (!(_currentItem == _newItem))
                 {
-                    UpdateItemsListBoxDisplayMember();
+                    //UpdateItemsListBoxDisplayMember();
                 }
             }
             catch
@@ -339,9 +351,13 @@ namespace ObjectOrientedPractices.View.Tabs
         }
         private void UpdateDisplaedItems()
         {
-            if (Items == null || Items.Count == 0)
+            if (Items == null)
             {
                 return;
+            }
+            if (Items.Count == 0)
+            {
+                DisplayedItems = Items;
             }
             if (FindTextBox.Text.Length > _currentFilter.Length)
             {

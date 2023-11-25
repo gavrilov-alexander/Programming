@@ -82,13 +82,13 @@
             // 
             // DiscountAmountLabel
             // 
-            DiscountAmountLabel.AutoSize = true;
             DiscountAmountLabel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            DiscountAmountLabel.Location = new Point(416, 115);
+            DiscountAmountLabel.Location = new Point(303, 115);
             DiscountAmountLabel.Name = "DiscountAmountLabel";
-            DiscountAmountLabel.Size = new Size(62, 38);
+            DiscountAmountLabel.Size = new Size(175, 38);
             DiscountAmountLabel.TabIndex = 16;
             DiscountAmountLabel.Text = "499";
+            DiscountAmountLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
             // DiscountAmountTextLabel
             // 
@@ -101,13 +101,13 @@
             // 
             // ProductsAmountLabel
             // 
-            ProductsAmountLabel.AutoSize = true;
             ProductsAmountLabel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             ProductsAmountLabel.Location = new Point(357, 41);
             ProductsAmountLabel.Name = "ProductsAmountLabel";
             ProductsAmountLabel.Size = new Size(121, 38);
             ProductsAmountLabel.TabIndex = 14;
             ProductsAmountLabel.Text = "4 999,90";
+            ProductsAmountLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
             // ProductsAmountTextLabel
             // 

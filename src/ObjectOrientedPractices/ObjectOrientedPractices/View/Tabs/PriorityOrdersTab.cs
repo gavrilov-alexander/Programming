@@ -118,12 +118,12 @@ namespace ObjectOrientedPractices.View.Tabs
 
         private void StatusComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Order.Status = (OrderStatus) StatusComboBox.SelectedItem;
+            Order.Status = (OrderStatus)StatusComboBox.SelectedItem;
         }
 
         private void DeliveryTimeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Order.DeliveryTime = (string) DeliveryTimeComboBox.SelectedItem;
+            Order.DeliveryTime = (string)DeliveryTimeComboBox.SelectedItem;
         }
     }
 }

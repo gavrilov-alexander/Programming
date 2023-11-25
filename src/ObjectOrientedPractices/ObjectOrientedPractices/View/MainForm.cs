@@ -16,11 +16,16 @@ namespace ObjectOrientedPractices.View
             //CartsTab1.Orders = _store.Orders;
             //OrdersTab1.Orders = _store.Orders;
             OrdersTab1.Customers = _store.Customers;
+            ItemsTab1.ItemsChanged += CartsTab1.RefreshData;
+            CustomersTab1.CustomersChanged += CartsTab1.RefreshData;
+            ItemsTab1.ItemsChanged += OrdersTab1.RefreshData;
+            CustomersTab1.CustomersChanged += OrdersTab1.RefreshData;
+            CartsTab1.OrdersChanged += OrdersTab1.RefreshData;
         }
 
         private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (TabControl.SelectedIndex)
+            /*switch (TabControl.SelectedIndex)
             {
                 case 0:
                     {
@@ -34,19 +39,19 @@ namespace ObjectOrientedPractices.View
                     }
                 case 2:
                     {
-                        CartsTab1.RefreshData();
+                        //CartsTab1.RefreshData();
                         return;
                     }
                 case 3:
                     {
-                        OrdersTab1.RefreshData();
+                        //OrdersTab1.RefreshData();
                         return;
                     }
                 default:
                     {
                         return;
                     }
-            }
+            }*/
         }
     }
 }

@@ -14,6 +14,9 @@ namespace ObjectOrientedPractices.Model.Classes
     /// </summary>
     public class Item : ICloneable, IEquatable<Item>, IComparable<Item>
     {
+        public event EventHandler NameChanged;
+        public event EventHandler CostChanged;
+        public event EventHandler InfoChanged;
         /// <summary>
         /// Идентификатор количества всех объектов данного класса.
         /// </summary>
@@ -56,7 +59,11 @@ namespace ObjectOrientedPractices.Model.Classes
             {
                 int maxLength = 200;
                 Validator.AssertStringOnLength(value, maxLength);
-                _name = value;
+                if (_name != value)
+                {
+                    _name = value;
+                    NameChanged?.Invoke(this, new EventArgs());
+                }
             }
         }
 
@@ -70,7 +77,11 @@ namespace ObjectOrientedPractices.Model.Classes
             {
                 int maxLength = 1000;
                 Validator.AssertStringOnLength(value, maxLength);
-                _info = value;
+                if (_info != value)
+                {
+                    _info = value;
+                    InfoChanged?.Invoke(this, new EventArgs());
+                }
             }
         }
 
@@ -85,7 +96,11 @@ namespace ObjectOrientedPractices.Model.Classes
                 double min = 1;
                 double max = 99999;
                 Validator.AssertValueInRange(value, min, max);
-                _cost = value;
+                if (_cost != value)
+                {
+                    _cost = value;
+                    CostChanged?.Invoke(this, new EventArgs());
+                }
             }
         }
 

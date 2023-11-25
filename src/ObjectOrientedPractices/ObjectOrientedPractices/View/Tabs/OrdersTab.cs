@@ -59,7 +59,7 @@ namespace ObjectOrientedPractices.View.Tabs
                 StatusComboBox.Items.Add(status);
             }
         }
-        public void RefreshData()
+        public void RefreshData(object sender, EventArgs e)
         {
             UpdateOrders();
             FillOrdersDataGridView();

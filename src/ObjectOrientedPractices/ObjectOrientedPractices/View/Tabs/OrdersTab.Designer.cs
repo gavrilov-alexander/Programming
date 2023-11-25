@@ -31,6 +31,8 @@
             components = new System.ComponentModel.Container();
             tableLayoutPanel1 = new TableLayoutPanel();
             SelectedOrderGroupBox = new GroupBox();
+            TotalLabel = new Label();
+            TotalTextLabel = new Label();
             PriorityOptionsGroupBox = new GroupBox();
             DeliveryTimeComboBox = new ComboBox();
             DeliveryTimeLabel = new Label();
@@ -46,7 +48,6 @@
             IdTextBox = new TextBox();
             IDLabel = new Label();
             OrdersDataGridView = new DataGridView();
-            orderBindingSource = new BindingSource(components);
             Id = new DataGridViewTextBoxColumn();
             StatusToString = new DataGridViewTextBoxColumn();
             dateCreationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -54,8 +55,7 @@
             AddressToString = new DataGridViewTextBoxColumn();
             Amount = new DataGridViewTextBoxColumn();
             totalDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            TotalLabel = new Label();
-            TotalTextLabel = new Label();
+            orderBindingSource = new BindingSource(components);
             tableLayoutPanel1.SuspendLayout();
             SelectedOrderGroupBox.SuspendLayout();
             PriorityOptionsGroupBox.SuspendLayout();
@@ -102,6 +102,27 @@
             SelectedOrderGroupBox.TabStop = false;
             SelectedOrderGroupBox.Text = "Selected Order";
             // 
+            // TotalLabel
+            // 
+            TotalLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            TotalLabel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            TotalLabel.Location = new Point(527, 766);
+            TotalLabel.Name = "TotalLabel";
+            TotalLabel.Size = new Size(161, 38);
+            TotalLabel.TabIndex = 14;
+            TotalLabel.Text = "0";
+            TotalLabel.TextAlign = ContentAlignment.TopRight;
+            // 
+            // TotalTextLabel
+            // 
+            TotalTextLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            TotalTextLabel.AutoSize = true;
+            TotalTextLabel.Location = new Point(607, 741);
+            TotalTextLabel.Name = "TotalTextLabel";
+            TotalTextLabel.Size = new Size(81, 25);
+            TotalTextLabel.TabIndex = 13;
+            TotalTextLabel.Text = "Amount:\r\n";
+            // 
             // PriorityOptionsGroupBox
             // 
             PriorityOptionsGroupBox.Controls.Add(DeliveryTimeComboBox);
@@ -134,13 +155,14 @@
             // AmountLabel
             // 
             AmountLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            AmountLabel.AutoSize = true;
             AmountLabel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            AmountLabel.Location = new Point(400, 777);
+            AmountLabel.ImageAlign = ContentAlignment.MiddleLeft;
+            AmountLabel.Location = new Point(360, 766);
             AmountLabel.Name = "AmountLabel";
-            AmountLabel.Size = new Size(121, 38);
+            AmountLabel.Size = new Size(161, 38);
             AmountLabel.TabIndex = 10;
-            AmountLabel.Text = "4 999,90";
+            AmountLabel.Text = "0";
+            AmountLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
             // AmountTextLabel
             // 
@@ -256,10 +278,6 @@
             OrdersDataGridView.TabIndex = 1;
             OrdersDataGridView.SelectionChanged += OrdersDataGridView_SelectionChanged;
             // 
-            // orderBindingSource
-            // 
-            orderBindingSource.DataSource = typeof(Model.Classes.Orders.Order);
-            // 
             // Id
             // 
             Id.DataPropertyName = "Id";
@@ -323,26 +341,9 @@
             totalDataGridViewTextBoxColumn.ReadOnly = true;
             totalDataGridViewTextBoxColumn.Width = 150;
             // 
-            // TotalLabel
+            // orderBindingSource
             // 
-            TotalLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            TotalLabel.AutoSize = true;
-            TotalLabel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            TotalLabel.Location = new Point(567, 777);
-            TotalLabel.Name = "TotalLabel";
-            TotalLabel.Size = new Size(121, 38);
-            TotalLabel.TabIndex = 14;
-            TotalLabel.Text = "4 999,90";
-            // 
-            // TotalTextLabel
-            // 
-            TotalTextLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            TotalTextLabel.AutoSize = true;
-            TotalTextLabel.Location = new Point(607, 741);
-            TotalTextLabel.Name = "TotalTextLabel";
-            TotalTextLabel.Size = new Size(81, 25);
-            TotalTextLabel.TabIndex = 13;
-            TotalTextLabel.Text = "Amount:\r\n";
+            orderBindingSource.DataSource = typeof(Model.Classes.Orders.Order);
             // 
             // OrdersTab
             // 
