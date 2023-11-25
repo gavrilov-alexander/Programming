@@ -30,6 +30,8 @@
         {
             ControlTableLayoutPanel = new TableLayoutPanel();
             SelectedItemGroupBox = new GroupBox();
+            CategoryComboBox = new ComboBox();
+            CategoryLabel = new Label();
             ApplyButton = new Button();
             InfoTextBox = new TextBox();
             InfoLabel = new Label();
@@ -45,6 +47,10 @@
             RemoveButton = new Button();
             AddButton = new Button();
             ItemsGroupBox = new GroupBox();
+            OrderByComboBox = new ComboBox();
+            OrderByLabel = new Label();
+            FindTextBox = new TextBox();
+            FindLabel = new Label();
             ItemsListBox = new ListBox();
             ControlTableLayoutPanel.SuspendLayout();
             SelectedItemGroupBox.SuspendLayout();
@@ -70,6 +76,8 @@
             // 
             // SelectedItemGroupBox
             // 
+            SelectedItemGroupBox.Controls.Add(CategoryComboBox);
+            SelectedItemGroupBox.Controls.Add(CategoryLabel);
             SelectedItemGroupBox.Controls.Add(ApplyButton);
             SelectedItemGroupBox.Controls.Add(InfoTextBox);
             SelectedItemGroupBox.Controls.Add(InfoLabel);
@@ -88,6 +96,27 @@
             SelectedItemGroupBox.TabStop = false;
             SelectedItemGroupBox.Text = "Selected Item";
             // 
+            // CategoryComboBox
+            // 
+            CategoryComboBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            CategoryComboBox.FormattingEnabled = true;
+            CategoryComboBox.Location = new Point(100, 120);
+            CategoryComboBox.Name = "CategoryComboBox";
+            CategoryComboBox.Size = new Size(182, 33);
+            CategoryComboBox.TabIndex = 11;
+            CategoryComboBox.SelectedIndexChanged += CategoryComboBox_SelectedIndexChanged;
+            CategoryComboBox.KeyPress += CategoryComboBox_KeyPress;
+            // 
+            // CategoryLabel
+            // 
+            CategoryLabel.AutoSize = true;
+            CategoryLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            CategoryLabel.Location = new Point(6, 128);
+            CategoryLabel.Name = "CategoryLabel";
+            CategoryLabel.Size = new Size(88, 25);
+            CategoryLabel.TabIndex = 9;
+            CategoryLabel.Text = "Category:";
+            // 
             // ApplyButton
             // 
             ApplyButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
@@ -103,11 +132,11 @@
             // 
             InfoTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             InfoTextBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            InfoTextBox.Location = new Point(7, 370);
+            InfoTextBox.Location = new Point(8, 374);
             InfoTextBox.Margin = new Padding(4, 5, 4, 5);
             InfoTextBox.Multiline = true;
             InfoTextBox.Name = "InfoTextBox";
-            InfoTextBox.Size = new Size(622, 321);
+            InfoTextBox.Size = new Size(622, 317);
             InfoTextBox.TabIndex = 7;
             InfoTextBox.TextChanged += InfoTextBox_TextChanged;
             // 
@@ -115,7 +144,7 @@
             // 
             InfoLabel.AutoSize = true;
             InfoLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            InfoLabel.Location = new Point(6, 340);
+            InfoLabel.Location = new Point(7, 344);
             InfoLabel.Name = "InfoLabel";
             InfoLabel.Size = new Size(106, 25);
             InfoLabel.TabIndex = 6;
@@ -125,7 +154,7 @@
             // 
             NameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             NameTextBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            NameTextBox.Location = new Point(7, 195);
+            NameTextBox.Location = new Point(8, 199);
             NameTextBox.Margin = new Padding(4, 5, 4, 5);
             NameTextBox.Multiline = true;
             NameTextBox.Name = "NameTextBox";
@@ -137,7 +166,7 @@
             // 
             NameLabel.AutoSize = true;
             NameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            NameLabel.Location = new Point(6, 165);
+            NameLabel.Location = new Point(7, 169);
             NameLabel.Name = "NameLabel";
             NameLabel.Size = new Size(63, 25);
             NameLabel.TabIndex = 4;
@@ -146,20 +175,20 @@
             // CostTextBox
             // 
             CostTextBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            CostTextBox.Location = new Point(67, 102);
+            CostTextBox.Location = new Point(100, 81);
             CostTextBox.Margin = new Padding(4, 5, 4, 5);
             CostTextBox.Name = "CostTextBox";
-            CostTextBox.Size = new Size(141, 31);
+            CostTextBox.Size = new Size(182, 31);
             CostTextBox.TabIndex = 3;
             CostTextBox.TextChanged += CostTextBox_TextChanged;
             // 
             // IdTextBox
             // 
             IdTextBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            IdTextBox.Location = new Point(67, 43);
+            IdTextBox.Location = new Point(100, 40);
             IdTextBox.Margin = new Padding(4, 5, 4, 5);
             IdTextBox.Name = "IdTextBox";
-            IdTextBox.Size = new Size(141, 31);
+            IdTextBox.Size = new Size(182, 31);
             IdTextBox.TabIndex = 2;
             IdTextBox.KeyPress += IdTextBox_KeyPress;
             // 
@@ -167,7 +196,7 @@
             // 
             CostLabel.AutoSize = true;
             CostLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            CostLabel.Location = new Point(6, 107);
+            CostLabel.Location = new Point(6, 89);
             CostLabel.Name = "CostLabel";
             CostLabel.Size = new Size(52, 25);
             CostLabel.TabIndex = 1;
@@ -250,6 +279,10 @@
             // 
             // ItemsGroupBox
             // 
+            ItemsGroupBox.Controls.Add(OrderByComboBox);
+            ItemsGroupBox.Controls.Add(OrderByLabel);
+            ItemsGroupBox.Controls.Add(FindTextBox);
+            ItemsGroupBox.Controls.Add(FindLabel);
             ItemsGroupBox.Controls.Add(ItemsListBox);
             ItemsGroupBox.Dock = DockStyle.Fill;
             ItemsGroupBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -260,17 +293,61 @@
             ItemsGroupBox.TabStop = false;
             ItemsGroupBox.Text = "Items";
             // 
+            // OrderByComboBox
+            // 
+            OrderByComboBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            OrderByComboBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            OrderByComboBox.FormattingEnabled = true;
+            OrderByComboBox.Location = new Point(96, 671);
+            OrderByComboBox.Name = "OrderByComboBox";
+            OrderByComboBox.Size = new Size(317, 33);
+            OrderByComboBox.TabIndex = 4;
+            OrderByComboBox.SelectedIndexChanged += OrederByComboBox_SelectedIndexChanged;
+            // 
+            // OrderByLabel
+            // 
+            OrderByLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            OrderByLabel.AutoSize = true;
+            OrderByLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            OrderByLabel.Location = new Point(3, 674);
+            OrderByLabel.Name = "OrderByLabel";
+            OrderByLabel.Size = new Size(87, 25);
+            OrderByLabel.TabIndex = 3;
+            OrderByLabel.Text = "Order by:";
+            // 
+            // FindTextBox
+            // 
+            FindTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            FindTextBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            FindTextBox.Location = new Point(59, 42);
+            FindTextBox.Name = "FindTextBox";
+            FindTextBox.Size = new Size(354, 31);
+            FindTextBox.TabIndex = 2;
+            FindTextBox.TextChanged += FindTextBox_TextChanged;
+            // 
+            // FindLabel
+            // 
+            FindLabel.AutoSize = true;
+            FindLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            FindLabel.Location = new Point(3, 45);
+            FindLabel.Name = "FindLabel";
+            FindLabel.Size = new Size(50, 25);
+            FindLabel.TabIndex = 1;
+            FindLabel.Text = "Find:";
+            // 
             // ItemsListBox
             // 
-            ItemsListBox.Dock = DockStyle.Fill;
+            ItemsListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ItemsListBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             ItemsListBox.FormattingEnabled = true;
+            ItemsListBox.IntegralHeight = false;
             ItemsListBox.ItemHeight = 25;
-            ItemsListBox.Location = new Point(3, 27);
+            ItemsListBox.Location = new Point(3, 78);
             ItemsListBox.Name = "ItemsListBox";
-            ItemsListBox.Size = new Size(413, 680);
+            ItemsListBox.Size = new Size(413, 587);
             ItemsListBox.TabIndex = 0;
             ItemsListBox.SelectedIndexChanged += ItemsListBox_SelectedIndexChanged;
+            ItemsListBox.Leave += ItemsListBox_Leave;
             // 
             // ItemsTab
             // 
@@ -285,6 +362,7 @@
             ItemsTableLayoutPanel.ResumeLayout(false);
             ButtonsTableLayoutPanel.ResumeLayout(false);
             ItemsGroupBox.ResumeLayout(false);
+            ItemsGroupBox.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -308,5 +386,11 @@
         private Label InfoLabel;
         private Button ApplyButton;
         private Button AddListButton;
+        private ComboBox CategoryComboBox;
+        private Label CategoryLabel;
+        private Label FindLabel;
+        private TextBox FindTextBox;
+        private Label OrderByLabel;
+        private ComboBox OrderByComboBox;
     }
 }

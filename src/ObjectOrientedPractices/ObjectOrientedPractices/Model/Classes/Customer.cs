@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ObjectOrientedPractices.Model.Classes.Discounts;
+using ObjectOrientedPractices.Model.Classes.Orders;
+using ObjectOrientedPractices.Model.Interfaces;
 using Validator = ObjectOrientedPractices.Services.ValueValidator;
 
 namespace ObjectOrientedPractices.Model.Classes
@@ -28,9 +32,24 @@ namespace ObjectOrientedPractices.Model.Classes
         private string _fullName;
 
         /// <summary>
+        /// Корзина.
+        /// </summary>
+        private Cart _cart;
+
+        /// <summary>
+        /// Список товаров.
+        /// </summary>
+        private BindingList<Order> _orders = new BindingList<Order>();
+
+        /// <summary>
         /// Адрес покупателя.
         /// </summary>
-        private string _address;
+        public Address Address;
+
+        /// <summary>
+        /// Список скидок.
+        /// </summary>
+        public BindingList<IDiscount> Discounts {  get; set; }
 
         /// <summary>
         /// Возвращает идентификатор предмета.
@@ -52,30 +71,47 @@ namespace ObjectOrientedPractices.Model.Classes
         }
 
         /// <summary>
-        /// Возвращает и задает адрес покупателя. Длина строки должна быть меньше 500 символов.
+        /// Возвращает и задает корзину товаров.
         /// </summary>
-        public string Address
+        public Cart Cart
         {
-            get { return _address; }
-            set
+            get { return _cart; }
+            private set
             {
-                int maxLength = 500;
-                Validator.AssertStringOnLength(value, maxLength);
-                _address = value;
+                _cart = value;
             }
         }
+
+        /// <summary>
+        /// Возвращает и задает список заказов.
+        /// </summary>
+        public BindingList<Order> Orders
+        {
+            get { return _orders; }
+            set { _orders = value; }
+        }
+
+        /// <summary>
+        /// Возвращает и задает указатель приоритетности покупателя.
+        /// </summary>
+        public bool IsPriority { get; set; }
 
         /// <summary>
         /// Создает экземпляр класса <see cref="Customer"/>.
         /// </summary>
         /// <param name="fullName">Полное имя покупателя. Длина строки должна быть меньше 200 символов.</param>
         /// <param name="address">Адрес покупателя. Длина строки должна быть меньше 500 символов.</param>
-        public Customer(string fullName, string address)
+        /// <param name="isPriority">Указатель приоритетности.</param>
+        /// <param name="discounts">Список скидок.</param>
+        public Customer(string fullName, Address address, bool isPriority, BindingList<IDiscount> discounts)
         {
             _id = _idCounter;
             _idCounter++;
             FullName = fullName;
             Address = address;
+            Cart= new Cart();
+            IsPriority = isPriority;
+            Discounts = discounts;
         }
 
         /// <summary>
@@ -85,6 +121,10 @@ namespace ObjectOrientedPractices.Model.Classes
         {
             _id = _idCounter;
             _idCounter++;
+            Address = new Address();
+            Cart= new Cart();
+            IsPriority = false;
+            Discounts = new BindingList<IDiscount> { new PointsDiscount() };
         }
     }
 }

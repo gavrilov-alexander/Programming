@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace ObjectOrientedPractices.Model.Enums
 {
     /// <summary>
-    /// Хранит перечисление названий предметов.
+    /// Хранит перечисление категорий предметов.
     /// </summary>
-    public enum ItemNames
+    public enum Category
     {
         Water,
         Cookies,

@@ -20,11 +20,12 @@ namespace ObjectOrientedPractices.Services
         public static Item GenerateItem()
         {
             Random random = new Random();
-            Array _names = Enum.GetValues(typeof(ItemNames));
-            string name = _names.GetValue(random.Next(0, _names.Length)).ToString();
+            Array categories = Enum.GetValues(typeof(Category));
+            Category category = (Category)categories.GetValue(random.Next(0, categories.Length));
+            string name = category.ToString();
             string info = name;
             double cost = random.Next(0, 100000);
-            return new Item(name, info, cost);
+            return new Item(name, info, cost, category);
         }
     }
 }

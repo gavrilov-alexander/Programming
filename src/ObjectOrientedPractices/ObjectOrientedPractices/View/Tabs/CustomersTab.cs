@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ObjectOrientedPractices.Model.Classes;
 using ObjectOrientedPractices.Services;
+using ObjectOrientedPractices.View.Controls;
+using ObjectOrientedPractices.Model.Interfaces;
+using ObjectOrientedPractices.View.Forms;
+using ObjectOrientedPractices.Model.Classes.Discounts;
 
 namespace ObjectOrientedPractices.View.Tabs
 {
@@ -18,25 +22,41 @@ namespace ObjectOrientedPractices.View.Tabs
     /// </summary>
     public partial class CustomersTab : UserControl
     {
+        //// <summary>
+        /// Событие, вызываемое при каждом изменении покупателей.
+        /// </summary>
+        public event EventHandler CustomersChanged;
+
         /// <summary>
         /// Коллекция элементов класса <see cref="Customer"/>.
         /// </summary>
-        private static BindingList<Customer> _customers = new BindingList<Customer>();
+        private BindingList<Customer> _customers;
+
+        /// <summary>
+        /// Возвращает и задает коллекция элементов класса <see cref="Customer"/>.
+        /// </summary>
+        public BindingList<Customer> Customers
+        {
+            get { return _customers; }
+            set { _customers = value; }
+        }
 
         /// <summary>
         /// Выбранный в CustomersListBox элемент.
         /// </summary>
-        private static Customer _currentCustomer;
+        private Customer _currentCustomer;
 
         /// <summary>
         /// Создаваемый объект класса <see cref="Customer"/>.
         /// </summary>
-        private static Customer _newCustomer = new Customer();
+        private Customer _newCustomer = new Customer();
 
         /// <summary>
         /// Количество случайно генерируемых элементов коллекции _customers по нажатию кнопки AddListButton.
         /// </summary>
         public const int DesualtSize = 10;
+
+
 
         /// <summary>
         /// Создает объект типа <see cref="CustomersTab"/>
@@ -47,61 +67,68 @@ namespace ObjectOrientedPractices.View.Tabs
             _currentCustomer = _newCustomer;
             IdTextBox.Text = _currentCustomer.Id.ToString();
             FillCustomersListBox();
+            AddressControl1.Address = _currentCustomer.Address;
+            DiscountsListBox.DisplayMember = nameof(IDiscount.Info);
+            DiscountsListBox.DataSource = _currentCustomer.Discounts;
         }
 
         /// <summary>
-        /// Заполняет CustomersListBox элементами коллекции _customers.
+        /// Заполняет CustomersListBox элементами коллекции Customers.
         /// </summary>
         private void FillCustomersListBox()
         {
             CustomersListBox.DataSource = null;
-            CustomersListBox.DataSource = _customers;
+            CustomersListBox.DataSource = Customers;
+            CustomersListBox.DisplayMember = null;
             CustomersListBox.DisplayMember = nameof(Customer.FullName);
         }
 
         /// <summary>
-        /// Удаляет данные из IdTextBox, FullNameTextBox, AddressTextBox.
+        /// Удаляет данные из IdTextBox, FullNameTextBox, AddressTextBox, PriorityCheckBox.
         /// </summary>
-        private void ClearCurrentItem()
+        private void ClearCurrentCustomer()
         {
-            IdTextBox.Text = "";
-            FullNameTextBox.Text = "";
-            AddressTextBox.Text = "";
+            IdTextBox.Clear();
+            FullNameTextBox.Clear();
             FullNameTextBox.BackColor = Color.White;
-            AddressTextBox.BackColor = Color.White;
+            PriorityCheckBox.Checked = false;
         }
 
         /// <summary>
         /// Обновляет данные, отображаемые в CustomersListBox.
         /// </summary>
-        private void UpdateCustomersListBox()
+        private void UpdateCustomersListBoxDisplayMember()
         {
             CustomersListBox.DisplayMember = null;
             CustomersListBox.DisplayMember = nameof(Customer.FullName);
         }
 
         /// <summary>
-        /// Заполняет IdTextBox, FullNameTextBox, AddressTextBox значениями выбранного в CustomersListBox элемента.
+        /// Заполняет IdTextBox, FullNameTextBox, AddressTextBox, PriorityCheckBox, DiscountsListBox значениями выбранного в CustomersListBox элемента.
         /// </summary>
         private void CustomersListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CustomersListBox.SelectedIndex == -1 || _customers.Count == 0)
+            if (CustomersListBox.SelectedIndex == -1 || Customers.Count == 0)
             {
-                if (_currentCustomer == _newCustomer || _customers.Count == 0)
-                {
-                    ClearCurrentItem();
-                    IdTextBox.Text = _newCustomer.Id.ToString();
-                    ApplyButton.Visible = true;
-                    return;
-                }
-                ClearCurrentItem();
+                _currentCustomer = _newCustomer;
+                AddressControl1.Address = _currentCustomer.Address;
+                ClearCurrentCustomer();
+                IdTextBox.Text = _newCustomer.Id.ToString();
+                PriorityCheckBox.Checked = _newCustomer.IsPriority;
+                DiscountsListBox.DataSource = _newCustomer.Discounts;
+                DiscountsListBox.SelectedIndex = -1;
+                ApplyButton.Visible = true;
                 return;
             }
             ApplyButton.Visible = false;
-            _currentCustomer = _customers[CustomersListBox.SelectedIndex];
+            _currentCustomer = Customers[CustomersListBox.SelectedIndex];
+            AddressControl1.Address = _currentCustomer.Address;
             IdTextBox.Text = _currentCustomer.Id.ToString();
-            FullNameTextBox.Text = _currentCustomer.FullName.ToString();
-            AddressTextBox.Text = _currentCustomer.Address;
+            FullNameTextBox.Text = _currentCustomer.FullName;
+            PriorityCheckBox.Checked = _currentCustomer.IsPriority;
+            DiscountsListBox.DataSource = _currentCustomer.Discounts;
+            DiscountsListBox.SelectedIndex = -1;
+            _currentCustomer.Address.AddressChanged += delegate { CustomersChanged?.Invoke(this, EventArgs.Empty); };
         }
 
         /// <summary>
@@ -113,8 +140,6 @@ namespace ObjectOrientedPractices.View.Tabs
             {
                 return;
             }
-            _currentCustomer = null;
-            _currentCustomer = _newCustomer;
             CustomersListBox.SelectedIndex = -1;
         }
 
@@ -128,11 +153,12 @@ namespace ObjectOrientedPractices.View.Tabs
             {
                 _currentCustomer = null;
                 _currentCustomer = CustomerFactory.GenerateCustomer();
-                _customers.Add(_currentCustomer);
+                Customers.Add(_currentCustomer);
             }
             _currentCustomer = null;
-            _currentCustomer = _newCustomer;
+            FillCustomersListBox();
             CustomersListBox.SelectedIndex = -1;
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -144,30 +170,28 @@ namespace ObjectOrientedPractices.View.Tabs
             {
                 return;
             }
-            _customers.Remove(_currentCustomer);
-            _currentCustomer = null;
-            _currentCustomer = _newCustomer;
+            Customers.Remove(_currentCustomer);
             CustomersListBox.SelectedIndex = -1;
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
-        /// Добавляет в _customers заполненный значениям элемент _newCustomer.
+        /// Добавляет в Customers заполненный значениям элемент _newCustomer.
         /// </summary>
         private void ApplyButton_Click(object sender, EventArgs e)
         {
             if (FullNameTextBox.BackColor == Color.Pink
-                || AddressTextBox.BackColor == Color.Pink
                 || FullNameTextBox.Text == ""
-                || AddressTextBox.Text == ""
                 || _currentCustomer != _newCustomer)
             {
                 return;
             }
-            _customers.Add(_currentCustomer);
             _currentCustomer = null;
+            Customers.Add(_newCustomer);
             _newCustomer = new Customer();
-            _currentCustomer = _newCustomer;
+            FillCustomersListBox();
             CustomersListBox.SelectedIndex = -1;
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -185,11 +209,20 @@ namespace ObjectOrientedPractices.View.Tabs
         {
             try
             {
+                if (_currentCustomer == null)
+                {
+                    return;
+                }
                 FullNameTextBox.BackColor = Color.White;
+                if (_currentCustomer.FullName == FullNameTextBox.Text)
+                {
+                    return;
+                }
                 _currentCustomer.FullName = FullNameTextBox.Text;
+                CustomersChanged?.Invoke(this, EventArgs.Empty);
                 if (!(_currentCustomer == _newCustomer))
                 {
-                    UpdateCustomersListBox();
+                    UpdateCustomersListBoxDisplayMember();
                 }
             }
             catch
@@ -199,19 +232,57 @@ namespace ObjectOrientedPractices.View.Tabs
         }
 
         /// <summary>
-        /// Записывает в _currentCustomer значение из AddressTextBox.
+        /// Контролирует фокусировку CustomersListBox.
         /// </summary>
-        private void AddressTextBox_TextChanged(object sender, EventArgs e)
+        private void CustomersListBox_Leave(object sender, EventArgs e)
         {
-            try
+            UpdateCustomersListBoxDisplayMember();
+        }
+
+        /// <summary>
+        /// Записывает в _currentCustomer значение из PriorityCheckBox.
+        /// </summary>
+        private void PriorityCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_currentCustomer == null)
             {
-                AddressTextBox.BackColor = Color.White;
-                _currentCustomer.Address = AddressTextBox.Text;
+                return;
             }
-            catch
+            if (_currentCustomer.IsPriority == PriorityCheckBox.Checked)
             {
-                AddressTextBox.BackColor = Color.Pink;
+                return;
             }
+            _currentCustomer.IsPriority = PriorityCheckBox.Checked;
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        /// <summary>
+        /// Вызывает форму класса <see cref="AddDiscountForm"/>.
+        /// </summary>
+        private void AddDiscountButton_Click(object sender, EventArgs e)
+        {
+            AddDiscountForm addDiscountForm = new AddDiscountForm();
+            DialogResult result = addDiscountForm.ShowDialog();
+            if (DialogResult.OK == result)
+            {
+                PercentDiscount newDiscount = new PercentDiscount(0, addDiscountForm.Category);
+                _currentCustomer.Discounts.Add(newDiscount);
+                DiscountsListBox.SelectedItem = newDiscount;
+                CustomersChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        /// <summary>
+        /// Удаляет из _currentCustomer.Discounts выбранный в DiscountsListBox элемент.
+        /// </summary>
+        private void RemoveDiscountButton_Click(object sender, EventArgs e)
+        {
+            if (DiscountsListBox.SelectedIndex == -1 || DiscountsListBox.SelectedIndex == 0)
+            {
+                return;
+            }
+            _currentCustomer.Discounts.RemoveAt(DiscountsListBox.SelectedIndex);
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }
