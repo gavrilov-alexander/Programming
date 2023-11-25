@@ -62,7 +62,6 @@ namespace ObjectOrientedPractices.View.Tabs
             set
             {
                 _displayedItems = value;
-                //FillItemsListBox();
             }
         }
 
@@ -313,10 +312,6 @@ namespace ObjectOrientedPractices.View.Tabs
                 if (_currentItem.Name != NameTextBox.Text)
                 {
                     _currentItem.Name = NameTextBox.Text;
-                }
-                if (!(_currentItem == _newItem))
-                {
-                    //UpdateItemsListBoxDisplayMember();
                 }
             }
             catch
