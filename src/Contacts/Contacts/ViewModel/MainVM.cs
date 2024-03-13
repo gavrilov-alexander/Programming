@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using View.Model;
@@ -22,6 +23,9 @@ namespace View.ViewModel
             set
             {
                 _name = value;
+                CurrentContact.Name = _name;
+                OnPropertyChanged();
+
             }
         }
         public string Phone
@@ -33,6 +37,8 @@ namespace View.ViewModel
             set
             {
                 _phone = value;
+                CurrentContact.Phone = _phone;
+                OnPropertyChanged();
             }
         }
         public string Email
@@ -44,9 +50,36 @@ namespace View.ViewModel
             set
             {
                 _email = value;
+                CurrentContact.Email = _email;
+                OnPropertyChanged();
             }
         }
+        public SaveCommand Save { get; }
+        public LoadCommand Load { get; }
         public Contact CurrentContact { get; set; }
+        public MainVM()
+        {
+            CurrentContact = new Contact();
+            Save = new SaveCommand();
+            Load = new LoadCommand(LoadContact);
+        }
+        private void LoadContact(Contact contact)
+        {
+            if (contact == null)
+            {
+                return;
+            }
+            Name = contact.Name;
+            Phone = contact.Phone;
+            Email = contact.Email;
+        }
         public event PropertyChangedEventHandler? PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string property = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(property));
+            }
+        }
     }
 }
