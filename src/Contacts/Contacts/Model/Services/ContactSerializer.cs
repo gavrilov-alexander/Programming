@@ -13,14 +13,14 @@ namespace View.Model.Services
         public static string FileName { get; set; }
         public static void SaveData(Contact contact)
         {
-            string direcoryName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Contacts");
-            DirectoryInfo directoryInfo = new DirectoryInfo(direcoryName);
+            string directoryName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Contacts");
+            DirectoryInfo directoryInfo = new DirectoryInfo(directoryName);
             if (!directoryInfo.Exists)
             {
                 directoryInfo.Create();
             }
 
-            FileName = Path.Combine(direcoryName, "contacts.json");
+            FileName = Path.Combine(directoryName, "contacts.json");
             FileInfo fileInfo = new FileInfo(FileName);
 
             File.WriteAllText(FileName, string.Empty);
@@ -28,14 +28,14 @@ namespace View.Model.Services
         }
         public static Contact LoadData()
         {
-            string direcoryName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Contacts");
-            DirectoryInfo directoryInfo = new DirectoryInfo(direcoryName);
+            string directoryName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Contacts");
+            DirectoryInfo directoryInfo = new DirectoryInfo(directoryName);
             if (!directoryInfo.Exists)
             {
                 directoryInfo.Create();
             }
 
-            FileName = Path.Combine(direcoryName, "contacts.json");
+            FileName = Path.Combine(directoryName, "contacts.json");
             FileInfo fileInfo = new FileInfo(FileName);
             if (!fileInfo.Exists)
             {
@@ -51,6 +51,7 @@ namespace View.Model.Services
                 {
                     JsonSerializer serializer = new JsonSerializer();
                     contact = serializer.Deserialize<Contact>(reader);
+                    return contact;
                 }
                 reader.Close();
                 return contact;
