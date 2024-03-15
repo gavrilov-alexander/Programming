@@ -8,9 +8,20 @@ using System.Threading.Tasks;
 
 namespace View.Model.Services
 {
+    /// <summary>
+    /// Предоставляет методы сериализации и десериализации данных.
+    /// </summary>
     public static class ContactSerializer
     {
+        /// <summary>
+        /// Возвращает и задает полный путь к файлу.
+        /// </summary>
         public static string FileName { get; set; }
+
+        /// <summary>
+        /// Сериализует объекты.
+        /// </summary>
+        /// <param name="contact">Входной объект.</param>
         public static void SaveData(Contact contact)
         {
             string directoryName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Contacts");
@@ -26,6 +37,11 @@ namespace View.Model.Services
             File.WriteAllText(FileName, string.Empty);
             File.AppendAllText(FileName, JsonConvert.SerializeObject(contact));
         }
+
+        /// <summary>
+        /// Десериализует объекты.
+        /// </summary>
+        /// <returns>Контакт.</returns>
         public static Contact LoadData()
         {
             string directoryName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Contacts");

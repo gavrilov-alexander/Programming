@@ -9,30 +9,52 @@ using View.Model;
 
 namespace View.ViewModel
 {
+    /// <summary>
+    /// Загружает объект из файла.
+    /// </summary>
     public class LoadCommand : ICommand
     {
+        /// <summary>
+        /// Вызывается при изменении состояния команды.
+        /// </summary>
         public event EventHandler? CanExecuteChanged;
 
+        /// <summary>
+        /// Загруженный контакт.
+        /// </summary>
         private Contact _contact;
 
-        private Action<Contact> _loadContact;
+        /// <summary>
+        /// Метод.
+        /// </summary>
+        private Action<Contact> _loadCommand;
 
-        public LoadCommand(Action<Contact> loadContact)
+        /// <summary>
+        /// Создает объект комманды.
+        /// </summary>
+        /// <param name="loadCommand">Метод.</param>
+        public LoadCommand(Action<Contact> loadCommand)
         {
-            _loadContact = loadContact;
+            _loadCommand = loadCommand;
         }
 
+        /// <summary>
+        /// Определяет может ли выполниться команда.
+        /// </summary>
         public bool CanExecute(object? parameter)
         {
             return true;
         }
 
+        /// <summary>
+        /// Выполняет команду загрузки контакта.
+        /// </summary>
         public void Execute(object? parameter)
         {
             if (CanExecute(parameter))
             {
                 _contact = ContactSerializer.LoadData();
-                _loadContact(_contact);
+                _loadCommand(_contact);
             }
         }
     }
